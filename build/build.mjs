@@ -461,9 +461,9 @@ function pagina({ id, titulo, descricao, corpo, classe = "", extraCabeca = "", e
 <link rel="icon" href="assets/selo.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/selo.svg">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400&family=Courier+Prime:wght@400;700&display=swap">
+<link rel="preload" href="assets/fontes/archivo-1.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fontes/newsreader-3.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/fontes.css">
 <link rel="stylesheet" href="assets/css/chrono.css">
 <link rel="stylesheet" href="assets/css/paginas.css">
 <link rel="stylesheet" href="assets/css/formularios.css">
@@ -677,10 +677,15 @@ escrever(
 
 const ARQUIVOS = [
   "./", ...LIVROS.map((l) => l.arquivo), ...PAGINAS.map((p) => p.arquivo),
-  "assets/css/chrono.css", "assets/css/paginas.css", "assets/css/formularios.css",
+  "assets/css/fontes.css", "assets/css/chrono.css", "assets/css/paginas.css",
+  "assets/css/formularios.css",
   "assets/js/indice.js", "assets/js/dados.js", "assets/js/app.js",
   "assets/js/ficha.js", "assets/js/mesa.js", "assets/selo.svg",
   "manifest.webmanifest",
+  // as fontes vão junto: offline sem elas o site perde a tipografia inteira
+  ...readdirSync(join(RAIZ, "assets", "fontes"))
+    .filter((f) => f.endsWith(".woff2"))
+    .map((f) => `assets/fontes/${f}`),
 ];
 
 const VERSAO = `${SITE.versao}-${Date.now().toString(36)}`;

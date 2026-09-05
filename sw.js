@@ -1,5 +1,5 @@
 /* gerado por build/build.mjs — service worker do CHRONO */
-const CACHE = "chrono-2026-09-05-mtohqk0t";
+const CACHE = "chrono-2026-09-05-mtoi4qj4";
 const ARQUIVOS = [
   "./",
   "regras.html",
@@ -8,6 +8,7 @@ const ARQUIVOS = [
   "index.html",
   "ficha.html",
   "mesa.html",
+  "assets/css/fontes.css",
   "assets/css/chrono.css",
   "assets/css/paginas.css",
   "assets/css/formularios.css",
@@ -17,7 +18,17 @@ const ARQUIVOS = [
   "assets/js/ficha.js",
   "assets/js/mesa.js",
   "assets/selo.svg",
-  "manifest.webmanifest"
+  "manifest.webmanifest",
+  "assets/fontes/archivo-0.woff2",
+  "assets/fontes/archivo-1.woff2",
+  "assets/fontes/courier-prime-0.woff2",
+  "assets/fontes/courier-prime-1.woff2",
+  "assets/fontes/courier-prime-2.woff2",
+  "assets/fontes/courier-prime-3.woff2",
+  "assets/fontes/newsreader-2.woff2",
+  "assets/fontes/newsreader-3.woff2",
+  "assets/fontes/newsreader-italico-0.woff2",
+  "assets/fontes/newsreader-italico-1.woff2"
 ];
 
 self.addEventListener("install", (e) => {

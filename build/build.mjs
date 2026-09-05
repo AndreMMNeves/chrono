@@ -444,8 +444,8 @@ function pagina({ id, titulo, descricao, corpo, classe = "", extraCabeca = "", e
 <title>${escAttr(tituloCompleto)}</title>
 <meta name="description" content="${escAttr(descricao)}">
 <meta name="author" content="${escAttr(SITE.autor)}">
-<meta name="theme-color" content="#141D1A" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#E9EBE0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1E1710" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F0E8D6" media="(prefers-color-scheme: light)">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="CHRONO">
 <meta property="og:locale" content="pt_BR">
@@ -755,8 +755,8 @@ escrever(
       scope: "./",
       display: "standalone",
       orientation: "any",
-      background_color: "#141D1A",
-      theme_color: "#141D1A",
+      background_color: "#1E1710",
+      theme_color: "#1E1710",
       categories: ["games", "books", "entertainment"],
       icons: [
         { src: "assets/selo.svg", sizes: "any", type: "image/svg+xml", purpose: "any" },

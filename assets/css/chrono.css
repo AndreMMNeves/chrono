@@ -34,29 +34,32 @@
    -------------------------------------------------------------------------- */
 
 :root {
-  /* tinta e papel — matérias-primas */
-  --tinta-900: #101815;
-  --tinta-800: #141D1A;
-  --tinta-700: #1D2A25;
-  --tinta-600: #26332E;
-  --tinta-500: #33413B;
+  /* tinta e papel — matérias-primas.
+     Papel envelhecido e tinta marrom: o arquivo é velho e foi guardado mal. */
+  --tinta-900: #16100A;
+  --tinta-800: #1E1710;
+  --tinta-700: #2A2118;
+  --tinta-600: #382D21;
+  --tinta-500: #493B2C;
 
-  --papel-100: #F2F4EC;
-  --papel-200: #E9EBE0;
-  --papel-300: #DBE0D2;
-  --papel-400: #C7CEBB;
+  --papel-100: #F8F2E4;
+  --papel-200: #F0E8D6;
+  --papel-300: #E5DAC2;
+  --papel-400: #D3C5A7;
 
-  --grafite: #232D29;
-  /* fumo é o texto terciário: escurecido até 4.7:1 sobre o papel (WCAG AA) */
-  --fumo: #5C6A63;
+  --grafite: #2B2015;
+  /* fumo é o texto terciário: 5,9:1 sobre o papel (WCAG AA) */
+  --fumo: #635539;
 
-  /* acentos — carimbo, latão, fluxo */
-  --carimbo-claro: #9B2033;
-  --carimbo-escuro: #E56B7B;
-  --latao-claro: #7C6230;
-  --latao-escuro: #C3A05A;
-  --fluxo-claro: #216068;
-  --fluxo-escuro: #58C7C2;
+  /* Três tintas de acento, e elas precisam ser distinguíveis entre si:
+     carimbo é o perigo, fluxo é a estrutura, latão é a instituição.
+     Com o fluxo em âmbar, o latão vira oliva para não virar a mesma cor. */
+  --carimbo-claro: #94251C;
+  --carimbo-escuro: #EC6A5E;
+  --latao-claro: #5A5D30;
+  --latao-escuro: #A9AE6A;
+  --fluxo-claro: #7E5312;
+  --fluxo-escuro: #DFA94A;
 
   /* medidas */
   --medida: 66ch;
@@ -80,18 +83,18 @@
   --fundo-3: var(--papel-300);
   --fundo-inverso: var(--tinta-800);
   --texto: var(--grafite);
-  --texto-2: #4B5852;
+  --texto-2: #544733;
   --texto-3: var(--fumo);
   --texto-inverso: var(--papel-100);
-  --borda: #B9C1B2;
-  --borda-fraca: #CBD1C3;
+  --borda: #C9BB9C;
+  --borda-fraca: #DCD0B4;
   --borda-forte: var(--grafite);
   --carimbo: var(--carimbo-claro);
-  --carimbo-fundo: #F3DEE1;
+  --carimbo-fundo: #F6DFD6;
   --latao: var(--latao-claro);
   --fluxo: var(--fluxo-claro);
-  --fluxo-fundo: #DCE8E6;
-  --sombra: 0 1px 0 rgb(35 45 41 / .07);
+  --fluxo-fundo: #EFE2C0;
+  --sombra: 0 1px 0 rgb(43 32 21 / .07);
   color-scheme: light;
 }
 
@@ -101,19 +104,19 @@
   --fundo-2: var(--tinta-700);
   --fundo-3: var(--tinta-900);
   --fundo-inverso: var(--papel-200);
-  --texto: #DDE3D9;
-  --texto-2: #A9B4AB;
-  /* clareado até 5.2:1 sobre a tinta (WCAG AA) */
-  --texto-3: #838F87;
+  --texto: #E8DFCD;
+  --texto-2: #BCB0A0;
+  /* 5,5:1 sobre a tinta e 4,9:1 sobre o painel (WCAG AA) */
+  --texto-3: #9A8D7D;
   --texto-inverso: var(--tinta-900);
   --borda: var(--tinta-600);
   --borda-fraca: var(--tinta-700);
-  --borda-forte: #465650;
+  --borda-forte: #574838;
   --carimbo: var(--carimbo-escuro);
-  --carimbo-fundo: #34181E;
+  --carimbo-fundo: #331914;
   --latao: var(--latao-escuro);
   --fluxo: var(--fluxo-escuro);
-  --fluxo-fundo: #122A2B;
+  --fluxo-fundo: #2E2312;
   --sombra: 0 1px 0 rgb(0 0 0 / .3);
   color-scheme: dark;
 }

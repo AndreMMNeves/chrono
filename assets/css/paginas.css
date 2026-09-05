@@ -18,12 +18,12 @@
    ABERTURA
    -------------------------------------------------------------------------- */
 
+/* Sem altura mínima de tela cheia: com o nome pequeno, "espalhar até o rodapé"
+   só produz um vão vazio. A treliça vem logo depois do texto. */
 .hero {
-  min-height: calc(100dvh - var(--barra));
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 3rem;
+  gap: clamp(2.5rem, 7vh, 4.5rem);
   overflow: hidden;
 }
 
@@ -37,29 +37,39 @@
   color: var(--texto-3);
 }
 
+/* O nome é uma marcação de documento, não a capa de um livro: corpo menor,
+   entreletra larga e um filete embaixo, como carimbo de arquivo. */
 .hero-marca {
-  font-size: clamp(4.25rem, 17vw, 15rem);
-  margin: 0;
+  font-family: var(--sans);
+  font-variation-settings: "wdth" 100, "wght" 700;
+  font-size: clamp(2rem, 5.6vw, 4.25rem);
+  line-height: 1;
+  letter-spacing: .42em;
+  text-indent: .42em;
+  text-transform: uppercase;
   color: var(--texto);
-  display: flex;
-  flex-wrap: nowrap;
-}
-.hero-marca span {
+  margin: 0;
   display: block;
-  /* o eixo de largura do Archivo deixa o logotipo esticar sem distorcer */
-  flex: 0 1 auto;
-  margin-right: .055em;
+  max-width: 22ch;
 }
-.hero-marca span:last-child { margin-right: 0; }
 
 .hero-sub {
   font-family: var(--sans);
   font-variation-settings: "wdth" 92, "wght" 500;
-  font-size: clamp(.82rem, 1.7vw, 1.0625rem);
-  letter-spacing: .22em;
+  font-size: clamp(.72rem, 1.4vw, .875rem);
+  letter-spacing: .3em;
   text-transform: uppercase;
   color: var(--texto-3);
-  margin: 1.1rem 0 0;
+  margin: 0;
+  padding-top: .85rem;
+  border-top: 1px solid var(--borda-forte);
+  max-width: 34rem;
+}
+
+.hero-marca + .hero-sub { margin-top: 1.15rem; }
+
+@media (max-width: 34rem) {
+  .hero-marca { letter-spacing: .3em; text-indent: .3em; }
 }
 
 /* a epígrafe e o texto correm lado a lado: preenchem a largura sem esticar linha */

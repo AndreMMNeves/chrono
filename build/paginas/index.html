@@ -1,0 +1,248 @@
+<!--CORPO-->
+<main id="conteudo">
+
+  <!-- ================================================== abertura -->
+  <section class="hero">
+    <div class="hero-texto">
+      <p class="etiqueta hero-etiqueta">Agência do Fluxo · dossiê de recrutamento</p>
+
+      <h1 class="hero-marca marca" aria-label="Chrono">
+        <span>C</span><span>H</span><span>R</span><span>O</span><span>N</span><span>O</span>
+      </h1>
+
+      <p class="hero-sub">RPG de mesa sobre consertar o tempo depois de morrer</p>
+
+      <div class="hero-duplo">
+        <p class="hero-epigrafe">
+          Você morreu. Isso não é reviravolta de campanha — é o ponto de partida
+          da ficha.
+        </p>
+
+        <div class="hero-lado">
+          <p class="hero-corpo">
+            Um vivo não pode viajar no tempo: o Fluxo tem a conta dele aberta e o
+            apaga por paradoxo. Um morto já fechou a conta. É por isso que a
+            Agência intercepta gente no instante da morte, segura no meio do
+            caminho e manda de volta para consertar as vigas que alguém torceu.
+          </p>
+
+          <p class="hero-acoes">
+            <a class="btn" href="regras.html">Ler as regras</a>
+            <a class="btn btn-carimbo" href="ficha.html">Criar um agente</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <figure class="hero-figura">
+      <!--INCLUIR:_trelica.svg-->
+      <figcaption>
+        <span class="hero-legenda-marca" aria-hidden="true"></span>
+        Cada viga é um evento que já aconteceu; o presente é o que se apoia em
+        cima delas. Uma está partida — e o prédio não desaba, se
+        <em>reconstrói</em>. Ninguém lá dentro percebe que houve troca.
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- ================================================== briefing -->
+  <section class="secao" id="briefing" aria-labelledby="t-briefing">
+    <h2 id="t-briefing" class="secao-titulo">O briefing</h2>
+
+    <dl class="campos">
+      <div class="campo">
+        <dt>A premissa</dt>
+        <dd>
+          A Agência não te ressuscita: te segura antes que você caia na Zona
+          Fantasma. Você não está vivo nem lá. Está pendurado — e é exatamente
+          essa condição que deixa você andar dentro do passado sem ser corrigido.
+        </dd>
+      </div>
+      <div class="campo">
+        <dt>O trabalho</dt>
+        <dd>
+          Quase nunca é matar alguém. É descobrir <strong>qual foi a viga</strong>
+          que mexeram. Alguém levou covid-19 para a Idade Média. Alguém salvou
+          Kennedy. Alguém entregou uma IA a um grupo de físicos em 1935.
+        </dd>
+      </div>
+      <div class="campo">
+        <dt>O preço</dt>
+        <dd>
+          Esforço move tudo, e quando ele acaba a única forma de continuar útil é
+          sacar do Fluxo — ficar um pouco mais parecido com um fantasma. Ninguém
+          te impede. É esse o problema.
+        </dd>
+      </div>
+      <div class="campo">
+        <dt>A trava</dt>
+        <dd>
+          Discernimento não sobe matando: sobe entendendo. Sem ele o personagem
+          não passa do nível 5, 9, 13, 17 nem 20. Um grupo que ignora a trama
+          para farmar combate simplesmente para de subir.
+        </dd>
+      </div>
+    </dl>
+
+    <p class="tom">
+      O fundo é melancólico; a mesa não. CHRONO é pulp. O clima é correr atrás de
+      um dinossauro solto em 1912 usando um guarda-chuva e muita confiança.
+    </p>
+  </section>
+
+  <!-- ================================================== o motor -->
+  <section class="secao secao-motor" id="motor" aria-labelledby="t-motor">
+    <h2 id="t-motor" class="secao-titulo">O motor, em duas rolagens</h2>
+    <p class="secao-linha">
+      Toque em qualquer dado desta página para rolar de verdade. O resultado já
+      vem lido pela regra certa.
+    </p>
+
+    <div class="motor-par">
+      <div class="motor-bloco">
+        <p class="motor-nome">Ação</p>
+        <p class="motor-formula">
+          <button type="button" class="dado" data-d="1d20" title="Rolar 1d20">d20</button>
+          + atributo + perícia <span class="motor-vs">contra</span> ND
+        </p>
+        <table class="motor-escala">
+          <caption class="oculto-visual">Níveis de dificuldade</caption>
+          <tr><th scope="row">Fácil</th><td>8</td></tr>
+          <tr><th scope="row">Padrão</th><td>12</td></tr>
+          <tr><th scope="row">Difícil</th><td>16</td></tr>
+          <tr><th scope="row">Extrema</th><td>20</td></tr>
+          <tr><th scope="row">Absurda</th><td>24</td></tr>
+        </table>
+        <p class="motor-nota">
+          20 natural é crítico. Um ou dois abaixo do ND ainda acontece — mas o
+          mestre cobra o preço em voz alta antes de você confirmar.
+        </p>
+      </div>
+
+      <div class="motor-bloco">
+        <p class="motor-nome">Salvaguarda</p>
+        <p class="motor-formula">
+          <button type="button" class="dado" data-d="1d6" title="Rolar 1d6">1d6</button>
+          + perícia + patente <span class="motor-vs">contra</span> limiar
+        </p>
+        <table class="motor-escala">
+          <caption class="oculto-visual">Limiares de severidade</caption>
+          <tr><th scope="row">Leve</th><td>4</td></tr>
+          <tr><th scope="row">Média</th><td>6</td></tr>
+          <tr><th scope="row">Severa</th><td>8</td></tr>
+          <tr><th scope="row">Extrema</th><td>10</td></tr>
+        </table>
+        <p class="motor-nota">
+          O dado é pequeno de propósito: salvaguarda não é lugar de heroísmo. Dá
+          para somar mais 1d6 por 2 de Esforço, quantas vezes você aguentar.
+        </p>
+      </div>
+    </div>
+
+    <div class="escada">
+      <p class="escada-titulo">A escada de dados</p>
+      <p class="escada-linha">O tamanho do dado acompanha o tamanho do que você está tocando.</p>
+      <ol class="escada-lista">
+        <li><button type="button" class="dado escada-dado" data-d="1d4">d4</button><span>você mexeu num detalhe</span><em>sequela</em></li>
+        <li><button type="button" class="dado escada-dado" data-d="1d6">d6</button><span>você aguentou algo</span><em>salvaguarda</em></li>
+        <li><button type="button" class="dado escada-dado" data-d="1d8">d8</button><span>você forçou uma cena</span><em>perseguição</em></li>
+        <li><button type="button" class="dado escada-dado" data-d="1d10">d10</button><span>você encostou no Fluxo</span><em>ressonância</em></li>
+        <li><button type="button" class="dado escada-dado" data-d="1d12">d12</button><span>você quebrou uma regra do tempo</span><em>paradoxo</em></li>
+        <li><button type="button" class="dado escada-dado" data-d="1d20">d20</button><span>você agiu</span><em>ação</em></li>
+        <li><button type="button" class="dado escada-dado" data-d="1d100">d100</button><span>o Fluxo respondeu</span><em>deriva</em></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================================================== volumes -->
+  <section class="secao" id="volumes" aria-labelledby="t-volumes">
+    <h2 id="t-volumes" class="secao-titulo">Os três volumes</h2>
+
+    <ol class="volumes">
+      <li class="volume">
+        <a href="regras.html">
+          <span class="ref volume-ref">Vol. I</span>
+          <span class="volume-nome">Livro de Regras</span>
+          <span class="volume-texto">
+            Motor de dados, criação de personagem, Esforço e Instabilidade,
+            Discernimento, as cinco classes até o nível 20, trauma, sacrifício,
+            inventário, a Janela e a Agência.
+          </span>
+          <span class="ref volume-conta">{{regras.partes}} partes · {{regras.secoes}} seções</span>
+        </a>
+      </li>
+      <li class="volume">
+        <a href="inimigos.html">
+          <span class="ref volume-ref">Vol. II</span>
+          <span class="volume-nome">Livro dos Inimigos</span>
+          <span class="volume-texto">
+            A régua de Grau, dezoito fichas em cinco famílias e quatro anomalias
+            prontas. Metade delas não é para matar — o campo mais importante de
+            cada ficha se chama Resolução.
+          </span>
+          <span class="ref volume-conta">{{inimigos.partes}} partes · {{inimigos.secoes}} seções</span>
+        </a>
+      </li>
+      <li class="volume">
+        <a href="epocas.html">
+          <span class="ref volume-ref">Vol. III</span>
+          <span class="volume-nome">Guia de Épocas</span>
+          <span class="volume-texto">
+            Onze séculos jogáveis: o que existe, o que denuncia um agente, o que
+            vale mais que dinheiro, o que mata gente ali sem ser a anomalia e o
+            gancho pronto de cada um.
+          </span>
+          <span class="ref volume-conta">{{epocas.partes}} partes · {{epocas.secoes}} seções</span>
+        </a>
+      </li>
+    </ol>
+
+    <ol class="volumes volumes-ferramentas">
+      <li class="volume">
+        <a href="ficha.html">
+          <span class="ref volume-ref">Ficha</span>
+          <span class="volume-nome">Ficha de agente</span>
+          <span class="volume-texto">
+            Calcula PV, Esforço, Defesa e Carga sozinha, avisa qual Camada está
+            travando seu próximo nível, salva no navegador e imprime em A4.
+          </span>
+          <span class="ref volume-conta">interativa</span>
+        </a>
+      </li>
+      <li class="volume">
+        <a href="mesa.html">
+          <span class="ref volume-ref">Mesa</span>
+          <span class="volume-nome">Painel do mestre</span>
+          <span class="volume-texto">
+            Relógios de Instabilidade do Fluxo e de Suspeita, ordem de
+            iniciativa, régua de Grau para improvisar inimigo na hora e as
+            tabelas que você mais consulta.
+          </span>
+          <span class="ref volume-conta">interativa</span>
+        </a>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ================================================== brasas -->
+  <section class="brasas" aria-labelledby="t-brasas">
+    <p class="etiqueta">A regra que sustenta a campanha</p>
+    <h2 id="t-brasas" class="brasas-frase">
+      Quando uma Janela se fecha, o instante em que ela abriu fica queimado.
+      Nenhuma Janela pode ser aberta ali outra vez. Nem por vocês. Nem por
+      ninguém. Nunca.
+    </h2>
+    <p class="brasas-nota">
+      É o que mata a coisa que destrói toda campanha de viagem no tempo: voltar e
+      tentar de novo. Se o grupo falhou na terça-feira, na feira de Avignon,
+      aquela terça virou cinza. Podem ir para a quarta. Podem ir para outro canto
+      da terça. Nunca mais para aquele instante.
+      <a href="regras.html#s-15-4">A Regra das Brasas, na íntegra</a>
+    </p>
+    <p class="brasas-acoes">
+      <a class="btn" href="regras.html">Começar pelo Livro de Regras</a>
+      <a class="btn btn-fantasma" href="ficha/CHRONO_Ficha_Editavel.pdf">Baixar a ficha em PDF</a>
+    </p>
+  </section>
+
+</main>

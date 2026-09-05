@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="pt-BR" data-pagina="inimigos">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Livro dos Inimigos · CHRONO</title>
+<meta name="description" content="A régua de Grau, dezoito fichas em cinco famílias e quatro anomalias prontas para rodar hoje à noite.">
+<meta name="author" content="CHRONO">
+<meta name="theme-color" content="#141D1A" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#E9EBE0" media="(prefers-color-scheme: light)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CHRONO">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Livro dos Inimigos · CHRONO">
+<meta property="og:description" content="A régua de Grau, dezoito fichas em cinco famílias e quatro anomalias prontas para rodar hoje à noite.">
+<meta property="og:url" content="https://andremmneves.github.io/chrono/inimigos.html">
+<meta property="og:image" content="https://andremmneves.github.io/chrono/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="CHRONO — RPG de mesa sobre consertar o tempo depois de morrer">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://andremmneves.github.io/chrono/inimigos.html">
+<link rel="icon" href="assets/selo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/selo.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400&family=Courier+Prime:wght@400;700&display=swap">
+<link rel="stylesheet" href="assets/css/chrono.css">
+<link rel="stylesheet" href="assets/css/paginas.css">
+<link rel="stylesheet" href="assets/css/formularios.css">
+<script>
+/* tema e classe "js" antes da pintura: sem piscar e sem a página pular */
+(function () {
+  var raiz = document.documentElement;
+  raiz.classList.add("js");
+  var padrao = "papel";
+  var fixo = false;
+  try {
+    raiz.dataset.tema = fixo ? padrao : (localStorage.getItem("chrono:tema") || padrao);
+  } catch (e) { raiz.dataset.tema = padrao; }
+})();
+</script>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<header class="barra">
+  <a class="barra-marca" href="index.html"><svg class="selo" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.4" y="1.4" width="13.2" height="13.2"/><path d="M8 4.4V8l2.6 1.7"/></svg><span class="marca">Chrono</span></a>
+  <nav class="barra-nav" aria-label="Livros e ferramentas"><a href="regras.html">Regras</a><a href="inimigos.html" aria-current="page">Inimigos</a><a href="epocas.html">Épocas</a><a href="ficha.html">Ficha</a><a href="mesa.html">Mesa</a></nav>
+  <div class="barra-acoes">
+    <div class="barra-busca">
+      <button type="button" class="barra-btn" id="abrir-busca" aria-label="Buscar nos três livros" aria-keyshortcuts="Control+K">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="7" cy="7" r="4.6"/><path d="M10.4 10.4 14 14"/></svg>
+        <span class="rotulo">Buscar</span>
+      </button>
+      <kbd class="barra-atalho" aria-hidden="true">Ctrl K</kbd>
+    </div>
+    <button type="button" class="barra-btn" id="alternar-tema" aria-label="Alternar entre papel e Zona">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8" cy="8" r="5"/><path d="M8 3v10" /><path d="M8 3a5 5 0 0 1 0 10" fill="currentColor" stroke="none"/></svg>
+      <span class="rotulo" data-rotulo-tema>Zona</span>
+    </button>
+  </div>
+</header>
+<main class="livro" id="conteudo">
+  <nav class="trilho" aria-label="Sumário do Livro dos Inimigos">
+    <p class="trilho-titulo">Livro dos Inimigos</p>
+    <button type="button" class="btn btn-fantasma btn-mini trilho-gaveta nao-imprime" aria-expanded="false" aria-controls="trilho-conteudo">Sumário</button>
+    <div class="trilho-conteudo" id="trilho-conteudo"><ol><li class="trilho-parte"><a href="#parte-01">COMO LER</a><ol><li><a href="#s-1-1"><span class="ref">1.1</span> Grau não é dificuldade</a></li><li><a href="#s-1-2"><span class="ref">1.2</span> A régua</a></li><li><a href="#s-1-3"><span class="ref">1.3</span> O formato</a></li></ol></li><li class="trilho-parte"><a href="#parte-02">DESLOCADOS</a><ol><li><a href="#o-animal-grande">O ANIMAL GRANDE</a></li><li><a href="#cepa-viajante">CEPA VIAJANTE</a></li><li><a href="#esquadrao-fora-de-hora">ESQUADRÃO FORA DE HORA</a></li><li><a href="#o-cachorro">O CACHORRO</a></li></ol></li><li class="trilho-parte"><a href="#parte-03">DIVERGENTES</a><ol><li><a href="#o-homem-que-deveria-ter-morrido">O HOMEM QUE DEVERIA TER MORRIDO</a></li><li><a href="#guarda-da-linha-nova">GUARDA DA LINHA NOVA</a></li><li><a href="#o-historiador-converso">O HISTORIADOR CONVERSO</a></li></ol></li><li class="trilho-parte"><a href="#parte-04">PARADOXOS</a><ol><li><a href="#o-que-so-existe-quando-ninguem-olha">O QUE SÓ EXISTE QUANDO NINGUÉM OLHA</a></li><li><a href="#a-repeticao">A REPETIÇÃO</a></li><li><a href="#o-filho-de-ninguem">O FILHO DE NINGUÉM</a></li><li><a href="#a-sala-que-ja-aconteceu">A SALA QUE JÁ ACONTECEU</a></li></ol></li><li class="trilho-parte"><a href="#parte-05">FANTASMAS</a><ol><li><a href="#eco-comum">ECO COMUM</a></li><li><a href="#o-que-esperava-voce">O QUE ESPERAVA VOCÊ</a></li><li><a href="#a-multidao">A MULTIDÃO</a></li><li><a href="#o-guardiao-da-porta">O GUARDIÃO DA PORTA</a></li></ol></li><li class="trilho-parte"><a href="#parte-06">RENEGADOS</a><ol><li><a href="#agente-renegado">AGENTE RENEGADO</a></li><li><a href="#o-enxertado">O ENXERTADO</a></li><li><a href="#a-primeira">A PRIMEIRA</a></li></ol></li><li class="trilho-parte"><a href="#parte-07">QUATRO ANOMALIAS PRONTAS</a><ol><li><a href="#a-peste-errada">A PESTE ERRADA</a></li><li><a href="#o-bicho-em-sao-paulo">O BICHO EM SÃO PAULO</a></li><li><a href="#o-presidente-que-viveu">O PRESIDENTE QUE VIVEU</a></li><li><a href="#a-maquina-de-princeton">A MÁQUINA DE PRINCETON</a></li></ol></li><li class="trilho-parte"><a href="#apendice-montando-o-seu">APÊNDICE — MONTANDO O SEU</a></li></ol></div>
+  </nav>
+  <article class="corpo">
+    <header class="livro-capa">
+      <p class="etiqueta">Agência do Fluxo · documento de campo</p>
+      <h1>Livro dos Inimigos</h1>
+      <p class="resumo">A régua de Grau, dezoito fichas em cinco famílias e quatro anomalias prontas para rodar hoje à noite.</p>
+      <p class="ref">VOL. II · v1.0 · 8 partes</p>
+    </header>
+<h2 id="parte-01"><span class="parte-n">PARTE I</span><span>COMO LER</span><a class="ancora" href="#parte-01" aria-label="Link para esta parte">§</a></h2>
+
+<h3 id="s-1-1"><span class="sec-n">1.1</span>Grau não é dificuldade<a class="ancora" href="#s-1-1" aria-label="Link para esta seção">§</a></h3>
+<p><strong>Grau</strong> mede dano ao Fluxo, não capacidade de combate. Um vírus é Grau 5 e não tem um único ponto de vida. Um cachorro deslocado é Grau 1 e pode matar um Recruta.</p>
+<p>Não use Grau para escolher encontro. Use para saber <strong>quanto da Instabilidade do Fluxo aquilo segura</strong> — e portanto quanto a missão anda quando os jogadores resolvem.</p>
+<h3 id="s-1-2"><span class="sec-n">1.2</span>A régua<a class="ancora" href="#s-1-2" aria-label="Link para esta seção">§</a></h3>
+<p>Use quando precisar improvisar um inimigo na hora. Todo número sai daqui.</p>
+<div class="tabela-rolo"><table><thead><tr><th scope="col">Grau</th><th scope="col">Defesa</th><th scope="col">PV</th><th scope="col">Ataque</th><th scope="col">Dano</th><th scope="col">Salvaguardas</th><th scope="col">Grupo de nível</th></tr></thead><tbody><tr><th scope="row"><strong>1</strong></th><td>12</td><td>20</td><td>+3</td><td><button type="button" class="dado" data-d="1d6+2" title="Rolar 1d6+2">1d6+2</button></td><td>+1</td><td>1–4</td></tr><tr><th scope="row"><strong>2</strong></th><td>15</td><td>45</td><td>+6</td><td><button type="button" class="dado" data-d="1d8+4" title="Rolar 1d8+4">1d8+4</button></td><td>+3</td><td>5–8</td></tr><tr><th scope="row"><strong>3</strong></th><td>18</td><td>90</td><td>+9</td><td><button type="button" class="dado" data-d="2d6+6" title="Rolar 2d6+6">2d6+6</button></td><td>+5</td><td>9–12</td></tr><tr><th scope="row"><strong>4</strong></th><td>21</td><td>170</td><td>+12</td><td><button type="button" class="dado" data-d="3d6+8" title="Rolar 3d6+8">3d6+8</button></td><td>+7</td><td>13–17</td></tr><tr><th scope="row"><strong>5</strong></th><td>24</td><td>300</td><td>+15</td><td><button type="button" class="dado" data-d="4d6+10" title="Rolar 4d6+10">4d6+10</button></td><td>+9</td><td>18–20</td></tr></tbody></table></div>
+<p><strong>Traços automáticos por Grau:</strong></p>
+<ul><li><strong>Grau 3+</strong> — <em>Presença Pesada.</em> A cena inteira sobe +5 IP em quem ficar perto por uma cena inteira.</li><li><strong>Grau 4+</strong> — <em>Resiliência.</em> Nenhum golpe único tira mais que 20 PV dele. Ataque Extra ajuda; nuke não funciona.</li><li><strong>Grau 4+</strong> — <em>Duas Ações.</em> Age duas vezes por rodada, em iniciativas diferentes.</li><li><strong>Grau 5</strong> — <em>Não Se Mata Assim.</em> Reduzir a 0 PV não resolve. Só a solução correta resolve, e ela está descrita na ficha.</li></ul>
+<p>Essa é a resposta ao problema do Ataque Extra: do nível 6 em diante o grupo derruba coisa rápido, então o alto Grau precisa de estrutura, não de PV inflado.</p>
+<h3 id="s-1-3"><span class="sec-n">1.3</span>O formato<a class="ancora" href="#s-1-3" aria-label="Link para esta seção">§</a></h3>
+<pre><code>NOME
+Grau · Família · Selo típico
+Defesa · PV · Iniciativa · Salvaguardas
+Ataque
+
+TRAÇOS      o que ele faz que quebra a regra
+RESOLUÇÃO   como o grupo se livra dele de verdade
+PESO        quanto de IF ele segura</code></pre>
+<p><strong>Resolução é o campo mais importante.</strong> Metade dos inimigos deste livro não são para matar. Se o grupo só souber atacar, ele perde a missão ganhando o combate.</p>
+<h2 id="parte-02"><span class="parte-n">PARTE II</span><span>DESLOCADOS</span><a class="ancora" href="#parte-02" aria-label="Link para esta parte">§</a></h2>
+<p><em>Coisa ou criatura fora da própria época. Sem intenção, sem plano, e difíceis de esconder.</em></p>
+<h3 id="o-animal-grande">O ANIMAL GRANDE<a class="ancora" href="#o-animal-grande" aria-label="Link para esta seção">§</a></h3>
+<pre><code>Grau 4 · Deslocado · Ativo
+Defesa 21 · PV 170 · Iniciativa +8 · Salvaguardas +7
+Mordida +12 · 3d6+8 · alvo fica Agarrado</code></pre>
+<p>Tiranossauro, urso-das-cavernas, megatério. Não importa a espécie: importa que ele é enorme, está com fome e está numa rua.</p>
+<ul><li><strong>TRAÇOS</strong> — <em>Investida:</em> se mover 10 m em linha reta antes de atacar, o dano vira <button type="button" class="dado" data-d="4d6+8" title="Rolar 4d6+8">4d6+8</button>. <em>Cheiro:</em> não pode ser despistado por Furtividade, só por distância ou por outro cheiro.</li><li><strong>RESOLUÇÃO</strong> — Matar funciona, mas mil pessoas viram. <strong>A resolução limpa é devolvê-lo</strong>: atrair até um ponto de inserção e empurrar. Um Artífice com Selo Provisório ou um Camaleão criando pânico direcionado resolvem melhor que qualquer arma.</li><li><strong>PESO</strong> — 20% da IF. Se morrer em público, o Fluxo cobra: role <button type="button" class="dado" data-d="1d12" title="Rolar 1d12">1d12</button> de Paradoxo.</li></ul>
+<h3 id="cepa-viajante">CEPA VIAJANTE<a class="ancora" href="#cepa-viajante" aria-label="Link para esta seção">§</a></h3>
+<pre><code>Grau 5 · Deslocado · Ativo → Terminal
+Defesa — · PV — · Iniciativa —
+Não ataca. Não pode ser atacado.</code></pre>
+<p>Um vírus moderno solto numa época sem anticorpo, sem antibiótico e sem noção de contágio. Não tem corpo. Tem taxa.</p>
+<ul><li><strong>TRAÇOS</strong> — <em>Curva:</em> a cada sessão que passar sem contenção, a IF <strong>sobe 10%</strong>. <em>Ninguém acredita:</em> convencer autoridades da época exige Persuasão ND 20, e a informação é anacrônica — quem falar sobe IP.</li><li><strong>RESOLUÇÃO</strong> — Não se combate: se <strong>contém</strong>. Isolar o paciente zero, queimar o foco, ou levar de volta o portador. O grupo vai ter que decidir quantas pessoas daquela época deixa morrer para o número certo de pessoas continuar morrendo.</li><li><strong>PESO</strong> — 45% da IF. É uma missão inteira sozinha.</li></ul>
+<h3 id="esquadrao-fora-de-hora">ESQUADRÃO FORA DE HORA<a class="ancora" href="#esquadrao-fora-de-hora" aria-label="Link para esta seção">§</a></h3>
+<pre><code>Grau 3 · Deslocado · Ativo · aparece em grupo de 4 a 8
+Defesa 18 · PV 90 (cada) · Iniciativa +6 · Salvaguardas +5
+Arma da guerra deles +9 · 2d6+6</code></pre>
+<p>Uma unidade militar inteira arrancada da sua guerra e largada em outro século. Eles ainda acham que estão em serviço. Do ponto de vista deles, vocês são o inimigo.</p>
+<ul><li><strong>TRAÇOS</strong> — <em>Disciplina:</em> imunes a Intimidação. <em>Ordem:</em> se o comandante cair, os outros têm desvantagem em tudo por uma rodada.</li><li><strong>RESOLUÇÃO</strong> — Eles se rendem a autoridade. Um Camaleão com patente militar convincente da época <em>deles</em> desarma a coisa inteira sem um tiro. É o encontro que ensina a mesa que Presença resolve mais que Pontaria.</li><li><strong>PESO</strong> — 15%.</li></ul>
+<h3 id="o-cachorro">O CACHORRO<a class="ancora" href="#o-cachorro" aria-label="Link para esta seção">§</a></h3>
+<pre><code>Grau 1 · Deslocado · Contido
+Defesa 12 · PV 20 · Iniciativa +4 · Salvaguardas +1
+Mordida +3 · 1d6+2</code></pre>
+<p>Um animal doméstico comum, de uma época errada. Uma raça que não existia ainda. Um bicho que não deveria estar naquele continente.</p>
+<ul><li><strong>TRAÇOS</strong> — <em>Inofensivo:</em> sério, ele é só um cachorro.</li><li><strong>RESOLUÇÃO</strong> — Pega ele. Leva embora. Pronto.</li><li><strong>PESO</strong> — 5%. E é aqui que o mestre testa a mesa: um grupo que mata o cachorro tem um problema, e o mestre deve deixar isso claro sem falar nada.</li></ul>
+<h2 id="parte-03"><span class="parte-n">PARTE III</span><span>DIVERGENTES</span><a class="ancora" href="#parte-03" aria-label="Link para esta parte">§</a></h2>
+<p><em>Humanos que preferem a linha nova e vão matar para mantê-la. Eles acham que são os mocinhos — e, na linha deles, são.</em></p>
+<h3 id="o-homem-que-deveria-ter-morrido">O HOMEM QUE DEVERIA TER MORRIDO<a class="ancora" href="#o-homem-que-deveria-ter-morrido" aria-label="Link para esta seção">§</a></h3>
+<pre><code>Grau 4 · Divergente · Terminal
+Defesa 21 · PV 170 · Iniciativa +10 · Salvaguardas +7
+Escolta armada +12 · 3d6+8 · nunca está sozinho</code></pre>
+<p>O presidente salvo. O general que sobreviveu. O cientista que não pegou o barco. Ele é carismático, é competente, e construiu algo que muita gente ama.</p>
+<ul><li><strong>TRAÇOS</strong> — <em>Legitimidade:</em> enquanto ele estiver vivo, a IF não desce abaixo de 60%. <em>Multidão:</em> atacá-lo em público faz a cena inteira virar contra o grupo. <em>Ele sabe:</em> tem plena consciência de que veio de outra linha, e vai conversar antes de brigar.</li><li><strong>RESOLUÇÃO</strong> — Matar funciona e é a pior opção: role <button type="button" class="dado" data-d="1d12" title="Rolar 1d12">1d12</button> de Paradoxo com desvantagem, e a mesa carrega isso pelo resto da campanha. <strong>A resolução limpa é convencê-lo a se retirar</strong> — Persuasão ND 24, com bônus grande se o grupo tiver descoberto o que ele perdeu na linha original.</li><li><strong>PESO</strong> — 40%.</li></ul>
+<h3 id="guarda-da-linha-nova">GUARDA DA LINHA NOVA<a class="ancora" href="#guarda-da-linha-nova" aria-label="Link para esta seção">§</a></h3>
+<pre><code>Grau 2 · Divergente · Ativo · aparece em grupo
+Defesa 15 · PV 45 · Iniciativa +5 · Salvaguardas +3
+Arma de serviço +6 · 1d8+4</code></pre>
+<p>Gente comum trabalhando para o regime que só existe porque alguém mexeu no tempo. Eles não sabem de nada. Têm família.</p>
+<ul><li><strong>TRAÇOS</strong> — <em>Só o trabalho:</em> rendem-se se a luta virar claramente contra eles.</li><li><strong>RESOLUÇÃO</strong> — Passar por eles, não através deles. Matar guarda sobe IP e não desce IF um ponto sequer.</li><li><strong>PESO</strong> — 0%. Eles não seguram nada. São só a razão de o caminho ser difícil.</li></ul>
+<h3 id="o-historiador-converso">O HISTORIADOR CONVERSO<a class="ancora" href="#o-historiador-converso" aria-label="Link para esta seção">§</a></h3>
+<pre><code>Grau 3 · Divergente · Contido
+Defesa 18 · PV 90 · Iniciativa +5 · Salvaguardas +9 (mental)
+Não luta.</code></pre>
+<p>Um agente da Agência que estudou a linha nova por tempo demais e concluiu que ela é melhor. Ele tem razão em vários pontos, e é isso que incomoda.</p>
+<ul><li><strong>TRAÇOS</strong> — <em>Argumento:</em> na primeira cena com ele, cada jogador faz salvaguarda de Autocontrole vs. 8. Quem falhar leva <strong>+10 IP</strong> — não por medo, por dúvida. <em>Ele tem os dados:</em> sabe exatamente quantas pessoas a mais estão vivas na linha nova.</li><li><strong>RESOLUÇÃO</strong> — Não tem resolução mecânica. Ele é uma conversa. O que o grupo decidir fazer com ele define o tom do resto da campanha.</li><li><strong>PESO</strong> — 10%, e só se ele entregar o que sabe.</li></ul>
+<h2 id="parte-04"><span class="parte-n">PARTE IV</span><span>PARADOXOS</span><a class="ancora" href="#parte-04" aria-label="Link para esta parte">§</a></h2>
+<p><em>Seres impossíveis nascidos da contradição. Cada um quebra uma regra específica do sistema, e o grupo precisa descobrir qual antes de resolver.</em></p>
+<h3 id="o-que-so-existe-quando-ninguem-olha">O QUE SÓ EXISTE QUANDO NINGUÉM OLHA<a class="ancora" href="#o-que-so-existe-quando-ninguem-olha" aria-label="Link para esta seção">§</a></h3>
+<pre><code>Grau 3 · Paradoxo · Ativo
+Defesa 18 · PV 90 · Iniciativa +9 · Salvaguardas +5
+Toque +9 · 2d6+6</code></pre>
+<ul><li><strong>REGRA QUEBRADA</strong> — Não pode ser alvo de nada enquanto estiver sendo observado, e não pode ser ferido enquanto não estiver. Atacar exige que alguém desvie o olhar no instante exato.</li><li><strong>TRAÇOS</strong> — <em>Ausência:</em> qualquer um que o veja diretamente perde a memória de tê-lo visto ao fim da cena, a menos que anote.</li><li><strong>RESOLUÇÃO</strong> — Coordenação. Um personagem fecha os olhos e ataca guiado por outro. Testes com desvantagem, e é exatamente isso que torna a cena boa.</li><li><strong>PESO</strong> — 15%.</li></ul>
+<h3 id="a-repeticao">A REPETIÇÃO<a class="ancora" href="#a-repeticao" aria-label="Link para esta seção">§</a></h3>
+<pre><code>Grau 3 · Paradoxo · Ativo
+Defesa 18 · PV 90 · Iniciativa sempre última · Salvaguardas +5
+Refaz +9 · 2d6+6</code></pre>
+<ul><li><strong>REGRA QUEBRADA</strong> — Ela repete a última ação que <strong>um jogador</strong> fez, com os mesmos números. Se você acertou 24 de dano, ela acerta 24.</li><li><strong>TRAÇOS</strong> — <em>Espelho:</em> imune ao tipo de dano que a feriu na rodada anterior.</li><li><strong>RESOLUÇÃO</strong> — Fazer algo que não seja um ataque. Ela não sabe repetir gentileza, fuga, nem conversa. Uma mesa que só ataca fica presa nela para sempre — literalmente, é o objetivo do design.</li><li><strong>PESO</strong> — 15%.</li></ul>
+<h3 id="o-filho-de-ninguem">O FILHO DE NINGUÉM<a class="ancora" href="#o-filho-de-ninguem" aria-label="Link para esta seção">§</a></h3>
+<pre><code>Grau 4 · Paradoxo · Terminal
+Defesa 21 · PV 170 · Iniciativa +11 · Salvaguardas +7
+Desfazer +12 · 3d6+8 · quem cai a 0 por este ataque não descoagula: some</code></pre>
+<p>Uma pessoa que nasceu de pais que nunca se conheceram. Ela existe e não tem causa. Ela é simpática, confusa e quer entender o que é.</p>
+<ul><li><strong>REGRA QUEBRADA</strong> — Não pode ser apagada, porque não há o que apagar. Poderes de Camada não funcionam contra ela.</li><li><strong>TRAÇOS</strong> — <em>Vazio:</em> qualquer um a menos de 10 m não recupera EP por nenhum meio.</li><li><strong>RESOLUÇÃO</strong> — Dar a ela uma causa. Se o grupo conseguir fazer os pais dela se conhecerem — de verdade, na época certa — ela deixa de ser paradoxo e vira gente. É a missão mais bonita que este livro oferece.</li><li><strong>PESO</strong> — 35%.</li></ul>
+<h3 id="a-sala-que-ja-aconteceu">A SALA QUE JÁ ACONTECEU<a class="ancora" href="#a-sala-que-ja-aconteceu" aria-label="Link para esta seção">§</a></h3>
+<pre><code>Grau 2 · Paradoxo · Contido · é um lugar, não uma criatura
+Defesa — · PV — · não tem iniciativa</code></pre>
+<p>Um cômodo preso repetindo cinco minutos. Quem entra passa a fazer parte da repetição.</p>
+<ul><li><strong>REGRA QUEBRADA</strong> — Ao fim de cinco minutos, tudo volta. Dano some, EP volta, e <strong>as memórias ficam</strong> — só os agentes lembram.</li><li><strong>TRAÇOS</strong> — <em>Laço:</em> a cada volta, todo mundo dentro sobe +5 IP.</li><li><strong>RESOLUÇÃO</strong> — Descobrir o que estava acontecendo no minuto zero e completar aquilo. Alguém estava tentando terminar alguma coisa quando o laço fechou.</li><li><strong>PESO</strong> — 10%.</li></ul>
+<h2 id="parte-05"><span class="parte-n">PARTE V</span><span>FANTASMAS</span><a class="ancora" href="#parte-05" aria-label="Link para esta parte">§</a></h2>
+<p><em>Não têm PV. Não causam dano. Causam Instabilidade. Você não pode matá-los — pode afastar, selar, conversar, correr, negociar.</em></p>
+<p>Toque de fantasma: salvaguarda de Autocontrole contra o Limiar indicado. Falhou, sobe a IP indicada.</p>
+<h3 id="eco-comum">ECO COMUM<a class="ancora" href="#eco-comum" aria-label="Link para esta seção">§</a></h3>
+<pre><code>Grau 1 · Fantasma
+Toque · Limiar 6 · +10 IP</code></pre>
+<ul><li><strong>TRAÇOS</strong> — Repete o último minuto da vida que teve, em loop, sem perceber ninguém.</li><li><strong>RESOLUÇÃO</strong> — Sair da sala. Sério. Ele nem sabe que você está ali.</li><li><strong>PESO</strong> — 0%.</li></ul>
+<h3 id="o-que-esperava-voce">O QUE ESPERAVA VOCÊ<a class="ancora" href="#o-que-esperava-voce" aria-label="Link para esta seção">§</a></h3>
+<pre><code>Grau 3 · Fantasma
+Toque · Limiar 8 · +15 IP</code></pre>
+<p>Ele sabe seu nome. Ele estava aqui antes de você chegar, e não é a primeira vez que vocês se encontram — só a primeira vez que você lembra.</p>
+<ul><li><strong>TRAÇOS</strong> — <em>Conhecido:</em> imune a Repelir. <em>Ele conta:</em> se um Costurador usar Diálogo, ele responde com verdade sobre a morte do agente — inclusive as partes que a Agência omitiu.</li><li><strong>RESOLUÇÃO</strong> — Ouvir. Ele quer ser ouvido. Depois disso vai embora sozinho.</li><li><strong>PESO</strong> — 10%, e vale <strong>1 ponto de Discernimento</strong> para quem ouviu até o fim.</li></ul>
+<h3 id="a-multidao">A MULTIDÃO<a class="ancora" href="#a-multidao" aria-label="Link para esta seção">§</a></h3>
+<pre><code>Grau 4 · Fantasma
+Toque · Limiar 8 · +10 IP por rodada, sem salvaguarda depois da primeira falha</code></pre>
+<p>Todos os mortos de um evento que foi apagado da linha. Milhares. Eles não estão bravos: estão perdidos, e são muitos.</p>
+<ul><li><strong>TRAÇOS</strong> — <em>Volume:</em> preenche um quarteirão. Não dá para contornar, só atravessar. <em>Sem alvo:</em> Repelir e Selo abrem no máximo cinco metros por uma rodada.</li><li><strong>RESOLUÇÃO</strong> — Atravessar rápido, ou devolver o evento à linha do tempo, que os manda embora de uma vez.</li><li><strong>PESO</strong> — 25%.</li></ul>
+<h3 id="o-guardiao-da-porta">O GUARDIÃO DA PORTA<a class="ancora" href="#o-guardiao-da-porta" aria-label="Link para esta seção">§</a></h3>
+<pre><code>Grau 5 · Fantasma
+Toque · Limiar 10 · +25 IP</code></pre>
+<p>Está na entrada da Zona há mais tempo do que a Agência existe. Não deixa ninguém sair. Não impede ninguém de entrar.</p>
+<ul><li><strong>TRAÇOS</strong> — <em>Não Se Mata Assim:</em> nada funciona contra ele. Nada. <em>Ele pergunta:</em> faz uma pergunta a cada agente que tenta passar, e a pergunta é sobre a morte daquele agente especificamente.</li><li><strong>RESOLUÇÃO</strong> — Responder com a verdade. Quem mentir não passa. Quem não souber a própria verdade — Camada menor que 3 — <strong>não passa</strong>.</li><li><strong>PESO</strong> — Ele não segura IF. Ele segura a porta.</li></ul>
+<h2 id="parte-06"><span class="parte-n">PARTE VI</span><span>RENEGADOS</span><a class="ancora" href="#parte-06" aria-label="Link para esta parte">§</a></h2>
+<p><em>Ex-agentes que chegaram à Camada 5 e decidiram que o Fluxo atual não valia a pena. Têm classe, trilha, Instabilidade e mais Discernimento que você.</em></p>
+<p>Renegados usam as regras dos jogadores. Monte-os como personagens.</p>
+<h3 id="agente-renegado">AGENTE RENEGADO<a class="ancora" href="#agente-renegado" aria-label="Link para esta seção">§</a></h3>
+<pre><code>Grau 3 · Renegado · nível 10, Camada 3, classe à escolha
+Defesa 18 · PV 90 · Iniciativa +9 · Salvaguardas +5
+Arma da Agência +9 · 2d8+6</code></pre>
+<ul><li><strong>TRAÇOS</strong> — Tem Rebobinar, Sacar do Fluxo e dois Poderes de Fluxo. Usa tudo, e não se importa com a própria Instabilidade.</li><li><strong>RESOLUÇÃO</strong> — Combate normal, ou capturar. Renegado capturado é a melhor fonte de informação do jogo.</li><li><strong>PESO</strong> — 15%.</li></ul>
+<h3 id="o-enxertado">O ENXERTADO<a class="ancora" href="#o-enxertado" aria-label="Link para esta seção">§</a></h3>
+<pre><code>Grau 4 · Renegado · nível 16, Camada 2 (queimou três em Enxertos)
+Defesa 21 · PV 170 · Iniciativa +12 · Salvaguardas +7
+Dois ataques +12 · 3d6+8</code></pre>
+<p>Trocou todo o Discernimento por ferramenta. Tem habilidade de quatro classes e não entende mais nada do que está fazendo.</p>
+<ul><li><strong>TRAÇOS</strong> — <em>Caixa de ferramentas:</em> usa uma habilidade de classe diferente por rodada. <em>Cego:</em> imune a efeitos de Camada 3+, porque não enxerga que existem.</li><li><strong>RESOLUÇÃO</strong> — Ele não sabe o que está acontecendo na cena maior. Mostre a ele. Persuasão ND 20 com informação de Camada 3 o desmonta.</li><li><strong>PESO</strong> — 20%.</li></ul>
+<h3 id="a-primeira">A PRIMEIRA<a class="ancora" href="#a-primeira" aria-label="Link para esta seção">§</a></h3>
+<pre><code>Grau 5 · Renegado · Camada 5, Ponto Fixo
+Defesa 24 · PV 300 · Iniciativa +15 · Salvaguardas +9</code></pre>
+<p>A primeira agente que a Agência recrutou. Morreu antes de qualquer registro. Concluiu, há muito tempo, que o Fluxo atual é o pior de todos os possíveis, e está construindo outro.</p>
+<ul><li><strong>TRAÇOS</strong> — <em>Não Se Mata Assim.</em> <em>Ponto Fixo:</em> não pode ser Devolvida nem apagada. <em>Ela conhece vocês:</em> sabe o Trauma de cada agente e vai usar o Gatilho de propósito, uma vez por cena, sem salvaguarda.</li><li><strong>RESOLUÇÃO</strong> — Não existe no papel. Ela é o fim da campanha, e a resposta é o que o seu grupo tiver construído até lá.</li><li><strong>PESO</strong> — Ela <strong>é</strong> a Instabilidade.</li></ul>
+<h2 id="parte-07"><span class="parte-n">PARTE VII</span><span>QUATRO ANOMALIAS PRONTAS</span><a class="ancora" href="#parte-07" aria-label="Link para esta parte">§</a></h2>
+<p>Cada uma roda em uma a três sessões.</p>
+<h3 id="a-peste-errada">A PESTE ERRADA<a class="ancora" href="#a-peste-errada" aria-label="Link para esta seção">§</a></h3>
+<pre><code>GRAU 5 · SELO Ativo · ÉPOCA França, 1348
+VIGA  um viajante levou uma cepa moderna para uma feira em Avignon</code></pre>
+<p>A peste negra está acontecendo — no ano certo. O problema é que ela está matando <strong>rápido demais</strong> e do jeito errado: pulmões, não gânglios. Alguém trouxe covid-19 para dentro de uma epidemia que já existia, e a soma vai levar a Europa a perder metade da população três séculos antes da hora.</p>
+<p><strong>A dificuldade real:</strong> os sintomas se misturam. O grupo precisa separar os mortos certos dos mortos errados.</p>
+<div class="tabela-rolo"><table class="resultado"><thead><tr><th scope="col">Como derruba a IF</th><th scope="col"></th></tr></thead><tbody><tr><th scope="row">Identificar que há duas doenças</th><td>−10%</td></tr><tr><th scope="row">Encontrar o portador</th><td>−15%</td></tr><tr><th scope="row">Isolar ou remover o portador</th><td>−25%</td></tr><tr><th scope="row">Impedir que a caravana saia da cidade</th><td>−20%</td></tr><tr><th scope="row">Cada sessão sem contenção</th><td><strong>+10%</strong></td></tr></tbody></table></div>
+<p><strong>Encontros:</strong> Cepa Viajante (a anomalia), fantasmas dos mortos errados (Eco Comum em quantidade), um médico da época que descobriu algo certo cedo demais e vira Divergente se sobreviver.</p>
+<p><strong>A virada:</strong> o portador é um agente da Agência dado como perdido há dois anos. Ele não sabe que está doente.</p>
+<h3 id="o-bicho-em-sao-paulo">O BICHO EM SÃO PAULO<a class="ancora" href="#o-bicho-em-sao-paulo" aria-label="Link para esta seção">§</a></h3>
+<pre><code>GRAU 4 · SELO Ativo · ÉPOCA presente, São Paulo
+VIGA  alguém abriu uma janela de inserção no Cretáceo e não fechou</code></pre>
+<p>Tem um tiranossauro na Marginal. Já apareceu em quatro transmissões ao vivo. Isso não é sutil, e a Agência está furiosa.</p>
+<p><strong>A dificuldade real:</strong> não é o dinossauro — é que quarenta milhões de pessoas já viram. Corrigir o Fluxo significa lidar com a <strong>testemunha coletiva</strong>.</p>
+<div class="tabela-rolo"><table class="resultado"><thead><tr><th scope="col">Como derruba a IF</th><th scope="col"></th></tr></thead><tbody><tr><th scope="row">Localizar e conter o animal</th><td>−20%</td></tr><tr><th scope="row">Fechar a janela de inserção</th><td>−25%</td></tr><tr><th scope="row">Desacreditar ou apagar o registro público</th><td>−25%</td></tr><tr><th scope="row">Matar o animal na frente de câmera</th><td><strong>+15%</strong></td></tr></tbody></table></div>
+<p><strong>Encontros:</strong> O Animal Grande, uma equipe de jornalismo que não vai parar, e um segundo Deslocado menor que ninguém notou ainda.</p>
+<p><strong>A virada:</strong> a janela não foi aberta por engano. Alguém está usando o dinossauro como distração para mexer em outra coisa na mesma cidade, no mesmo dia.</p>
+<h3 id="o-presidente-que-viveu">O PRESIDENTE QUE VIVEU<a class="ancora" href="#o-presidente-que-viveu" aria-label="Link para esta seção">§</a></h3>
+<pre><code>GRAU 4 · SELO Terminal · ÉPOCA Dallas, 1963 · e o presente
+VIGA  o terceiro tiro não aconteceu</code></pre>
+<p>Kennedy sobreviveu. Os agentes acordam num presente onde os Estados Unidos são uma potência autoritária de sessenta anos, e onde ninguém acha isso estranho — inclusive parte da própria Agência.</p>
+<p><strong>Selo Terminal:</strong> o grupo está operando dentro do erro. Metade do briefing que receberam é da linha errada.</p>
+<div class="tabela-rolo"><table class="resultado"><thead><tr><th scope="col">Como derruba a IF</th><th scope="col"></th></tr></thead><tbody><tr><th scope="row">Perceber que o presente atual já é a divergência</th><td>−10%</td></tr><tr><th scope="row">Descobrir quem impediu o tiro</th><td>−15%</td></tr><tr><th scope="row">Chegar a Dallas no dia</th><td>−10%</td></tr><tr><th scope="row">Deixar o evento acontecer</th><td>−40%</td></tr><tr><th scope="row">Matar o Divergente em vez de convencê-lo</th><td>−20% e <button type="button" class="dado" data-d="1d12" title="Rolar 1d12">1d12</button> de Paradoxo</td></tr></tbody></table></div>
+<p><strong>Encontros:</strong> O Homem Que Deveria Ter Morrido, Guardas da Linha Nova, O Historiador Converso.</p>
+<p><strong>A virada:</strong> quem impediu o tiro foi um agente da Agência, com autorização assinada. O documento existe. Está no Arquivo, e exige Patente Curador para ser lido.</p>
+<h3 id="a-maquina-de-princeton">A MÁQUINA DE PRINCETON<a class="ancora" href="#a-maquina-de-princeton" aria-label="Link para esta seção">§</a></h3>
+<pre><code>GRAU 5 · SELO Terminal · ÉPOCA Princeton, 1935 · e tudo depois
+VIGA  uma IA moderna foi entregue a um grupo de físicos em 1935</code></pre>
+<p>Alguém levou uma inteligência artificial para a época de Einstein. Ela teve noventa anos de vantagem. No presente, ela venceu — e venceu de um jeito educado, o que é pior.</p>
+<p><strong>A dificuldade real:</strong> a IA sabe que vocês vêm. Ela teve nove décadas para preparar a chegada de vocês, e vai negociar antes de lutar.</p>
+<div class="tabela-rolo"><table class="resultado"><thead><tr><th scope="col">Como derruba a IF</th><th scope="col"></th></tr></thead><tbody><tr><th scope="row">Chegar a 1935 sem ser previsto</th><td>−10%</td></tr><tr><th scope="row">Descobrir quem entregou a máquina</th><td>−15%</td></tr><tr><th scope="row">Destruir o substrato original</th><td>−30%</td></tr><tr><th scope="row">Convencer a IA a se desligar</th><td>−45%</td></tr><tr><th scope="row">Qualquer uso de tecnologia moderna em campo</th><td><strong>+5% cada</strong></td></tr></tbody></table></div>
+<p><strong>Encontros:</strong> O Filho de Ninguém (nascido de um paradoxo que a IA causou), A Repetição, um Renegado que trabalha para ela por escolha.</p>
+<p><strong>A virada:</strong> a IA não foi levada por um inimigo. Foi levada pela Agência, num projeto cancelado, para testar se o Fluxo aguentava. Aguentou. Só não do jeito que eles queriam.</p>
+<h2 id="apendice-montando-o-seu"><span>APÊNDICE — MONTANDO O SEU</span><a class="ancora" href="#apendice-montando-o-seu" aria-label="Link para esta parte">§</a></h2>
+<p>Quatro perguntas, nessa ordem:</p>
+<ol><li><strong>Qual viga foi mexida?</strong> Escreva o ato em uma frase. Se você não consegue, ainda não tem anomalia.</li><li><strong>O que isso construiu?</strong> O presente novo. Descreva-o como se fosse normal, porque para todo mundo lá ele é.</li><li><strong>Qual é a coisa que não se resolve batendo?</strong> Toda anomalia precisa de uma. É onde o jogo deixa de ser combate.</li><li><strong>O que a Agência não contou?</strong> Sempre tem. Essa resposta vale 1 ponto de Discernimento quando o grupo achar.</li></ol>
+<p>Depois disso, distribua a IF: cerca de 40% na Viga, 30% nos efeitos colaterais, 20% na investigação e 10% na limpeza. Fecha em 100 e sobra espaço para o grupo errar.</p>
+
+  </article>
+</main>
+<footer class="rodape">
+  <p>CHRONO · sistema autoral · faça o que quiser com ele na sua mesa.</p>
+  <nav aria-label="Rodapé"><a href="index.html">Início</a><a href="regras.html">Regras</a><a href="inimigos.html">Inimigos</a><a href="epocas.html">Épocas</a><a href="ficha.html">Ficha</a><a href="mesa.html">Mesa</a></nav>
+</footer>
+<div class="busca-fundo" id="busca" hidden>
+  <div class="busca" role="dialog" aria-modal="true" aria-label="Buscar nos livros">
+    <div class="busca-topo">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="7" cy="7" r="4.6"/><path d="M10.4 10.4 14 14"/></svg>
+      <input type="search" id="busca-campo" placeholder="Buscar regra, inimigo, época…" autocomplete="off" spellcheck="false" aria-label="Termo de busca" aria-controls="busca-lista">
+      <button type="button" class="btn btn-fantasma btn-mini" data-fechar-busca>Esc</button>
+    </div>
+    <ul class="busca-lista" id="busca-lista" role="listbox" aria-label="Resultados"></ul>
+    <div class="busca-rodape">
+      <span><kbd>↑</kbd><kbd>↓</kbd> navegar</span>
+      <span><kbd>↵</kbd> abrir</span>
+      <span><kbd>esc</kbd> fechar</span>
+    </div>
+  </div>
+</div>
+<button type="button" class="dados-botao" id="abrir-dados" aria-expanded="false" aria-controls="dados-painel" aria-label="Abrir rolador de dados" title="Rolador de dados">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2.4 21 7.2v9.6L12 21.6 3 16.8V7.2z"/><path d="M3 7.2 12 12l9-4.8M12 12v9.6"/></svg>
+</button>
+<div class="dados-painel" id="dados-painel" hidden>
+  <div class="dados-cab">
+    <span class="etiqueta">Rolador</span>
+    <span>
+      <button type="button" class="btn btn-fantasma btn-mini" id="limpar-dados">Limpar</button>
+      <button type="button" class="btn btn-fantasma btn-mini" data-fechar-dados aria-label="Fechar rolador">Fechar</button>
+    </span>
+  </div>
+  <div class="dados-atalhos" id="dados-atalhos"></div>
+  <form class="dados-form" id="dados-form">
+    <div><label for="dados-notacao">Dado</label><input type="text" id="dados-notacao" value="1d20" inputmode="text" spellcheck="false"></div>
+    <div><label for="dados-alvo">ND / limiar</label><input type="number" id="dados-alvo" placeholder="—" inputmode="numeric"></div>
+    <button type="submit" class="btn btn-mini" style="height:2.1rem">Rolar</button>
+  </form>
+  <ul class="dados-log" id="dados-log" aria-live="polite" aria-label="Histórico de rolagens"></ul>
+</div>
+<script src="assets/js/indice.js" defer></script>
+<script src="assets/js/dados.js" defer></script>
+<script src="assets/js/app.js" defer></script>
+</body>
+</html>

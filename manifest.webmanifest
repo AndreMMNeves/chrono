@@ -1,0 +1,45 @@
+{
+  "name": "CHRONO — RPG de viagem no tempo",
+  "short_name": "CHRONO",
+  "description": "RPG de mesa de viagem no tempo. Você morreu, e é por isso que consegue andar pelo passado. Livro de regras, bestiário, guia de épocas, ficha interativa e painel de mestre.",
+  "lang": "pt-BR",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#141D1A",
+  "theme_color": "#141D1A",
+  "categories": [
+    "games",
+    "books",
+    "entertainment"
+  ],
+  "icons": [
+    {
+      "src": "assets/selo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/selo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Ficha de agente",
+      "url": "./ficha.html"
+    },
+    {
+      "name": "Mesa do mestre",
+      "url": "./mesa.html"
+    },
+    {
+      "name": "Livro de Regras",
+      "url": "./regras.html"
+    }
+  ]
+}

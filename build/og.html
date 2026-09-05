@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-BR" data-tema="zona">
+<head>
+<meta charset="utf-8">
+<title>CHRONO — cartão de compartilhamento</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400&display=swap">
+<link rel="stylesheet" href="../assets/css/chrono.css">
+<link rel="stylesheet" href="../assets/css/paginas.css">
+<style>
+  html, body { margin: 0; }
+  body {
+    width: 1200px; height: 630px;
+    overflow: hidden;
+    display: flex; flex-direction: column; justify-content: space-between;
+    background: var(--fundo);
+  }
+  .og-texto { padding: 54px 72px 0; }
+  .og-etiqueta {
+    font-family: var(--sans);
+    font-variation-settings: "wdth" 88, "wght" 600;
+    font-size: 15px; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--texto-3); margin: 0 0 34px;
+  }
+  .og-marca {
+    font-family: var(--sans);
+    font-variation-settings: "wdth" 62, "wght" 800;
+    font-size: 158px; line-height: .82; letter-spacing: .07em;
+    text-transform: uppercase; color: var(--texto); margin: 0;
+  }
+  .og-sub {
+    font-family: var(--sans);
+    font-variation-settings: "wdth" 92, "wght" 500;
+    font-size: 19px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--texto-3); margin: 20px 0 0;
+  }
+  .og-frase {
+    font-family: var(--serif); font-style: italic;
+    font-size: 32px; line-height: 1.26; color: var(--texto);
+    border-left: 4px solid var(--carimbo); padding-left: 22px;
+    margin: 32px 0 0; max-width: 26ch;
+  }
+  .og-fig { color: color-mix(in srgb, var(--fluxo) 74%, transparent); }
+  .og-fig .trelica { height: 168px; animation: none; clip-path: none; }
+  .og-fig .t-quebra { opacity: 1; animation: none; }
+</style>
+</head>
+<body>
+  <div class="og-texto">
+    <p class="og-etiqueta">Agência do Fluxo · dossiê de recrutamento</p>
+    <p class="og-marca">Chrono</p>
+    <p class="og-sub">RPG de mesa sobre consertar o tempo depois de morrer</p>
+    <p class="og-frase">Você morreu. Isso não é reviravolta de campanha — é o ponto de partida da ficha.</p>
+  </div>
+  <div class="og-fig"><!--INCLUIR:_trelica.svg--></div>
+</body>
+</html>

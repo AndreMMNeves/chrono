@@ -1,0 +1,1133 @@
+@charset "utf-8";
+/* ==========================================================================
+   CHRONO — sistema visual
+   Conceito: relatório estrutural do Fluxo. O passado é estrutura; cada evento
+   é uma viga. O site é o documento que audita essa estrutura.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   0. FONTES DE RESERVA
+   Enquanto a Archivo e a Newsreader baixam, o texto é desenhado pelas fontes
+   do sistema. Sem ajuste elas ocupam largura diferente e a página inteira
+   pula quando as definitivas chegam. As proporções abaixo foram medidas:
+   Archivo/Arial = 0,984 · Newsreader/Georgia = 0,998.
+   -------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: "Archivo reserva";
+  src: local("Arial"), local("Helvetica Neue"), local("Liberation Sans"), local("DejaVu Sans");
+  size-adjust: 98.4%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Newsreader reserva";
+  src: local("Georgia"), local("Liberation Serif"), local("DejaVu Serif"), local("Times New Roman");
+  size-adjust: 99.8%;
+  line-gap-override: 0%;
+}
+
+/* --------------------------------------------------------------------------
+   1. TOKENS
+   Dois temas: "papel" (leitura) e "zona" (escuro, o Lado de Fora).
+   O hub e a mesa são sempre zona. Os livros abrem em papel e alternam.
+   -------------------------------------------------------------------------- */
+
+:root {
+  /* tinta e papel — matérias-primas */
+  --tinta-900: #101815;
+  --tinta-800: #141D1A;
+  --tinta-700: #1D2A25;
+  --tinta-600: #26332E;
+  --tinta-500: #33413B;
+
+  --papel-100: #F2F4EC;
+  --papel-200: #E9EBE0;
+  --papel-300: #DBE0D2;
+  --papel-400: #C7CEBB;
+
+  --grafite: #232D29;
+  /* fumo é o texto terciário: escurecido até 4.7:1 sobre o papel (WCAG AA) */
+  --fumo: #5C6A63;
+
+  /* acentos — carimbo, latão, fluxo */
+  --carimbo-claro: #9B2033;
+  --carimbo-escuro: #E56B7B;
+  --latao-claro: #7C6230;
+  --latao-escuro: #C3A05A;
+  --fluxo-claro: #216068;
+  --fluxo-escuro: #58C7C2;
+
+  /* medidas */
+  --medida: 66ch;
+  --rail: 16.5rem;
+  --barra: 3.25rem;
+  --raio: 2px;
+
+  /* tipografia */
+  --sans: "Archivo", "Archivo reserva", "Helvetica Neue", Arial, sans-serif;
+  --serif: "Newsreader", "Newsreader reserva", Georgia, "Times New Roman", serif;
+  --mono: "Courier Prime", "Courier New", ui-monospace, monospace;
+
+  color-scheme: light;
+}
+
+/* tema papel (padrão) */
+:root,
+[data-tema="papel"] {
+  --fundo: var(--papel-200);
+  --fundo-2: var(--papel-100);
+  --fundo-3: var(--papel-300);
+  --fundo-inverso: var(--tinta-800);
+  --texto: var(--grafite);
+  --texto-2: #4B5852;
+  --texto-3: var(--fumo);
+  --texto-inverso: var(--papel-100);
+  --borda: #B9C1B2;
+  --borda-fraca: #CBD1C3;
+  --borda-forte: var(--grafite);
+  --carimbo: var(--carimbo-claro);
+  --carimbo-fundo: #F3DEE1;
+  --latao: var(--latao-claro);
+  --fluxo: var(--fluxo-claro);
+  --fluxo-fundo: #DCE8E6;
+  --sombra: 0 1px 0 rgb(35 45 41 / .07);
+  color-scheme: light;
+}
+
+/* tema zona (escuro) */
+[data-tema="zona"] {
+  --fundo: var(--tinta-800);
+  --fundo-2: var(--tinta-700);
+  --fundo-3: var(--tinta-900);
+  --fundo-inverso: var(--papel-200);
+  --texto: #DDE3D9;
+  --texto-2: #A9B4AB;
+  /* clareado até 5.2:1 sobre a tinta (WCAG AA) */
+  --texto-3: #838F87;
+  --texto-inverso: var(--tinta-900);
+  --borda: var(--tinta-600);
+  --borda-fraca: var(--tinta-700);
+  --borda-forte: #465650;
+  --carimbo: var(--carimbo-escuro);
+  --carimbo-fundo: #34181E;
+  --latao: var(--latao-escuro);
+  --fluxo: var(--fluxo-escuro);
+  --fluxo-fundo: #122A2B;
+  --sombra: 0 1px 0 rgb(0 0 0 / .3);
+  color-scheme: dark;
+}
+
+/* --------------------------------------------------------------------------
+   2. BASE
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--barra) + 1.5rem);
+}
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  line-height: 1.66;
+  font-variant-numeric: oldstyle-nums proportional-nums;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6,
+button, input, select, textarea, label,
+th, .ui { font-family: var(--sans); }
+
+h1, h2, h3, h4 {
+  font-weight: 600;
+  line-height: 1.1;
+  text-wrap: balance;
+  margin: 0;
+}
+
+a { color: inherit; text-underline-offset: .18em; text-decoration-thickness: from-font; }
+a:hover { text-decoration-color: var(--carimbo); }
+
+img, svg { max-width: 100%; }
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--borda);
+  margin: 2.5rem 0;
+}
+
+code, kbd, samp, pre { font-family: var(--mono); font-size: .875em; }
+
+:focus-visible {
+  outline: 2px solid var(--fluxo);
+  outline-offset: 2px;
+  border-radius: 1px;
+}
+
+::selection { background: var(--carimbo); color: #fff; }
+
+.pular {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  background: var(--fundo-inverso);
+  color: var(--texto-inverso);
+  padding: .75rem 1.25rem;
+  font: 600 .8125rem/1 var(--sans);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.pular:focus { left: .5rem; top: .5rem; }
+
+.oculto-visual {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   3. TIPOGRAFIA DE MARCA
+   O eixo de largura do Archivo faz o trabalho: 62 para o logotipo, 100 para UI.
+   -------------------------------------------------------------------------- */
+
+.marca {
+  font-family: var(--sans);
+  font-variation-settings: "wdth" 62, "wght" 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  line-height: .82;
+  display: inline-block;
+}
+
+.etiqueta {
+  font-family: var(--sans);
+  font-variation-settings: "wdth" 88, "wght" 600;
+  font-size: .6875rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--texto-3);
+}
+
+.ref {
+  font-family: var(--mono);
+  font-size: .75rem;
+  letter-spacing: .04em;
+  color: var(--texto-3);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* --------------------------------------------------------------------------
+   4. BARRA DE NAVEGAÇÃO
+   -------------------------------------------------------------------------- */
+
+.barra {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  height: var(--barra);
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  background: var(--fundo-2);
+  border-bottom: 1px solid var(--borda);
+  backdrop-filter: saturate(1.4) blur(8px);
+}
+
+.barra-marca {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  padding: 0 1.1rem 0 1.25rem;
+  text-decoration: none;
+  border-right: 1px solid var(--borda);
+  flex: none;
+}
+.barra-marca .marca { font-size: 1.15rem; letter-spacing: .1em; }
+.barra-marca:hover .selo { transform: rotate(-90deg); }
+
+.selo {
+  width: 15px; height: 15px;
+  flex: none;
+  color: var(--carimbo);
+  transition: transform .5s cubic-bezier(.2, .8, .2, 1);
+}
+
+.barra-nav {
+  display: flex;
+  align-items: stretch;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex: 1 1 auto;
+}
+.barra-nav::-webkit-scrollbar { display: none; }
+
+.barra-nav a {
+  display: flex;
+  align-items: center;
+  padding: 0 .95rem;
+  font-family: var(--sans);
+  font-variation-settings: "wdth" 92, "wght" 600;
+  font-size: .78rem;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  color: var(--texto-3);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color .15s;
+}
+.barra-nav a:hover { color: var(--texto); }
+.barra-nav a[aria-current="page"] {
+  color: var(--texto);
+  border-bottom-color: var(--carimbo);
+}
+
+.barra-acoes {
+  display: flex;
+  align-items: stretch;
+  border-left: 1px solid var(--borda);
+  flex: none;
+}
+
+.barra-btn {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  background: none;
+  border: 0;
+  border-right: 1px solid var(--borda);
+  padding: 0 .85rem;
+  color: var(--texto-3);
+  font-family: var(--sans);
+  font-variation-settings: "wdth" 92, "wght" 600;
+  font-size: .72rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color .15s, background .15s;
+}
+.barra-btn:last-child { border-right: 0; }
+.barra-btn:hover { color: var(--texto); background: var(--fundo-3); }
+.barra-btn svg { width: 15px; height: 15px; flex: none; }
+
+/* a dica de atalho fica fora do botão: ela não faz parte do rótulo dele */
+.barra-busca {
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--borda);
+}
+.barra-busca .barra-btn { border-right: 0; padding-right: .5rem; }
+.barra-busca:hover .barra-btn { color: var(--texto); }
+
+.barra-atalho {
+  font-family: var(--mono);
+  font-size: .6875rem;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: .1rem .3rem;
+  margin-right: .85rem;
+  color: var(--texto-3);
+  pointer-events: none;
+}
+
+@media (max-width: 60rem) {
+  .barra-btn .rotulo, .barra-atalho { display: none; }
+  .barra-busca .barra-btn { padding-right: .85rem; }
+  .barra-marca { padding: 0 .8rem; }
+}
+
+/* --------------------------------------------------------------------------
+   5. LIVROS — grade de leitura
+   -------------------------------------------------------------------------- */
+
+.livro {
+  display: grid;
+  grid-template-columns: var(--rail) minmax(0, 1fr);
+  align-items: start;
+  gap: 0;
+  max-width: 84rem;
+  margin: 0 auto;
+}
+
+/* --- trilho de sumário --- */
+.trilho {
+  position: sticky;
+  top: var(--barra);
+  height: calc(100dvh - var(--barra));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-right: 1px solid var(--borda);
+  padding: 1.75rem 1.25rem 3rem 1.5rem;
+  scrollbar-width: thin;
+}
+
+.trilho-titulo {
+  font-variation-settings: "wdth" 88, "wght" 700;
+  font-size: .7rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--texto-3);
+  padding-bottom: .6rem;
+  margin-bottom: .9rem;
+  border-bottom: 1px solid var(--borda);
+}
+
+.trilho ol { list-style: none; margin: 0; padding: 0; }
+
+.trilho a {
+  display: block;
+  padding: .28rem 0 .28rem .75rem;
+  margin-left: -.75rem;
+  border-left: 2px solid transparent;
+  font-family: var(--sans);
+  font-size: .8125rem;
+  line-height: 1.35;
+  color: var(--texto-3);
+  text-decoration: none;
+  transition: color .12s, border-color .12s;
+}
+.trilho a:hover { color: var(--texto); }
+.trilho a[aria-current="true"] {
+  color: var(--texto);
+  border-left-color: var(--carimbo);
+  font-variation-settings: "wght" 600;
+}
+
+.trilho-parte > a {
+  font-variation-settings: "wdth" 90, "wght" 700;
+  font-size: .72rem;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--texto-2);
+  margin-top: 1.15rem;
+  padding-top: .5rem;
+  border-top: 1px solid var(--borda-fraca);
+}
+.trilho-parte:first-child > a { margin-top: 0; border-top: 0; padding-top: 0; }
+.trilho-parte ol { margin: .15rem 0 0; }
+.trilho-parte ol a { padding-left: 1.4rem; }
+
+/* --- corpo do livro --- */
+.corpo {
+  padding: 3rem clamp(1.25rem, 4vw, 4rem) 8rem;
+  min-width: 0;
+}
+
+.corpo > * { max-width: var(--medida); }
+
+.livro-capa {
+  max-width: none;
+  padding-bottom: 2.25rem;
+  margin-bottom: 3rem;
+  border-bottom: 3px double var(--borda);
+}
+.livro-capa h1 {
+  font-variation-settings: "wdth" 70, "wght" 700;
+  font-size: clamp(2.75rem, 8vw, 5.25rem);
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  margin: .35rem 0 .5rem;
+}
+.livro-capa .resumo {
+  font-size: 1.1875rem;
+  color: var(--texto-2);
+  max-width: 44ch;
+  margin: 0;
+}
+.livro-capa .ref { display: block; margin-top: 1rem; }
+
+/* --- títulos --- */
+.corpo h2 {
+  font-variation-settings: "wdth" 82, "wght" 700;
+  font-size: clamp(1.5rem, 3.4vw, 2rem);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  margin: 5rem 0 1.75rem;
+  padding-top: 1.1rem;
+  border-top: 2px solid var(--borda-forte);
+  max-width: none;
+  display: flex;
+  align-items: baseline;
+  gap: .9rem;
+  flex-wrap: wrap;
+}
+.corpo h2:first-of-type { margin-top: 0; }
+.corpo h2 .parte-n {
+  font-family: var(--mono);
+  font-size: .8125rem;
+  font-weight: 400;
+  letter-spacing: .06em;
+  color: var(--carimbo);
+  text-transform: none;
+  flex: none;
+}
+
+.corpo h3 {
+  font-variation-settings: "wdth" 96, "wght" 700;
+  font-size: 1.3125rem;
+  letter-spacing: .005em;
+  margin: 3rem 0 .9rem;
+  /* o recuo da âncora vem do scroll-padding-top do html — somar os dois aqui
+     faria o título parar longe demais da barra */
+}
+.corpo h3 .sec-n {
+  font-family: var(--mono);
+  font-size: .8125rem;
+  font-weight: 400;
+  color: var(--texto-3);
+  margin-right: .55rem;
+}
+
+.corpo h4 {
+  font-variation-settings: "wdth" 100, "wght" 700;
+  font-size: 1rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  margin: 2rem 0 .6rem;
+  color: var(--texto-2);
+}
+
+/* âncora de seção */
+.ancora {
+  float: left;
+  margin-left: -1.35rem;
+  width: 1.35rem;
+  color: var(--borda);
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity .12s;
+  font-family: var(--mono);
+  font-weight: 400;
+}
+h2:hover .ancora, h3:hover .ancora, .ancora:focus { opacity: 1; }
+.ancora:hover { color: var(--carimbo); }
+@media (max-width: 70rem) { .ancora { display: none; } }
+
+.corpo p { margin: 0 0 1.15rem; }
+.corpo p:last-child { margin-bottom: 0; }
+
+.corpo strong { font-weight: 600; }
+.corpo em { font-style: italic; }
+
+.corpo ul, .corpo ol { margin: 0 0 1.35rem; padding-left: 1.35rem; }
+.corpo li { margin-bottom: .5rem; }
+.corpo li::marker { color: var(--texto-3); }
+.corpo ol { padding-left: 1.5rem; }
+
+.corpo :is(h2, h3, h4) + p { margin-top: 0; }
+
+/* --------------------------------------------------------------------------
+   6. TABELAS — vernáculo de documento: filete, sem zebra, número tabular
+   -------------------------------------------------------------------------- */
+
+/* tabelas e blocos podem passar da medida do texto, mas não da coluna toda:
+   uma tabela de 60rem de largura é ilegível numa linha só */
+.tabela-rolo {
+  overflow-x: auto;
+  margin: 0 0 1.75rem;
+  max-width: min(100%, 50rem);
+  width: 100%;
+}
+
+.corpo table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: min(100%, 28rem);
+  font-family: var(--sans);
+  font-size: .9375rem;
+  line-height: 1.45;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.corpo thead th {
+  font-variation-settings: "wdth" 90, "wght" 700;
+  font-size: .7rem;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--texto-3);
+  text-align: left;
+  padding: 0 .85rem .5rem 0;
+  border-bottom: 1.5px solid var(--borda-forte);
+  white-space: nowrap;
+}
+
+.corpo tbody td,
+.corpo tbody th {
+  padding: .62rem .85rem .62rem 0;
+  border-bottom: 1px solid var(--borda-fraca);
+  vertical-align: top;
+  text-align: left;
+  font-weight: 400;
+}
+.corpo tbody tr:last-child :is(td, th) { border-bottom: 1px solid var(--borda); }
+
+/* primeira coluna curta = chave */
+.corpo tbody td:first-child,
+.corpo tbody th:first-child {
+  font-variation-settings: "wght" 600;
+  color: var(--texto);
+  white-space: nowrap;
+  padding-right: 1.35rem;
+}
+.corpo td:last-child, .corpo th:last-child { padding-right: 0; }
+
+.corpo table strong { font-variation-settings: "wght" 700; }
+
+/* tabela sem cabeçalho útil (| d6 | |) vira lista de resultados */
+table.resultado thead { display: none; }
+table.resultado tbody :is(td, th):first-child {
+  font-family: var(--mono);
+  font-variation-settings: normal;
+  font-weight: 700;
+  color: var(--carimbo);
+  width: 3.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. BLOCOS ESPECIAIS
+   -------------------------------------------------------------------------- */
+
+/* nota de desenho — o autor falando com o mestre */
+.corpo blockquote {
+  margin: 2rem 0;
+  padding: .15rem 0 .15rem 1.35rem;
+  border-left: 3px solid var(--latao);
+  color: var(--texto-2);
+  font-size: 1rem;
+}
+.corpo blockquote p:last-child { margin-bottom: 0; }
+.corpo blockquote strong { color: var(--texto); }
+
+/* bloco datilografado — fichas de inimigo, fórmulas, referência rápida */
+.corpo pre {
+  font-family: var(--mono);
+  font-size: .8125rem;
+  line-height: 1.72;
+  background: var(--fundo-2);
+  border: 1px solid var(--borda);
+  border-left: 3px solid var(--carimbo);
+  padding: 1.1rem 1.25rem;
+  margin: 0 0 1.75rem;
+  overflow-x: auto;
+  white-space: pre;
+  color: var(--texto-2);
+  max-width: min(100%, 50rem);
+  tab-size: 2;
+}
+.corpo pre code { font-size: inherit; }
+
+.corpo p > code,
+.corpo li > code,
+.corpo td > code {
+  background: var(--fundo-3);
+  border: 1px solid var(--borda-fraca);
+  border-radius: var(--raio);
+  padding: .08em .35em;
+  font-size: .8125em;
+}
+
+/* --------------------------------------------------------------------------
+   8. DADOS ROLÁVEIS — notação no texto vira botão
+   -------------------------------------------------------------------------- */
+
+.dado {
+  font: inherit;
+  background: none;
+  border: 0;
+  padding: 0 .1em;
+  margin: 0 -.1em;
+  color: inherit;
+  cursor: pointer;
+  border-bottom: 1px dotted var(--fluxo);
+  border-radius: var(--raio);
+  white-space: nowrap;
+  transition: background .12s, color .12s;
+}
+.dado:hover, .dado:focus-visible {
+  background: var(--fluxo);
+  color: var(--fundo);
+  border-bottom-color: transparent;
+}
+.dado::after {
+  content: "";
+  display: inline-block;
+  width: .4em; height: .4em;
+  margin-left: .3em;
+  vertical-align: .06em;
+  border: 1px solid currentColor;
+  border-radius: 1px;
+  transform: rotate(45deg);
+  opacity: .32;
+  transition: opacity .12s;
+}
+.dado:hover::after, .dado:focus-visible::after { opacity: .9; }
+@media (hover: none) { .dado::after { opacity: .55; } }
+
+/* --------------------------------------------------------------------------
+   9. BOTÕES
+   -------------------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  font-family: var(--sans);
+  font-variation-settings: "wdth" 94, "wght" 600;
+  font-size: .8125rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: .62rem 1.05rem;
+  border: 1.5px solid var(--borda-forte);
+  border-radius: var(--raio);
+  background: transparent;
+  color: var(--texto);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .14s, color .14s, border-color .14s;
+}
+.btn:hover {
+  background: var(--fundo-inverso);
+  color: var(--texto-inverso);
+  border-color: var(--fundo-inverso);
+}
+.btn:disabled { opacity: .4; cursor: not-allowed; }
+.btn:disabled:hover { background: transparent; color: var(--texto); border-color: var(--borda-forte); }
+
+.btn-carimbo { border-color: var(--carimbo); color: var(--carimbo); }
+.btn-carimbo:hover { background: var(--carimbo); border-color: var(--carimbo); color: #fff; }
+
+.btn-fantasma {
+  border-color: var(--borda);
+  color: var(--texto-3);
+  font-size: .75rem;
+  padding: .42rem .7rem;
+}
+.btn-fantasma:hover { background: var(--fundo-3); color: var(--texto); border-color: var(--borda-forte); }
+
+.btn-mini {
+  font-size: .6875rem;
+  padding: .3rem .55rem;
+  letter-spacing: .08em;
+  border-width: 1px;
+}
+
+/* --------------------------------------------------------------------------
+   10. CARIMBO
+   -------------------------------------------------------------------------- */
+
+.carimbo {
+  display: inline-block;
+  border: 2px solid var(--carimbo);
+  color: var(--carimbo);
+  font-family: var(--sans);
+  font-variation-settings: "wdth" 90, "wght" 700;
+  font-size: .72rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  padding: .45rem .85rem;
+  transform: rotate(-2.5deg);
+  opacity: .85;
+}
+
+/* --------------------------------------------------------------------------
+   11. BUSCA (Ctrl+K)
+   -------------------------------------------------------------------------- */
+
+.busca-fundo {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: color-mix(in srgb, var(--tinta-900) 62%, transparent);
+  backdrop-filter: blur(3px);
+  display: grid;
+  align-items: start;
+  justify-items: center;
+  padding: max(8vh, 3rem) 1rem 2rem;
+}
+.busca-fundo[hidden] { display: none; }
+
+.busca {
+  width: min(44rem, 100%);
+  background: var(--fundo-2);
+  border: 1px solid var(--borda-forte);
+  border-radius: var(--raio);
+  box-shadow: 0 24px 60px -12px rgb(16 24 21 / .45);
+  display: flex;
+  flex-direction: column;
+  max-height: min(34rem, 80vh);
+  overflow: hidden;
+}
+
+.busca-topo {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: 0 1rem;
+  border-bottom: 1px solid var(--borda);
+  flex: none;
+}
+.busca-topo svg { width: 17px; height: 17px; color: var(--texto-3); flex: none; }
+
+.busca-topo input {
+  flex: 1;
+  border: 0;
+  background: none;
+  padding: 1rem 0;
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  color: var(--texto);
+}
+.busca-topo input:focus { outline: 0; }
+.busca-topo input::placeholder { color: var(--texto-3); }
+
+.busca-lista {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: .4rem;
+  margin: 0;
+  list-style: none;
+  flex: 1;
+}
+
+.busca-item {
+  display: block;
+  padding: .6rem .75rem;
+  border-radius: var(--raio);
+  text-decoration: none;
+  color: inherit;
+  border-left: 2px solid transparent;
+}
+.busca-item[data-ativo] {
+  background: var(--fundo-3);
+  border-left-color: var(--carimbo);
+}
+.busca-item .b-topo {
+  display: flex;
+  align-items: baseline;
+  gap: .6rem;
+  justify-content: space-between;
+}
+.busca-item .b-titulo {
+  font-family: var(--sans);
+  font-variation-settings: "wght" 600;
+  font-size: .9375rem;
+  color: var(--texto);
+}
+.busca-item .b-livro {
+  font-family: var(--sans);
+  font-size: .65rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--texto-3);
+  flex: none;
+}
+.busca-item .b-trecho {
+  font-size: .875rem;
+  line-height: 1.45;
+  color: var(--texto-3);
+  margin: .18rem 0 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.busca-item mark {
+  background: var(--fluxo-fundo);
+  color: var(--texto);
+  border-radius: 1px;
+  padding: 0 .1em;
+}
+
+.busca-rodape {
+  display: flex;
+  gap: 1.15rem;
+  padding: .55rem 1rem;
+  border-top: 1px solid var(--borda);
+  font-family: var(--sans);
+  font-size: .6875rem;
+  letter-spacing: .06em;
+  color: var(--texto-3);
+  flex: none;
+}
+.busca-rodape kbd {
+  font-family: var(--mono);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: .05rem .28rem;
+  margin-right: .3rem;
+}
+.busca-vazio {
+  padding: 2.5rem 1rem;
+  text-align: center;
+  color: var(--texto-3);
+  font-size: .9375rem;
+}
+
+/* --------------------------------------------------------------------------
+   12. PAINEL DE DADOS
+   -------------------------------------------------------------------------- */
+
+.dados-botao {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 70;
+  width: 3.15rem;
+  height: 3.15rem;
+  border-radius: 50%;
+  border: 1.5px solid var(--borda-forte);
+  background: var(--fundo-2);
+  color: var(--texto);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 6px 20px -6px rgb(16 24 21 / .4);
+  transition: transform .18s cubic-bezier(.2, .8, .2, 1), background .15s;
+}
+.dados-botao:hover { transform: translateY(-2px); background: var(--fundo-3); }
+.dados-botao svg { width: 22px; height: 22px; }
+.dados-botao[aria-expanded="true"] { background: var(--fundo-inverso); color: var(--texto-inverso); border-color: var(--fundo-inverso); }
+
+.dados-painel {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 5.15rem;
+  z-index: 70;
+  width: min(21.5rem, calc(100vw - 2.5rem));
+  background: var(--fundo-2);
+  border: 1px solid var(--borda-forte);
+  border-radius: var(--raio);
+  box-shadow: 0 20px 50px -14px rgb(16 24 21 / .45);
+  display: flex;
+  flex-direction: column;
+  max-height: min(32rem, calc(100dvh - 8rem));
+  overflow: hidden;
+}
+.dados-painel[hidden] { display: none; }
+
+.dados-cab {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  padding: .7rem .85rem;
+  border-bottom: 1px solid var(--borda);
+  flex: none;
+}
+.dados-cab .etiqueta { color: var(--texto-2); }
+
+.dados-atalhos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--borda-fraca);
+  border-bottom: 1px solid var(--borda);
+  flex: none;
+}
+.dados-atalhos button {
+  background: var(--fundo-2);
+  border: 0;
+  padding: .55rem .25rem;
+  font-family: var(--sans);
+  font-variation-settings: "wdth" 92, "wght" 600;
+  font-size: .72rem;
+  letter-spacing: .04em;
+  color: var(--texto-2);
+  cursor: pointer;
+  transition: background .12s, color .12s;
+}
+.dados-atalhos button:hover { background: var(--fundo-3); color: var(--texto); }
+
+.dados-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: .5rem;
+  padding: .75rem .85rem;
+  border-bottom: 1px solid var(--borda);
+  align-items: end;
+  flex: none;
+}
+.dados-form label {
+  display: block;
+  font-family: var(--sans);
+  font-size: .625rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--texto-3);
+  margin-bottom: .22rem;
+}
+.dados-form input {
+  width: 100%;
+  font-family: var(--mono);
+  font-size: .9375rem;
+  padding: .4rem .5rem;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  background: var(--fundo);
+  color: var(--texto);
+}
+
+.dados-log {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: .5rem .85rem 1rem;
+  margin: 0;
+  list-style: none;
+}
+.dados-log:empty::after {
+  content: "Nenhuma rolagem ainda. Toque em qualquer dado no texto do livro.";
+  display: block;
+  padding: 1.75rem .25rem;
+  text-align: center;
+  font-size: .875rem;
+  color: var(--texto-3);
+  line-height: 1.5;
+}
+
+.rolagem {
+  padding: .7rem 0;
+  border-bottom: 1px solid var(--borda-fraca);
+  animation: entra .22s cubic-bezier(.2, .8, .2, 1);
+}
+.rolagem:first-child { border-top: 0; }
+@keyframes entra { from { opacity: 0; transform: translateY(-4px); } }
+
+.rolagem-topo {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .6rem;
+}
+.rolagem-nome {
+  font-family: var(--sans);
+  font-variation-settings: "wdth" 92, "wght" 600;
+  font-size: .7rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--texto-3);
+}
+.rolagem-total {
+  font-family: var(--sans);
+  font-variation-settings: "wdth" 80, "wght" 700;
+  font-size: 1.6rem;
+  line-height: 1;
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--texto);
+}
+.rolagem-conta {
+  font-family: var(--mono);
+  font-size: .7rem;
+  color: var(--texto-3);
+  margin-top: .2rem;
+}
+.rolagem-leitura {
+  font-size: .875rem;
+  line-height: 1.45;
+  margin: .35rem 0 0;
+  color: var(--texto-2);
+}
+.rolagem-leitura b { color: var(--texto); font-weight: 600; }
+
+.rolagem[data-tom="critico"] .rolagem-total { color: var(--fluxo); }
+.rolagem[data-tom="critico"] { background: linear-gradient(90deg, var(--fluxo-fundo), transparent 70%); }
+.rolagem[data-tom="pifia"] .rolagem-total { color: var(--carimbo); }
+.rolagem[data-tom="pifia"] { background: linear-gradient(90deg, var(--carimbo-fundo), transparent 70%); }
+.rolagem[data-tom="custo"] .rolagem-total { color: var(--latao); }
+
+/* --------------------------------------------------------------------------
+   13. RODAPÉ
+   -------------------------------------------------------------------------- */
+
+.rodape {
+  border-top: 1px solid var(--borda);
+  padding: 2.5rem clamp(1.25rem, 4vw, 4rem) 3.5rem;
+  color: var(--texto-3);
+  font-size: .875rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem 2.5rem;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.rodape a { color: var(--texto-2); }
+.rodape nav { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+
+/* --------------------------------------------------------------------------
+   14. RESPONSIVO
+   -------------------------------------------------------------------------- */
+
+/* a gaveta do sumário só existe onde há JS para abri-la */
+.trilho-gaveta { display: none; }
+
+@media (max-width: 64rem) {
+  .livro { grid-template-columns: minmax(0, 1fr); }
+  .trilho {
+    position: static;
+    height: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--borda);
+    padding: 1.25rem clamp(1.25rem, 4vw, 4rem);
+  }
+  .trilho-titulo { margin-bottom: .75rem; }
+  .trilho-conteudo { max-height: 15rem; overflow-y: auto; }
+
+  /* já entra recolhido pelo HTML: nada se desloca quando o script roda */
+  .js .trilho-gaveta { display: inline-flex; }
+  .js .trilho-conteudo { display: none; }
+  .js .trilho[data-aberto] .trilho-conteudo { display: block; }
+
+  .corpo { padding-top: 2rem; }
+}
+
+@media (max-width: 40rem) {
+  :root { --medida: 100%; }
+  body { font-size: 1.0625rem; }
+  .corpo { padding-left: 1.15rem; padding-right: 1.15rem; }
+  .rodape { padding-left: 1.15rem; padding-right: 1.15rem; }
+  .dados-botao { right: .9rem; bottom: .9rem; }
+  .dados-painel { right: .75rem; left: .75rem; width: auto; bottom: 4.75rem; }
+}
+
+/* --------------------------------------------------------------------------
+   15. MOVIMENTO E IMPRESSÃO
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+@media print {
+  :root { --fundo: #fff; --fundo-2: #fff; --fundo-3: #fff; --texto: #000; --texto-2: #333; --texto-3: #555; --borda: #bbb; --borda-fraca: #ddd; --borda-forte: #000; }
+  .barra, .trilho, .dados-botao, .dados-painel, .busca-fundo, .rodape, .ancora, .nao-imprime { display: none !important; }
+  body { background: #fff; font-size: 10.5pt; }
+  .livro { display: block; max-width: none; }
+  .corpo { padding: 0; max-width: none; }
+  .corpo > * { max-width: none; }
+  .corpo h2 { break-after: avoid; margin-top: 2rem; }
+  .corpo h3, .corpo h4 { break-after: avoid; }
+  .corpo table, .corpo pre, .corpo blockquote { break-inside: avoid; }
+  .dado { border-bottom: 0; }
+  .dado::after { display: none; }
+  a { text-decoration: none; }
+}

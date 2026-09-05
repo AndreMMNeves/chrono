@@ -1,0 +1,19 @@
+<svg class="trelica" viewBox="0 0 1212 200" preserveAspectRatio="xMidYMax slice" role="img" aria-labelledby="trelica-titulo" focusable="false">
+  <title id="trelica-titulo">Uma estrutura de vigas: cada viga é um evento do passado, e o presente se apoia nelas. Uma delas está partida — é a anomalia, e a estrutura cede em cima dela.</title>
+  <g fill="none" stroke-linecap="square" vector-effect="non-scaling-stroke">
+    <g class="t-vigas" stroke="currentColor" stroke-width="1.15" opacity=".5">
+      <path d="M26 188 L26 70 M66 188 L66 58.1 M106 188 L106 67.7 M146 188 L146 71.7 M186 188 L186 58.8 M226 188 L226 50.3 M266 188 L266 69.8 M306 188 L306 106.9 M346 188 L346 127.6 M386 188 L386 117.9 M426 188 L426 99.7 M466 188 L466 97.9 M506 188 L506 105.6 M546 188 L546 96.1 M586 188 L586 64.4 M626 188 L626 42.6 M666 188 L666 56.6 M706 188 L706 102 M786 188 L786 116.7 M826 188 L826 97.8 M866 188 L866 109.5 M906 188 L906 130.5 M946 188 L946 130.1 M986 188 L986 100.2 M1026 188 L1026 70.3 M1066 188 L1066 64.9 M1106 188 L1106 73.6 M1146 188 L1146 69.8 M1186 188 L1186 52"/>
+    </g>
+    <g class="t-diagonais" stroke="currentColor" stroke-width=".75" opacity=".2">
+      <path d="M26 188 L66 58.1 M66 58.1 L106 188 M106 188 L146 71.7 M146 71.7 L186 188 M186 188 L226 50.3 M226 50.3 L266 188 M266 188 L306 106.9 M306 106.9 L346 188 M346 188 L386 117.9 M386 117.9 L426 188 M426 188 L466 97.9 M466 97.9 L506 188 M506 188 L546 96.1 M546 96.1 L586 188 M586 188 L626 42.6 M626 42.6 L666 188 M666 188 L706 102 M786 116.7 L826 188 M826 188 L866 109.5 M866 109.5 L906 188 M906 188 L946 130.1 M946 130.1 L986 188 M986 188 L1026 70.3 M1026 70.3 L1066 188 M1066 188 L1106 73.6 M1106 73.6 L1146 188 M1146 188 L1186 52"/>
+    </g>
+    <path class="t-banzo" d="M26 70 L66 58.1 L106 67.7 L146 71.7 L186 58.8 L226 50.3 L266 69.8 L306 106.9 L346 127.6 L386 117.9 L426 99.7 L466 97.9 L506 105.6 L546 96.1 L586 64.4 L626 42.6 L666 56.6 L706 102 L746 151.4 L786 116.7 L826 97.8 L866 109.5 L906 130.5 L946 130.1 L986 100.2 L1026 70.3 L1066 64.9 L1106 73.6 L1146 69.8 L1186 52" stroke="currentColor" stroke-width="1.7" opacity=".95"/>
+    <path class="t-base" d="M26 188 L1186 188" stroke="currentColor" stroke-width="1.15" opacity=".4"/>
+    <g class="t-quebra" stroke="var(--carimbo)" stroke-width="2.4">
+      <path d="M746 188 L746 171.9"/>
+      <path d="M753 163.1 L750 151.4"/>
+      <path d="M746 171.9 L753 163.1" stroke-width="1" stroke-dasharray="2 3" opacity=".6"/>
+      <circle cx="746" cy="171.9" r="3.4" fill="var(--carimbo)" stroke="none"/>
+    </g>
+  </g>
+</svg>

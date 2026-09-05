@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="pt-BR" data-pagina="inicio">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CHRONO — RPG de mesa de viagem no tempo</title>
+<meta name="description" content="RPG de mesa de viagem no tempo. Você morreu, e é por isso que consegue andar pelo passado. Livro de regras, bestiário, guia de épocas, ficha interativa e painel de mestre.">
+<meta name="author" content="CHRONO">
+<meta name="theme-color" content="#141D1A" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#E9EBE0" media="(prefers-color-scheme: light)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CHRONO">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="CHRONO — RPG de mesa de viagem no tempo">
+<meta property="og:description" content="RPG de mesa de viagem no tempo. Você morreu, e é por isso que consegue andar pelo passado. Livro de regras, bestiário, guia de épocas, ficha interativa e painel de mestre.">
+<meta property="og:url" content="https://andremmneves.github.io/chrono/">
+<meta property="og:image" content="https://andremmneves.github.io/chrono/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="CHRONO — RPG de mesa sobre consertar o tempo depois de morrer">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://andremmneves.github.io/chrono/">
+<link rel="icon" href="assets/selo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/selo.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400&family=Courier+Prime:wght@400;700&display=swap">
+<link rel="stylesheet" href="assets/css/chrono.css">
+<link rel="stylesheet" href="assets/css/paginas.css">
+<link rel="stylesheet" href="assets/css/formularios.css">
+<script>
+/* tema e classe "js" antes da pintura: sem piscar e sem a página pular */
+(function () {
+  var raiz = document.documentElement;
+  raiz.classList.add("js");
+  var padrao = "zona";
+  var fixo = true;
+  try {
+    raiz.dataset.tema = fixo ? padrao : (localStorage.getItem("chrono:tema") || padrao);
+  } catch (e) { raiz.dataset.tema = padrao; }
+})();
+</script>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<header class="barra">
+  <a class="barra-marca" href="index.html"><svg class="selo" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.4" y="1.4" width="13.2" height="13.2"/><path d="M8 4.4V8l2.6 1.7"/></svg><span class="marca">Chrono</span></a>
+  <nav class="barra-nav" aria-label="Livros e ferramentas"><a href="regras.html">Regras</a><a href="inimigos.html">Inimigos</a><a href="epocas.html">Épocas</a><a href="ficha.html">Ficha</a><a href="mesa.html">Mesa</a></nav>
+  <div class="barra-acoes">
+    <div class="barra-busca">
+      <button type="button" class="barra-btn" id="abrir-busca" aria-label="Buscar nos três livros" aria-keyshortcuts="Control+K">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="7" cy="7" r="4.6"/><path d="M10.4 10.4 14 14"/></svg>
+        <span class="rotulo">Buscar</span>
+      </button>
+      <kbd class="barra-atalho" aria-hidden="true">Ctrl K</kbd>
+    </div>
+    <button type="button" class="barra-btn" id="alternar-tema" aria-label="Alternar entre papel e Zona">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8" cy="8" r="5"/><path d="M8 3v10" /><path d="M8 3a5 5 0 0 1 0 10" fill="currentColor" stroke="none"/></svg>
+      <span class="rotulo" data-rotulo-tema>Zona</span>
+    </button>
+  </div>
+</header>
+<main id="conteudo">
+
+  <!-- ================================================== abertura -->
+  <section class="hero">
+    <div class="hero-texto">
+      <p class="etiqueta hero-etiqueta">Agência do Fluxo · dossiê de recrutamento</p>
+
+      <h1 class="hero-marca marca" aria-label="Chrono">
+        <span>C</span><span>H</span><span>R</span><span>O</span><span>N</span><span>O</span>
+      </h1>
+
+      <p class="hero-sub">RPG de mesa sobre consertar o tempo depois de morrer</p>
+
+      <div class="hero-duplo">
+        <p class="hero-epigrafe">
+          Você morreu. Isso não é reviravolta de campanha — é o ponto de partida
+          da ficha.
+        </p>
+
+        <div class="hero-lado">
+          <p class="hero-corpo">
+            Um vivo não pode viajar no tempo: o Fluxo tem a conta dele aberta e o
+            apaga por paradoxo. Um morto já fechou a conta. É por isso que a
+            Agência intercepta gente no instante da morte, segura no meio do
+            caminho e manda de volta para consertar as vigas que alguém torceu.
+          </p>
+
+          <p class="hero-acoes">
+            <a class="btn" href="regras.html">Ler as regras</a>
+            <a class="btn btn-carimbo" href="ficha.html">Criar um agente</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <figure class="hero-figura">
+      <svg class="trelica" viewBox="0 0 1212 200" preserveAspectRatio="xMidYMax slice" role="img" aria-labelledby="trelica-titulo" focusable="false">
+  <title id="trelica-titulo">Uma estrutura de vigas: cada viga é um evento do passado, e o presente se apoia nelas. Uma delas está partida — é a anomalia, e a estrutura cede em cima dela.</title>
+  <g fill="none" stroke-linecap="square" vector-effect="non-scaling-stroke">
+    <g class="t-vigas" stroke="currentColor" stroke-width="1.15" opacity=".5">
+      <path d="M26 188 L26 70 M66 188 L66 58.1 M106 188 L106 67.7 M146 188 L146 71.7 M186 188 L186 58.8 M226 188 L226 50.3 M266 188 L266 69.8 M306 188 L306 106.9 M346 188 L346 127.6 M386 188 L386 117.9 M426 188 L426 99.7 M466 188 L466 97.9 M506 188 L506 105.6 M546 188 L546 96.1 M586 188 L586 64.4 M626 188 L626 42.6 M666 188 L666 56.6 M706 188 L706 102 M786 188 L786 116.7 M826 188 L826 97.8 M866 188 L866 109.5 M906 188 L906 130.5 M946 188 L946 130.1 M986 188 L986 100.2 M1026 188 L1026 70.3 M1066 188 L1066 64.9 M1106 188 L1106 73.6 M1146 188 L1146 69.8 M1186 188 L1186 52"/>
+    </g>
+    <g class="t-diagonais" stroke="currentColor" stroke-width=".75" opacity=".2">
+      <path d="M26 188 L66 58.1 M66 58.1 L106 188 M106 188 L146 71.7 M146 71.7 L186 188 M186 188 L226 50.3 M226 50.3 L266 188 M266 188 L306 106.9 M306 106.9 L346 188 M346 188 L386 117.9 M386 117.9 L426 188 M426 188 L466 97.9 M466 97.9 L506 188 M506 188 L546 96.1 M546 96.1 L586 188 M586 188 L626 42.6 M626 42.6 L666 188 M666 188 L706 102 M786 116.7 L826 188 M826 188 L866 109.5 M866 109.5 L906 188 M906 188 L946 130.1 M946 130.1 L986 188 M986 188 L1026 70.3 M1026 70.3 L1066 188 M1066 188 L1106 73.6 M1106 73.6 L1146 188 M1146 188 L1186 52"/>
+    </g>
+    <path class="t-banzo" d="M26 70 L66 58.1 L106 67.7 L146 71.7 L186 58.8 L226 50.3 L266 69.8 L306 106.9 L346 127.6 L386 117.9 L426 99.7 L466 97.9 L506 105.6 L546 96.1 L586 64.4 L626 42.6 L666 56.6 L706 102 L746 151.4 L786 116.7 L826 97.8 L866 109.5 L906 130.5 L946 130.1 L986 100.2 L1026 70.3 L1066 64.9 L1106 73.6 L1146 69.8 L1186 52" stroke="currentColor" stroke-width="1.7" opacity=".95"/>
+    <path class="t-base" d="M26 188 L1186 188" stroke="currentColor" stroke-width="1.15" opacity=".4"/>
+    <g class="t-quebra" stroke="var(--carimbo)" stroke-width="2.4">
+      <path d="M746 188 L746 171.9"/>
+      <path d="M753 163.1 L750 151.4"/>
+      <path d="M746 171.9 L753 163.1" stroke-width="1" stroke-dasharray="2 3" opacity=".6"/>
+      <circle cx="746" cy="171.9" r="3.4" fill="var(--carimbo)" stroke="none"/>
+    </g>
+  </g>
+</svg>
+      <figcaption>
+        <span class="hero-legenda-marca" aria-hidden="true"></span>
+        Cada viga é um evento que já aconteceu; o presente é o que se apoia em
+        cima delas. Uma está partida — e o prédio não desaba, se
+        <em>reconstrói</em>. Ninguém lá dentro percebe que houve troca.
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- ================================================== briefing -->
+  <section class="secao" id="briefing" aria-labelledby="t-briefing">
+    <h2 id="t-briefing" class="secao-titulo">O briefing</h2>
+
+    <dl class="campos">
+      <div class="campo">
+        <dt>A premissa</dt>
+        <dd>
+          A Agência não te ressuscita: te segura antes que você caia na Zona
+          Fantasma. Você não está vivo nem lá. Está pendurado — e é exatamente
+          essa condição que deixa você andar dentro do passado sem ser corrigido.
+        </dd>
+      </div>
+      <div class="campo">
+        <dt>O trabalho</dt>
+        <dd>
+          Quase nunca é matar alguém. É descobrir <strong>qual foi a viga</strong>
+          que mexeram. Alguém levou covid-19 para a Idade Média. Alguém salvou
+          Kennedy. Alguém entregou uma IA a um grupo de físicos em 1935.
+        </dd>
+      </div>
+      <div class="campo">
+        <dt>O preço</dt>
+        <dd>
+          Esforço move tudo, e quando ele acaba a única forma de continuar útil é
+          sacar do Fluxo — ficar um pouco mais parecido com um fantasma. Ninguém
+          te impede. É esse o problema.
+        </dd>
+      </div>
+      <div class="campo">
+        <dt>A trava</dt>
+        <dd>
+          Discernimento não sobe matando: sobe entendendo. Sem ele o personagem
+          não passa do nível 5, 9, 13, 17 nem 20. Um grupo que ignora a trama
+          para farmar combate simplesmente para de subir.
+        </dd>
+      </div>
+    </dl>
+
+    <p class="tom">
+      O fundo é melancólico; a mesa não. CHRONO é pulp. O clima é correr atrás de
+      um dinossauro solto em 1912 usando um guarda-chuva e muita confiança.
+    </p>
+  </section>
+
+  <!-- ================================================== o motor -->
+  <section class="secao secao-motor" id="motor" aria-labelledby="t-motor">
+    <h2 id="t-motor" class="secao-titulo">O motor, em duas rolagens</h2>
+    <p class="secao-linha">
+      Toque em qualquer dado desta página para rolar de verdade. O resultado já
+      vem lido pela regra certa.
+    </p>
+
+    <div class="motor-par">
+      <div class="motor-bloco">
+        <p class="motor-nome">Ação</p>
+        <p class="motor-formula">
+          <button type="button" class="dado" data-d="1d20" title="Rolar 1d20">d20</button>
+          + atributo + perícia <span class="motor-vs">contra</span> ND
+        </p>
+        <table class="motor-escala">
+          <caption class="oculto-visual">Níveis de dificuldade</caption>
+          <tr><th scope="row">Fácil</th><td>8</td></tr>
+          <tr><th scope="row">Padrão</th><td>12</td></tr>
+          <tr><th scope="row">Difícil</th><td>16</td></tr>
+          <tr><th scope="row">Extrema</th><td>20</td></tr>
+          <tr><th scope="row">Absurda</th><td>24</td></tr>
+        </table>
+        <p class="motor-nota">
+          20 natural é crítico. Um ou dois abaixo do ND ainda acontece — mas o
+          mestre cobra o preço em voz alta antes de você confirmar.
+        </p>
+      </div>
+
+      <div class="motor-bloco">
+        <p class="motor-nome">Salvaguarda</p>
+        <p class="motor-formula">
+          <button type="button" class="dado" data-d="1d6" title="Rolar 1d6">1d6</button>
+          + perícia + patente <span class="motor-vs">contra</span> limiar
+        </p>
+        <table class="motor-escala">
+          <caption class="oculto-visual">Limiares de severidade</caption>
+          <tr><th scope="row">Leve</th><td>4</td></tr>
+          <tr><th scope="row">Média</th><td>6</td></tr>
+          <tr><th scope="row">Severa</th><td>8</td></tr>
+          <tr><th scope="row">Extrema</th><td>10</td></tr>
+        </table>
+        <p class="motor-nota">
+          O dado é pequeno de propósito: salvaguarda não é lugar de heroísmo. Dá
+          para somar mais 1d6 por 2 de Esforço, quantas vezes você aguentar.
+        </p>
+      </div>
+    </div>
+
+    <div class="escada">
+      <p class="escada-titulo">A escada de dados</p>
+      <p class="escada-linha">O tamanho do dado acompanha o tamanho do que você está tocando.</p>
+      <ol class="escada-lista">
+        <li><button type="button" class="dado escada-dado" data-d="1d4">d4</button><span>você mexeu num detalhe</span><em>sequela</em></li>
+        <li><button type="button" class="dado escada-dado" data-d="1d6">d6</button><span>você aguentou algo</span><em>salvaguarda</em></li>
+        <li><button type="button" class="dado escada-dado" data-d="1d8">d8</button><span>você forçou uma cena</span><em>perseguição</em></li>
+        <li><button type="button" class="dado escada-dado" data-d="1d10">d10</button><span>você encostou no Fluxo</span><em>ressonância</em></li>
+        <li><button type="button" class="dado escada-dado" data-d="1d12">d12</button><span>você quebrou uma regra do tempo</span><em>paradoxo</em></li>
+        <li><button type="button" class="dado escada-dado" data-d="1d20">d20</button><span>você agiu</span><em>ação</em></li>
+        <li><button type="button" class="dado escada-dado" data-d="1d100">d100</button><span>o Fluxo respondeu</span><em>deriva</em></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================================================== volumes -->
+  <section class="secao" id="volumes" aria-labelledby="t-volumes">
+    <h2 id="t-volumes" class="secao-titulo">Os três volumes</h2>
+
+    <ol class="volumes">
+      <li class="volume">
+        <a href="regras.html">
+          <span class="ref volume-ref">Vol. I</span>
+          <span class="volume-nome">Livro de Regras</span>
+          <span class="volume-texto">
+            Motor de dados, criação de personagem, Esforço e Instabilidade,
+            Discernimento, as cinco classes até o nível 20, trauma, sacrifício,
+            inventário, a Janela e a Agência.
+          </span>
+          <span class="ref volume-conta">19 partes · 68 seções</span>
+        </a>
+      </li>
+      <li class="volume">
+        <a href="inimigos.html">
+          <span class="ref volume-ref">Vol. II</span>
+          <span class="volume-nome">Livro dos Inimigos</span>
+          <span class="volume-texto">
+            A régua de Grau, dezoito fichas em cinco famílias e quatro anomalias
+            prontas. Metade delas não é para matar — o campo mais importante de
+            cada ficha se chama Resolução.
+          </span>
+          <span class="ref volume-conta">8 partes · 25 seções</span>
+        </a>
+      </li>
+      <li class="volume">
+        <a href="epocas.html">
+          <span class="ref volume-ref">Vol. III</span>
+          <span class="volume-nome">Guia de Épocas</span>
+          <span class="volume-texto">
+            Onze séculos jogáveis: o que existe, o que denuncia um agente, o que
+            vale mais que dinheiro, o que mata gente ali sem ser a anomalia e o
+            gancho pronto de cada um.
+          </span>
+          <span class="ref volume-conta">13 partes · 3 seções</span>
+        </a>
+      </li>
+    </ol>
+
+    <ol class="volumes volumes-ferramentas">
+      <li class="volume">
+        <a href="ficha.html">
+          <span class="ref volume-ref">Ficha</span>
+          <span class="volume-nome">Ficha de agente</span>
+          <span class="volume-texto">
+            Calcula PV, Esforço, Defesa e Carga sozinha, avisa qual Camada está
+            travando seu próximo nível, salva no navegador e imprime em A4.
+          </span>
+          <span class="ref volume-conta">interativa</span>
+        </a>
+      </li>
+      <li class="volume">
+        <a href="mesa.html">
+          <span class="ref volume-ref">Mesa</span>
+          <span class="volume-nome">Painel do mestre</span>
+          <span class="volume-texto">
+            Relógios de Instabilidade do Fluxo e de Suspeita, ordem de
+            iniciativa, régua de Grau para improvisar inimigo na hora e as
+            tabelas que você mais consulta.
+          </span>
+          <span class="ref volume-conta">interativa</span>
+        </a>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ================================================== brasas -->
+  <section class="brasas" aria-labelledby="t-brasas">
+    <p class="etiqueta">A regra que sustenta a campanha</p>
+    <h2 id="t-brasas" class="brasas-frase">
+      Quando uma Janela se fecha, o instante em que ela abriu fica queimado.
+      Nenhuma Janela pode ser aberta ali outra vez. Nem por vocês. Nem por
+      ninguém. Nunca.
+    </h2>
+    <p class="brasas-nota">
+      É o que mata a coisa que destrói toda campanha de viagem no tempo: voltar e
+      tentar de novo. Se o grupo falhou na terça-feira, na feira de Avignon,
+      aquela terça virou cinza. Podem ir para a quarta. Podem ir para outro canto
+      da terça. Nunca mais para aquele instante.
+      <a href="regras.html#s-15-4">A Regra das Brasas, na íntegra</a>
+    </p>
+    <p class="brasas-acoes">
+      <a class="btn" href="regras.html">Começar pelo Livro de Regras</a>
+      <a class="btn btn-fantasma" href="ficha/CHRONO_Ficha_Editavel.pdf">Baixar a ficha em PDF</a>
+    </p>
+  </section>
+
+</main>
+<footer class="rodape">
+  <p>CHRONO · sistema autoral · faça o que quiser com ele na sua mesa.</p>
+  <nav aria-label="Rodapé"><a href="index.html">Início</a><a href="regras.html">Regras</a><a href="inimigos.html">Inimigos</a><a href="epocas.html">Épocas</a><a href="ficha.html">Ficha</a><a href="mesa.html">Mesa</a></nav>
+</footer>
+<div class="busca-fundo" id="busca" hidden>
+  <div class="busca" role="dialog" aria-modal="true" aria-label="Buscar nos livros">
+    <div class="busca-topo">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="7" cy="7" r="4.6"/><path d="M10.4 10.4 14 14"/></svg>
+      <input type="search" id="busca-campo" placeholder="Buscar regra, inimigo, época…" autocomplete="off" spellcheck="false" aria-label="Termo de busca" aria-controls="busca-lista">
+      <button type="button" class="btn btn-fantasma btn-mini" data-fechar-busca>Esc</button>
+    </div>
+    <ul class="busca-lista" id="busca-lista" role="listbox" aria-label="Resultados"></ul>
+    <div class="busca-rodape">
+      <span><kbd>↑</kbd><kbd>↓</kbd> navegar</span>
+      <span><kbd>↵</kbd> abrir</span>
+      <span><kbd>esc</kbd> fechar</span>
+    </div>
+  </div>
+</div>
+<button type="button" class="dados-botao" id="abrir-dados" aria-expanded="false" aria-controls="dados-painel" aria-label="Abrir rolador de dados" title="Rolador de dados">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2.4 21 7.2v9.6L12 21.6 3 16.8V7.2z"/><path d="M3 7.2 12 12l9-4.8M12 12v9.6"/></svg>
+</button>
+<div class="dados-painel" id="dados-painel" hidden>
+  <div class="dados-cab">
+    <span class="etiqueta">Rolador</span>
+    <span>
+      <button type="button" class="btn btn-fantasma btn-mini" id="limpar-dados">Limpar</button>
+      <button type="button" class="btn btn-fantasma btn-mini" data-fechar-dados aria-label="Fechar rolador">Fechar</button>
+    </span>
+  </div>
+  <div class="dados-atalhos" id="dados-atalhos"></div>
+  <form class="dados-form" id="dados-form">
+    <div><label for="dados-notacao">Dado</label><input type="text" id="dados-notacao" value="1d20" inputmode="text" spellcheck="false"></div>
+    <div><label for="dados-alvo">ND / limiar</label><input type="number" id="dados-alvo" placeholder="—" inputmode="numeric"></div>
+    <button type="submit" class="btn btn-mini" style="height:2.1rem">Rolar</button>
+  </form>
+  <ul class="dados-log" id="dados-log" aria-live="polite" aria-label="Histórico de rolagens"></ul>
+</div>
+<script src="assets/js/indice.js" defer></script>
+<script src="assets/js/dados.js" defer></script>
+<script src="assets/js/app.js" defer></script>
+</body>
+</html>

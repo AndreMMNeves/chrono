@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="pt-BR" data-pagina="mesa">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mesa · CHRONO</title>
+<meta name="description" content="Painel do mestre de CHRONO: relógios de Instabilidade do Fluxo e Suspeita, ordem de iniciativa, régua de Grau e as tabelas mais consultadas.">
+<meta name="author" content="CHRONO">
+<meta name="theme-color" content="#141D1A" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#E9EBE0" media="(prefers-color-scheme: light)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CHRONO">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Mesa · CHRONO">
+<meta property="og:description" content="Painel do mestre de CHRONO: relógios de Instabilidade do Fluxo e Suspeita, ordem de iniciativa, régua de Grau e as tabelas mais consultadas.">
+<meta property="og:url" content="https://andremmneves.github.io/chrono/mesa.html">
+<meta property="og:image" content="https://andremmneves.github.io/chrono/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="CHRONO — RPG de mesa sobre consertar o tempo depois de morrer">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://andremmneves.github.io/chrono/mesa.html">
+<link rel="icon" href="assets/selo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/selo.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400&family=Courier+Prime:wght@400;700&display=swap">
+<link rel="stylesheet" href="assets/css/chrono.css">
+<link rel="stylesheet" href="assets/css/paginas.css">
+<link rel="stylesheet" href="assets/css/formularios.css">
+<script>
+/* tema e classe "js" antes da pintura: sem piscar e sem a página pular */
+(function () {
+  var raiz = document.documentElement;
+  raiz.classList.add("js");
+  var padrao = "zona";
+  var fixo = true;
+  try {
+    raiz.dataset.tema = fixo ? padrao : (localStorage.getItem("chrono:tema") || padrao);
+  } catch (e) { raiz.dataset.tema = padrao; }
+})();
+</script>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<header class="barra">
+  <a class="barra-marca" href="index.html"><svg class="selo" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.4" y="1.4" width="13.2" height="13.2"/><path d="M8 4.4V8l2.6 1.7"/></svg><span class="marca">Chrono</span></a>
+  <nav class="barra-nav" aria-label="Livros e ferramentas"><a href="regras.html">Regras</a><a href="inimigos.html">Inimigos</a><a href="epocas.html">Épocas</a><a href="ficha.html">Ficha</a><a href="mesa.html" aria-current="page">Mesa</a></nav>
+  <div class="barra-acoes">
+    <div class="barra-busca">
+      <button type="button" class="barra-btn" id="abrir-busca" aria-label="Buscar nos três livros" aria-keyshortcuts="Control+K">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="7" cy="7" r="4.6"/><path d="M10.4 10.4 14 14"/></svg>
+        <span class="rotulo">Buscar</span>
+      </button>
+      <kbd class="barra-atalho" aria-hidden="true">Ctrl K</kbd>
+    </div>
+    <button type="button" class="barra-btn" id="alternar-tema" aria-label="Alternar entre papel e Zona">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8" cy="8" r="5"/><path d="M8 3v10" /><path d="M8 3a5 5 0 0 1 0 10" fill="currentColor" stroke="none"/></svg>
+      <span class="rotulo" data-rotulo-tema>Zona</span>
+    </button>
+  </div>
+</header>
+<main class="mesa" id="conteudo">
+
+  <header class="mesa-topo">
+    <div>
+      <p class="etiqueta">Agência do Fluxo · sala de operações</p>
+      <h1 class="mesa-titulo">Mesa</h1>
+      <p class="mesa-linha">
+        Os relógios da missão, a ordem da rodada e a régua para improvisar
+        inimigo na hora. Tudo fica guardado neste navegador entre as sessões.
+      </p>
+    </div>
+    <div class="mesa-acoes">
+      <label class="campo-f estreito">
+        <span>Missão</span>
+        <input type="text" id="m_missao" placeholder="nome da anomalia" autocomplete="off">
+      </label>
+      <button type="button" class="btn btn-fantasma btn-mini" id="m-zerar">Nova missão</button>
+    </div>
+  </header>
+
+  <div class="mesa-grade">
+
+    <!-- =========================================== instabilidade do fluxo -->
+    <section class="painel painel-largo" aria-labelledby="h-if">
+      <h2 id="h-if" class="painel-h">Instabilidade do Fluxo</h2>
+
+      <div class="if-topo">
+        <p class="if-numero"><span id="ifValor">100</span><span class="if-pct">%</span></p>
+        <p class="if-estado" id="ifEstado">Missão em aberto. Fecha em 15% ou menos.</p>
+      </div>
+
+      <div class="if-barra" role="img" aria-labelledby="h-if">
+        <div class="if-preenchida" id="ifPreenchida"></div>
+        <div class="if-alvo" title="15% — a partir daqui o Fluxo se conserta sozinho"></div>
+      </div>
+
+      <p class="painel-nota">Quanto a missão anda quando o grupo entende ou conserta alguma coisa. O mestre decide dentro da faixa.</p>
+
+      <div class="if-conquistas" id="ifConquistas"></div>
+
+      <div class="ficha-botoes">
+        <button type="button" class="btn btn-fantasma btn-mini" data-if="5">O grupo piorou: +5%</button>
+        <button type="button" class="btn btn-fantasma btn-mini" data-if="10">+10%</button>
+        <button type="button" class="btn btn-mini" id="m-deriva">Rolar a Deriva final</button>
+      </div>
+      <p class="painel-nota" id="ifNotaDeriva">No fim da missão, role 1d100 na frente de todos. Igual ou abaixo da IF final, ficou uma marca permanente no presente.</p>
+    </section>
+
+    <!-- ============================================================ suspeita -->
+    <section class="painel" aria-labelledby="h-suspeita">
+      <h2 id="h-suspeita" class="painel-h">Suspeita</h2>
+      <p class="painel-nota">Um relógio do grupo inteiro. Fica visível na mesa: ficar mais capaz e ficar mais vigiado é a mesma curva.</p>
+
+      <div class="suspeita" id="suspeita" role="group" aria-label="Nível de suspeita, de 0 a 10"></div>
+
+      <p class="suspeita-estado" id="suspeitaEstado"></p>
+
+      <div class="ficha-botoes">
+        <button type="button" class="btn btn-fantasma btn-mini" data-susp="1">+1</button>
+        <button type="button" class="btn btn-fantasma btn-mini" data-susp="2">+2</button>
+        <button type="button" class="btn btn-fantasma btn-mini" data-susp="3">+3</button>
+        <button type="button" class="btn btn-fantasma btn-mini" data-susp="-1">−1</button>
+        <button type="button" class="btn btn-fantasma btn-mini" data-susp="-2">−2</button>
+      </div>
+    </section>
+
+    <!-- ========================================================== iniciativa -->
+    <section class="painel" aria-labelledby="h-iniciativa">
+      <h2 id="h-iniciativa" class="painel-h">Ordem da rodada</h2>
+
+      <form class="ini-form" id="ini-form">
+        <div class="campo-f"><label for="ini-nome">Quem</label><input type="text" id="ini-nome" autocomplete="off" placeholder="agente ou inimigo"></div>
+        <div class="campo-f estreito"><label for="ini-mod">Reflexo + patente</label><input type="number" id="ini-mod" value="0" inputmode="numeric"></div>
+        <button type="submit" class="btn btn-mini">Rolar e entrar</button>
+      </form>
+
+      <ol class="ini-lista" id="ini-lista"></ol>
+
+      <div class="ficha-botoes">
+        <button type="button" class="btn btn-mini" id="ini-proximo">Próximo turno</button>
+        <button type="button" class="btn btn-fantasma btn-mini" id="ini-limpar">Limpar</button>
+      </div>
+      <p class="painel-nota" id="ini-rodada">Rodada 1</p>
+    </section>
+
+    <!-- ======================================================= régua de grau -->
+    <section class="painel painel-largo" aria-labelledby="h-grau">
+      <h2 id="h-grau" class="painel-h">Régua de Grau</h2>
+      <p class="painel-nota">
+        Grau mede dano ao Fluxo, não capacidade de combate. Um vírus é Grau 5 e não
+        tem um único ponto de vida. Use a régua para improvisar números na hora.
+      </p>
+
+      <div class="grau-escolha" id="grauEscolha" role="group" aria-label="Escolher o Grau"></div>
+
+      <dl class="grau-numeros">
+        <div><dt>Defesa</dt><dd id="g_def">12</dd></div>
+        <div><dt>PV</dt><dd id="g_pv">20</dd></div>
+        <div><dt>Ataque</dt><dd><button type="button" class="dado" id="g_atq" data-d="1d20" data-tipo="acao" data-nome="Ataque do inimigo">+3</button></dd></div>
+        <div><dt>Dano</dt><dd><button type="button" class="dado" id="g_dano" data-d="1d6+2" data-nome="Dano">1d6+2</button></dd></div>
+        <div><dt>Salvaguardas</dt><dd id="g_salv">+1</dd></div>
+        <div><dt>Grupo de nível</dt><dd id="g_nivel">1–4</dd></div>
+      </dl>
+
+      <p class="grau-tracos" id="grauTracos"></p>
+    </section>
+
+    <!-- ================================================== referência rápida -->
+    <section class="painel painel-total" aria-labelledby="h-ref">
+      <h2 id="h-ref" class="painel-h">Leitura do teste</h2>
+      <p class="painel-nota">A tabela mais consultada do livro.</p>
+
+      <div class="ref-duplo">
+      <div>
+      <table class="ref-tabela">
+        <thead><tr><th scope="col">Resultado</th><th scope="col">Leitura</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">20 natural</th><td><strong>Crítico.</strong> Acontece com estilo, e o mestre concede um benefício extra de graça.</td></tr>
+          <tr><th scope="row">≥ ND</th><td><strong>Sucesso.</strong> Acontece como o jogador descreveu.</td></tr>
+          <tr><th scope="row">ND −1 ou −2</th><td><strong>Sucesso com custo.</strong> Acontece, mas o Fluxo cobra — e você fala o preço em voz alta antes de o jogador confirmar.</td></tr>
+          <tr><th scope="row">Abaixo disso</th><td><strong>Falha.</strong> Não acontece, e a cena avança mesmo assim.</td></tr>
+          <tr><th scope="row">1 natural</th><td><strong>Falha crítica.</strong> Role 1d6 na tabela.</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div>
+      <h3 class="painel-h2 primeiro">As alavancas do mestre</h3>
+      <ul class="alavancas">
+        <li><b>Suba a Instabilidade Pessoal</b> quando o grupo tomar atalhos. É a punição por pressa.</li>
+        <li><b>Desça a Instabilidade do Fluxo</b> quando o grupo entender coisas. É a recompensa por atenção.</li>
+        <li><b>Dê Discernimento</b> quando o grupo pagar um preço. É a recompensa por coragem.</li>
+        <li><b>Cobre o custo em voz alta</b> no sucesso com custo. É onde o jogo vira negociação.</li>
+        <li><b>Suba a Suspeita</b> quando o grupo enxergar demais. É o preço institucional de entender.</li>
+      </ul>
+      <p class="painel-nota">Nunca use uma no lugar da outra.</p>
+      </div>
+      </div>
+
+      <p class="painel-links">
+        <a href="regras.html#s-2-2">Leitura do teste</a>
+        <a href="regras.html#s-4-4">Instabilidade do Fluxo</a>
+        <a href="regras.html#s-16-4">Suspeita</a>
+        <a href="inimigos.html#s-1-2">A régua</a>
+        <a href="regras.html#parte-13">Condições</a>
+        <a href="regras.html#apendice-referencia-rapida">Referência rápida</a>
+      </p>
+    </section>
+
+  </div>
+</main>
+<footer class="rodape">
+  <p>CHRONO · sistema autoral · faça o que quiser com ele na sua mesa.</p>
+  <nav aria-label="Rodapé"><a href="index.html">Início</a><a href="regras.html">Regras</a><a href="inimigos.html">Inimigos</a><a href="epocas.html">Épocas</a><a href="ficha.html">Ficha</a><a href="mesa.html">Mesa</a></nav>
+</footer>
+<div class="busca-fundo" id="busca" hidden>
+  <div class="busca" role="dialog" aria-modal="true" aria-label="Buscar nos livros">
+    <div class="busca-topo">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="7" cy="7" r="4.6"/><path d="M10.4 10.4 14 14"/></svg>
+      <input type="search" id="busca-campo" placeholder="Buscar regra, inimigo, época…" autocomplete="off" spellcheck="false" aria-label="Termo de busca" aria-controls="busca-lista">
+      <button type="button" class="btn btn-fantasma btn-mini" data-fechar-busca>Esc</button>
+    </div>
+    <ul class="busca-lista" id="busca-lista" role="listbox" aria-label="Resultados"></ul>
+    <div class="busca-rodape">
+      <span><kbd>↑</kbd><kbd>↓</kbd> navegar</span>
+      <span><kbd>↵</kbd> abrir</span>
+      <span><kbd>esc</kbd> fechar</span>
+    </div>
+  </div>
+</div>
+<button type="button" class="dados-botao" id="abrir-dados" aria-expanded="false" aria-controls="dados-painel" aria-label="Abrir rolador de dados" title="Rolador de dados">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2.4 21 7.2v9.6L12 21.6 3 16.8V7.2z"/><path d="M3 7.2 12 12l9-4.8M12 12v9.6"/></svg>
+</button>
+<div class="dados-painel" id="dados-painel" hidden>
+  <div class="dados-cab">
+    <span class="etiqueta">Rolador</span>
+    <span>
+      <button type="button" class="btn btn-fantasma btn-mini" id="limpar-dados">Limpar</button>
+      <button type="button" class="btn btn-fantasma btn-mini" data-fechar-dados aria-label="Fechar rolador">Fechar</button>
+    </span>
+  </div>
+  <div class="dados-atalhos" id="dados-atalhos"></div>
+  <form class="dados-form" id="dados-form">
+    <div><label for="dados-notacao">Dado</label><input type="text" id="dados-notacao" value="1d20" inputmode="text" spellcheck="false"></div>
+    <div><label for="dados-alvo">ND / limiar</label><input type="number" id="dados-alvo" placeholder="—" inputmode="numeric"></div>
+    <button type="submit" class="btn btn-mini" style="height:2.1rem">Rolar</button>
+  </form>
+  <ul class="dados-log" id="dados-log" aria-live="polite" aria-label="Histórico de rolagens"></ul>
+</div>
+<script src="assets/js/indice.js" defer></script>
+<script src="assets/js/dados.js" defer></script>
+<script src="assets/js/app.js" defer></script>
+<script src="assets/js/mesa.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!--CORPO-->
+<main class="ficha" id="conteudo">
+
+  <header class="ficha-topo">
+    <div>
+      <p class="etiqueta">Agência do Fluxo · registro de agente</p>
+      <h1 class="ficha-titulo">Ficha de agente</h1>
+    </div>
+
+    <div class="ficha-acoes nao-imprime">
+      <label class="oculto-visual" for="elenco">Personagem</label>
+      <select id="elenco" class="ficha-elenco"></select>
+      <button type="button" class="btn btn-fantasma btn-mini" id="ficha-nova">Nova</button>
+      <button type="button" class="btn btn-fantasma btn-mini" id="ficha-duplicar">Duplicar</button>
+      <button type="button" class="btn btn-fantasma btn-mini" id="ficha-apagar">Apagar</button>
+      <button type="button" class="btn btn-fantasma btn-mini" id="ficha-exportar">Exportar</button>
+      <button type="button" class="btn btn-fantasma btn-mini" id="ficha-importar">Importar</button>
+      <button type="button" class="btn btn-fantasma btn-mini" id="ficha-imprimir">Imprimir</button>
+      <input type="file" id="ficha-arquivo" accept=".json,application/json" hidden>
+    </div>
+  </header>
+
+  <p class="ficha-salvo nao-imprime" id="ficha-salvo" role="status"></p>
+
+  <!-- ================================================ identidade -->
+  <section class="ficha-bloco ficha-identidade" aria-label="Identidade">
+    <div class="campo-f grande"><label for="f_nome">Nome</label><input type="text" id="f_nome" autocomplete="off"></div>
+    <div class="campo-f"><label for="f_jogador">Jogador</label><input type="text" id="f_jogador" autocomplete="off"></div>
+    <div class="campo-f">
+      <label for="f_classe">Classe</label>
+      <select id="f_classe">
+        <option value="">—</option>
+        <option>Executor</option><option>Rastreador</option><option>Artífice</option>
+        <option>Camaleão</option><option>Costurador</option>
+      </select>
+    </div>
+    <div class="campo-f"><label for="f_arquetipo">Trilha</label><input type="text" id="f_arquetipo" placeholder="a partir da Camada 1" autocomplete="off"></div>
+    <div class="campo-f estreito"><label for="f_nivel">Nível</label><input type="number" id="f_nivel" value="1" min="1" max="20" inputmode="numeric"></div>
+    <div class="campo-f"><label for="f_patente">Patente</label><input type="text" id="f_patente" readonly tabindex="-1" title="Sobe sozinha com o nível"></div>
+    <div class="campo-f"><label for="f_epoca">Época de origem</label><input type="text" id="f_epoca" placeholder="o ano em que morreu" autocomplete="off"></div>
+    <div class="campo-f grande"><label for="f_morte">Como você morreu</label><input type="text" id="f_morte" autocomplete="off"></div>
+  </section>
+
+  <div class="ficha-grade">
+
+    <!-- ============================================ coluna 1 -->
+    <div class="ficha-coluna">
+      <section class="ficha-bloco" aria-labelledby="h-atributos">
+        <h2 id="h-atributos" class="ficha-h">Atributos</h2>
+        <div id="atributos" class="atributos"></div>
+        <p class="ficha-nota" id="nota-sintonia"></p>
+      </section>
+
+      <section class="ficha-bloco" aria-labelledby="h-derivados">
+        <h2 id="h-derivados" class="ficha-h">Derivados</h2>
+        <dl class="derivados">
+          <div><dt>PV máx</dt><dd id="d_pv">14</dd></div>
+          <div><dt>EP máx</dt><dd id="d_ep">12</dd></div>
+          <div><dt>Defesa</dt><dd id="d_def">11</dd></div>
+          <div><dt>Iniciativa</dt><dd id="d_ini">+1</dd></div>
+          <div><dt>Carga</dt><dd id="d_carga">6</dd></div>
+          <div><dt>EP / rodada</dt><dd id="d_lim">2</dd></div>
+        </dl>
+      </section>
+
+      <section class="ficha-bloco" aria-labelledby="h-trauma">
+        <h2 id="h-trauma" class="ficha-h">Trauma</h2>
+        <div class="campo-f">
+          <label for="f_trauma">Você morreu de</label>
+          <select id="f_trauma"><option value="">—</option></select>
+        </div>
+        <p class="trauma-texto" id="traumaTexto"></p>
+        <div class="campo-f">
+          <label for="f_trauma_det">Anotações</label>
+          <input type="text" id="f_trauma_det" placeholder="Cicatriz ou Ferida, a partir da Camada 3" autocomplete="off">
+        </div>
+        <button type="button" class="btn btn-fantasma btn-mini nao-imprime" id="btn-trauma">Salvaguarda de Autocontrole</button>
+      </section>
+    </div>
+
+    <!-- ============================================ coluna 2 -->
+    <div class="ficha-coluna">
+      <section class="ficha-bloco" aria-labelledby="h-vitais">
+        <h2 id="h-vitais" class="ficha-h">Pontos de vida e Esforço</h2>
+
+        <div class="medidor">
+          <label for="f_pvnow">Vida</label>
+          <span class="medidor-leitura"><input type="number" id="f_pvnow" value="14" inputmode="numeric"> / <span id="pvMax">14</span></span>
+          <span class="medidor-botoes nao-imprime">
+            <button type="button" class="btn btn-fantasma btn-mini" data-pv="-1">−1</button>
+            <button type="button" class="btn btn-fantasma btn-mini" data-pv="-5">−5</button>
+            <button type="button" class="btn btn-fantasma btn-mini" data-pv="1">+1</button>
+          </span>
+        </div>
+        <p class="ficha-nota" id="aviso-pv"></p>
+
+        <div class="medidor">
+          <label for="epNow">Esforço</label>
+          <span class="medidor-leitura"><input type="number" id="epNow" value="12" inputmode="numeric"> / <span id="epMax">12</span></span>
+          <span class="medidor-botoes nao-imprime">
+            <button type="button" class="btn btn-fantasma btn-mini" data-ep="-1">−1</button>
+            <button type="button" class="btn btn-fantasma btn-mini" data-ep="-3">−3</button>
+            <button type="button" class="btn btn-fantasma btn-mini" data-ep="1">+1</button>
+          </span>
+        </div>
+
+        <div class="ficha-botoes nao-imprime">
+          <button type="button" class="btn btn-mini" id="btn-descompressao">Descompressão</button>
+          <button type="button" class="btn btn-mini btn-carimbo" id="btn-sacar">Sacar do Fluxo</button>
+          <button type="button" class="btn btn-mini" id="btn-rebobinar">Rebobinar</button>
+          <button type="button" class="btn btn-mini" id="btn-respiro">Respiro</button>
+        </div>
+        <p class="ficha-log" id="ficha-log" role="status"></p>
+
+        <div class="nao-imprime vantagem-caixa">
+          <p class="ficha-h vantagem-h" id="h-vantagem">Próxima rolagem</p>
+          <div class="vantagem" role="radiogroup" aria-labelledby="h-vantagem">
+            <label><input type="radio" name="vantagem" value="-1"> Desvantagem</label>
+            <label><input type="radio" name="vantagem" value="0" checked> Normal</label>
+            <label><input type="radio" name="vantagem" value="1"> Vantagem</label>
+          </div>
+          <p class="ficha-nota">Dois dados, fica com o pior ou com o melhor. Vale para qualquer dado desta página e dos livros. Não acumula.</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============================================ coluna 3 -->
+    <div class="ficha-coluna">
+      <section class="ficha-bloco" aria-labelledby="h-ip">
+        <h2 id="h-ip" class="ficha-h">Instabilidade Pessoal</h2>
+        <p class="ip-leitura"><span id="ipRead">0</span><span class="ip-teto">/ <span id="ipTeto">100</span></span></p>
+        <div id="ipTrilha" class="ip-trilha" role="group" aria-label="Marcar Instabilidade Pessoal"></div>
+        <p class="ip-estado" id="ipEstado"></p>
+        <div class="ficha-botoes nao-imprime">
+          <button type="button" class="btn btn-fantasma btn-mini" data-ip="5">+5</button>
+          <button type="button" class="btn btn-fantasma btn-mini" data-ip="10">+10</button>
+          <button type="button" class="btn btn-fantasma btn-mini" data-ip="20">+20</button>
+          <button type="button" class="btn btn-fantasma btn-mini" data-ip="-5" title="Uma vez por sessão, faça algo profundamente humano e sem utilidade tática">Ato de Âncora</button>
+        </div>
+      </section>
+
+      <section class="ficha-bloco" aria-labelledby="h-camada">
+        <h2 id="h-camada" class="ficha-h">Discernimento</h2>
+        <div id="camadas" class="camadas" role="group" aria-label="Camada de Discernimento"></div>
+        <p class="camada-texto" id="camadaTexto"></p>
+        <p class="camada-trava" id="camadaTrava"></p>
+      </section>
+
+
+
+      <section class="ficha-bloco" aria-labelledby="h-memorias">
+        <h2 id="h-memorias" class="ficha-h">As cinco memórias</h2>
+        <p class="ficha-nota">Lembranças reais da sua vida, uma linha cada. Escreva coisas que você não vai querer perder.</p>
+        <div id="memorias" class="memorias"></div>
+        <p class="ficha-nota" id="memoriaAviso"></p>
+      </section>
+    </div>
+  </div>
+
+  <!-- ================================================ perícias -->
+  <section class="ficha-bloco" aria-labelledby="h-pericias">
+    <h2 id="h-pericias" class="ficha-h">Perícias</h2>
+    <p class="ficha-nota nao-imprime" style="margin-top:0">O número da direita já soma o atributo — toque nele para rolar a Ação com essa perícia.</p>
+    <div id="pericias" class="pericias"></div>
+  </section>
+
+  <!-- ================================================ texto livre -->
+  <section class="ficha-bloco ficha-textos" aria-label="Anotações">
+    <div class="campo-f"><label for="f_habs">Habilidades de classe</label><textarea id="f_habs" rows="5"></textarea></div>
+    <div class="campo-f"><label for="f_poderes">Poderes de Fluxo</label><textarea id="f_poderes" rows="5"></textarea></div>
+    <div class="campo-f"><label for="f_armas">Armas e proteção</label><textarea id="f_armas" rows="5"></textarea></div>
+    <div class="campo-f"><label for="f_kit">Inventário e anacronismo</label><textarea id="f_kit" rows="5"></textarea></div>
+    <div class="campo-f"><label for="f_enxertos">Enxertos e revelações</label><textarea id="f_enxertos" rows="4"></textarea></div>
+    <div class="campo-f"><label for="f_pendencia">Pendências e favores</label><textarea id="f_pendencia" rows="4"></textarea></div>
+  </section>
+
+  <p class="ficha-rodape">
+    A ficha salva sozinha neste navegador. Para levar o agente para outro
+    computador, use <strong>Exportar</strong> — o arquivo <code>.json</code> abre
+    de volta aqui em Importar.
+  </p>
+</main>

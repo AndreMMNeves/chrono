@@ -40,6 +40,26 @@ de `build/paginas/` nas páginas escritas à mão, e escreve:
 **Sempre rode o build depois de mexer nos markdowns ou nos fragmentos.** Editar
 o HTML gerado direto não adianta: a próxima geração sobrescreve.
 
+Atenção ao nome: `fontes/` são os **textos-fonte** dos livros; `assets/fontes/`
+são os **arquivos de tipografia**. Coisas diferentes.
+
+### As tipografias
+
+Ficam em `assets/fontes/` e são servidas pelo próprio site, não pelo Google.
+Isso não é preferência: o service worker só guarda o que é do próprio domínio,
+então com as fontes de fora o site abria offline com a tipografia errada — e a
+página pulava na primeira visita, porque elas chegavam depois do texto.
+
+Só precisa rodar se você trocar de família:
+
+```sh
+node build/baixar-fontes.mjs
+```
+
+Ele baixa os subconjuntos `latin` e `latin-ext` de cada família e regera o
+`assets/css/fontes.css`. O `latin-ext` fica lá mas nem chega a ser baixado numa
+página em português — o navegador só busca o subconjunto de que precisa.
+
 ## Editar
 
 | Quero mudar | Mexo em |
@@ -51,6 +71,11 @@ o HTML gerado direto não adianta: a próxima geração sobrescreve.
 | Cor, tipografia, espaçamento | `assets/css/chrono.css` |
 | Leitura de um dado | `assets/js/dados.js` |
 | A treliça da capa | `build/gerar-trelica.mjs` |
+
+As cores vivem todas em dois blocos no topo de `assets/css/chrono.css`: um para
+o tema papel, outro para o tema Zona. Se mexer neles, confira o contraste — os
+três acentos (carimbo, fluxo, latão) precisam continuar distinguíveis **entre
+si**, e não só contra o fundo.
 
 ### O markdown que o gerador entende
 

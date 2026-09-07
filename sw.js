@@ -1,5 +1,5 @@
 /* gerado por build/build.mjs — service worker do CHRONO */
-const CACHE = "chrono-2026-09-07-mtqkxqbk";
+const CACHE = "chrono-2026-09-07-mtql2ddb";
 const ARQUIVOS = [
   "./",
   "regras.html",

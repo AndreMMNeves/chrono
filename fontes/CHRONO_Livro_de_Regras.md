@@ -723,7 +723,7 @@ Só uma proteção por vez. Escudo dá **+1** adicional e ocupa 1 espaço, mas e
 | Item | Esp. | Efeito |
 |---|---|---|
 | Kit médico | 1 | +2 em Medicina. Estabiliza quem está descoagulando sem teste. |
-| Ferramentas | 1 | Necessário para Reconstruir e para consertos finos. |
+| Ferramentas | 1 | Necessário para Gambiarra e para consertos finos. |
 | Corda, gancho | 1 | +2 em Atletismo para escalar. |
 | Lanterna, lampião, tocha | 1 | Remove a condição Cego causada por escuridão. |
 | Roupa de época (conjunto) | 1 | +2 em Disfarce naquela época. Anacronismo 0 ali, 2 em qualquer outra. |

@@ -173,7 +173,7 @@ Dois dados, fica com o melhor ou o pior. Vale para qualquer dado. Não acumula.
 
 ### 3.1 Atributos
 
-Seis, de **0 a 6** (máximo 5 na criação).
+Seis, de **0 a 5**.
 
 | Atributo | Cobre |
 |---|---|
@@ -184,7 +184,9 @@ Seis, de **0 a 6** (máximo 5 na criação).
 | **Vontade** | resistir à Instabilidade, Esforço, não surtar |
 | **Sintonia** | sentir o Fluxo, ver fantasmas, ler o tempo |
 
-**Distribuição:** 15 pontos entre os cinco primeiros, mínimo 1, máximo 5.
+**Distribuição na criação:** os cinco primeiros começam em **1** e você recebe **4 pontos** para distribuir. Nenhum passa de **3** na criação — 4 e 5 só se alcançam subindo de nível.
+
+Você pode **zerar um atributo** para ganhar 1 ponto a mais. Um atributo em 0 não é excentricidade de ficha: é um buraco, e a mesa vai encontrar ele.
 
 **Sintonia começa em 0** e não pode ser comprada com pontos nem subida por nível. Só sobe por **Discernimento** (+1 nas Camadas 1, 3 e 5). No começo da campanha você é surdo para o tempo; aprender a ouvir é a história do jogo.
 
@@ -229,13 +231,13 @@ O **limite de Esforço por rodada** existe para impedir que o jogador despeje a 
 ### 3.4 Criação em oito passos
 
 1. **Escolha a morte.** Quando e como você morreu. A época de origem dá vantagem em testes sociais e de História naquele período.
-2. **Atributos:** 15 pontos, 1–5, Sintonia em 0.
+2. **Atributos:** todos em 1, distribua 4 pontos, máximo 3 na criação. Sintonia fica em 0.
 3. **Perícias:** 10 pontos, máximo 2.
 4. **Classe:** anote as duas habilidades de Nível 1.
 5. **Derivados.**
 6. **Trauma.** Escolha o Trauma que corresponde à sua morte (Parte X).
 7. **Cinco Memórias.** Escreva cinco lembranças da sua vida, uma linha cada. Elas são combustível (Parte IX). Escreva coisas que você não vai querer perder.
-8. **Comece em:** Nível 1, Patente Recruta, Camada 0, IP 0.
+8. **Comece em:** Nível 1, Patente Novato, Camada 0, IP 0.
 
 ---
 
@@ -406,7 +408,7 @@ Você acha que a Agência é heroica. Só vê o fantasma depois que ele encostou
 | 19 | +1 habilidade | — |
 | 20 | **Capstone de classe** | **Camada 5** |
 
-Todo nível: **+2 PV**, **+1 EP máx**, **+2 pontos de perícia**. Atributo máximo 6; Sintonia nunca sobe por nível.
+Todo nível: **+2 PV**, **+1 EP máx**, **+2 pontos de perícia**. Atributo máximo 5; Sintonia nunca sobe por nível.
 
 **Ataque Extra.** No nível 6, sempre que usar sua ação para atacar, você ataca **duas vezes**. No nível 16 passa a atacar **três vezes**. Cada ataque é rolado separadamente e pode escolher alvos diferentes. Não vale para habilidades, poderes ou itens que já custam ação — só para o ataque comum.
 

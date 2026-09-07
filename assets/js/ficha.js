@@ -80,7 +80,7 @@
       const travado = a === "Sintonia";
       return `<div class="atributo${travado ? " travado" : ""}">
         <label for="at_${a}">${a}</label>
-        <input type="number" id="at_${a}" value="${travado ? 0 : 1}" min="0" max="6" inputmode="numeric"${travado ? " readonly tabindex=\"-1\" title=\"Só sobe por Discernimento, nas Camadas 1, 3 e 5\"" : ""}>
+        <input type="number" id="at_${a}" value="${travado ? 0 : 1}" min="0" max="5" inputmode="numeric"${travado ? " readonly tabindex=\"-1\" title=\"Só sobe por Discernimento, nas Camadas 1, 3 e 5\"" : ""}>
       </div>`;
     }).join("");
 
@@ -196,6 +196,22 @@
         : "Nenhuma trava pela frente.";
       $("camadaTrava").classList.remove("alerta");
     }
+
+    /* Orçamento de atributo. Na criação os cinco compráveis somam 9 (todos em
+       1, mais 4 pontos). Cada +1 atributo de nível soma um ao esperado. */
+    const compraveis = ATRIBUTOS.filter((a) => a !== "Sintonia");
+    const gasto = compraveis.reduce((n, a) => n + num("at_" + a), 0);
+    const ganhosPorNivel = [3, 6, 9, 12, 15, 18].filter((n) => nivel >= n).length;
+    const esperado = 9 + ganhosPorNivel;
+    const acima = compraveis.filter((a) => num("at_" + a) > 3);
+
+    let notaPontos = `${gasto} de ${esperado} pontos usados`;
+    if (gasto > esperado) notaPontos = `${gasto} pontos usados, ${gasto - esperado} a mais do que o nível ${nivel} permite.`;
+    else if (gasto < esperado) notaPontos += ` — sobram ${esperado - gasto}.`;
+    if (nivel === 1 && acima.length) notaPontos += " Na criação nenhum atributo passa de 3.";
+
+    $("nota-pontos").textContent = notaPontos;
+    $("nota-pontos").classList.toggle("alerta", gasto > esperado || (nivel === 1 && acima.length > 0));
 
     // Trilhas: só as da classe escolhida
     const classe = $("f_classe").value;

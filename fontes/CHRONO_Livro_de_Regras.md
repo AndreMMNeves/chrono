@@ -117,7 +117,7 @@ Quem rolar mais alto muda a Distância em 1; em 2 se a diferença for 5 ou mais.
 
 ### 2.5 d10 — Ressonância
 
-Role **1d10** sempre que usar poder que mexe diretamente com tempo (Rebobinar, qualquer coisa de Sintonia, Costurador, e os poderes de Fluxo marcados).
+Role **1d10** sempre que usar poder que mexe diretamente com tempo (Rebobinar, qualquer coisa de Sintonia, Ancorador, e os poderes de Fluxo marcados).
 
 | d10 | |
 |---|---|
@@ -222,7 +222,7 @@ Carga       = 5 + Corpo + Patente espaços
 Limite de Esforço por rodada = 2 + (Nível ÷ 4, arredondado para baixo)
 ```
 
-**Patente vale 0 a 4** e é o número que escala o personagem inteiro: vida, defesa, iniciativa, salvaguarda, esforço e carga. Ela sobe sozinha com o nível (6.2), então você só precisa cuidar de um número.
+**Patente vale 0 a 5** e é o número que escala o personagem inteiro: vida, defesa, iniciativa, salvaguarda, esforço e carga. Ela sobe sozinha com o nível (6.2), então você só precisa cuidar de um número.
 
 O **limite de Esforço por rodada** existe para impedir que o jogador despeje a barra inteira num turno. É o freio do sistema.
 
@@ -282,7 +282,7 @@ De 0 a 100 (120 a partir da Camada 4).
 |---|---|
 | Descompressão | −20 |
 | **Ato de Âncora** | −5 |
-| Habilidade de Costurador | conforme descrito |
+| Habilidade de Ancorador | conforme descrito |
 
 **Ato de Âncora:** uma vez por sessão, faça algo profundamente humano e sem utilidade tática dentro da época. Comer com calma. Aprender o nome de uma criança. Dançar. Chorar por alguém morto há mil anos. O Fluxo te reconhece como gente de novo. Essa regra existe para forçar cenas de personagem numa mesa que naturalmente correria de explosão em explosão.
 
@@ -418,15 +418,16 @@ A Patente sobe **automaticamente com o nível**. É ao mesmo tempo o seu cargo n
 
 | Patente | Valor | Níveis | Escala | Privilégios |
 |---|---|---|---|---|
-| **Recruta** | 0 | 1–4 | — | Equipamento básico. Missão supervisionada. |
-| **Operador** | 1 | 5–8 | +1 | Requisição de item anacrônico. Missão sem babá. |
-| **Sentinela** | 2 | 9–12 | +2 | Épocas restritas. Autoridade sobre Recrutas em campo. |
-| **Curador** | 3 | 13–17 | +3 | Acesso ao Arquivo. Autoriza alterações menores no Fluxo. |
-| **Ponto Fixo** | 4 | 18–20 | +4 | Acesso irrestrito. Responde a ninguém, e por isso é vigiado por todos. |
+| **Novato** | 0 | 1–3 | — | Equipamento básico. Missão supervisionada, e a supervisão é ostensiva. |
+| **Recruta** | 1 | 4–7 | +1 | Requisição de item anacrônico. Missão sem babá. |
+| **Soldado** | 2 | 8–11 | +2 | Épocas restritas. Autoridade sobre Novatos em campo. |
+| **Veterano** | 3 | 12–15 | +3 | Acesso ao Arquivo. Autoriza alterações menores no Fluxo. |
+| **Elite** | 4 | 16–18 | +4 | Escolhe as próprias missões. Requisita qualquer coisa sem justificar. |
+| **Ancião** | 5 | 19–20 | +5 | Acesso irrestrito. Responde a ninguém, e por isso é vigiado por todos. |
 
-O valor da Patente entra em **PV (×3), Defesa, Iniciativa, Salvaguarda, EP máximo e Carga**. É por isso que um agente veterano aguenta o que um Recruta não aguenta, mesmo com os mesmos atributos.
+O valor da Patente entra em **PV (×3), Defesa, Iniciativa, Salvaguarda, EP máximo e Carga**. É por isso que um Ancião aguenta o que um Novato não aguenta, mesmo com os mesmos atributos.
 
-A Agência limpa a sua sujeira proporcionalmente à Patente. Um Recruta que deixa rastro é punido. Um Curador que deixa rastro tem o rastro apagado, e ninguém comenta.
+A Agência limpa a sua sujeira proporcionalmente à Patente. Um Novato que deixa rastro é punido. Um Veterano que deixa rastro tem o rastro apagado, e ninguém comenta.
 
 **Congelamento.** A Agência pode **congelar** a Patente de um agente como punição ou suspeita: o cargo e os privilégios ficam retidos, mas o valor numérico continua subindo com o nível. Você perde o acesso, não a competência. É a ferramenta do mestre para criar tensão política sem enfraquecer a ficha — e destravar a Patente vira objetivo de missão.
 
@@ -434,12 +435,14 @@ A Agência limpa a sua sujeira proporcionalmente à Patente. Um Recruta que deix
 
 ## PARTE VII — CLASSES
 
-Cada classe tem **10 habilidades**: duas no nível 1, depois nos níveis 2, 5, 8, 10, 13, 16, 19 e o capstone no 20.
+Três classes. Cada uma tem **10 habilidades**: duas no nível 1, depois nos níveis 2, 5, 8, 10, 13, 16, 19 e o capstone no 20.
+
+Na Camada 1 você escolhe **uma das três Trilhas** da sua classe. A escolha é definitiva.
 
 ---
 
-### EXECUTOR
-*Você é a razão pela qual a coisa para de acontecer.* — Corpo, Reflexo
+### VIAJANTE
+*Você atravessa. O que estiver no caminho é problema do caminho.* — Corpo, Reflexo
 
 | Nv | Habilidade | Custo |
 |---|---|---|
@@ -454,92 +457,18 @@ Cada classe tem **10 habilidades**: duas no nível 1, depois nos níveis 2, 5, 8
 | 19 | **Impacto Fixo** (passiva) — seus acertos não podem ser desfeitos por Correção nem por Paradoxo. | — |
 | **20** | **O QUE NÃO CEDE** — enquanto estiver de pé e consciente, nenhum aliado à vista pode ser Devolvido, apagado ou reescrito. Você segura todo mundo no lugar. | 5 EP/rodada |
 
-**Trilhas** — Ariete · Guarda-Costas Temporal
+**Trilhas** — Vanguarda · Caçador Temporal · Executor
 
 | Trilha | Camada 1 | Camada 3 |
 |---|---|---|
-| **Ariete** | Destrói objeto deslocado com as mãos, ignorando durabilidade. Golpe Fixo alcança Grau 3. | Seu ataque pode atingir algo que existe em outra época, se você souber onde ele estava. |
-| **Guarda-Costas** | Transfere até 10 de IP de um aliado para si, 1×/sessão. | Pode ser Devolvido no lugar de um aliado que seria Devolvido. |
+| **Vanguarda** | Transfere até 10 de IP de um aliado para si, 1×/sessão. | Pode ser Devolvido no lugar de um aliado que seria Devolvido. |
+| **Caçador Temporal** | Sente direção e distância aproximada da anomalia mais próxima, e rastreia um alvo através de épocas. | Sabe, ao ver alguém, se essa pessoa já viajou no tempo. |
+| **Executor** | Destrói objeto deslocado com as mãos, ignorando durabilidade. Golpe Fixo alcança Grau 3. | Seu ataque pode atingir algo que existe em outra época, se você souber onde ele estava. |
 
 ---
 
-### RASTREADOR
-*Você sabe o que era pra ter acontecido.* — Intelecto, Sintonia
-
-| Nv | Habilidade | Custo |
-|---|---|---|
-| 1 | **Memória do Certo** (passiva) — sabe como o evento deveria ter acontecido, sem rolar. Não sabe quem mudou. | — |
-| 1 | **Farejar Divergência** — sente direção e distância aproximada da anomalia mais próxima. | 1 EP |
-| 2 | **Leitura de Objeto** — toca e vê a cena mais importante da história daquele objeto. | 2 EP |
-| 5 | **Marcar Alvo** — aliados ganham +2 contra o alvo até o fim da cena. | 2 EP |
-| 8 | **Linha Cortada** — três perguntas sobre a anomalia. O mestre responde com a verdade. | 4 EP |
-| 10 | **Onisciência Local** — vê e ouve tudo num raio de 1 km por um minuto. | 6 EP |
-| 13 | **Ver a Viga** — identifica exatamente qual ato precisa ser corrigido. 1×/missão. | 8 EP |
-| 16 | **Rastro Reverso** — segue um alvo para trás no tempo, vendo onde ele esteve. | 4 EP |
-| 19 | **Três Passos à Frente** (passiva) — sempre age primeiro e nunca é surpreendido. | — |
-| **20** | **O MAPA INTEIRO** — 1×/missão, o mestre entrega toda a estrutura da anomalia: Viga, Grau, responsável e o que acontece se vocês falharem. | 10 EP |
-
-**Trilhas** — Sabujo · Arquivista
-
-| Trilha | Camada 1 | Camada 3 |
-|---|---|---|
-| **Sabujo** | Rastreia um alvo através de épocas. Farejar passa a apontar *quem* causou. | Sabe, ao ver alguém, se essa pessoa já viajou no tempo. |
-| **Arquivista** | 1×/sessão declara um fato histórico obscuro e ele é verdadeiro. | 1×/missão, declara que um documento comprovando algo existe e está ao alcance. |
-
----
-
-### ARTÍFICE
-*Você resolve com o que tem na mesa.* — Intelecto, Reflexo
-
-| Nv | Habilidade | Custo |
-|---|---|---|
-| 1 | **Kit Anacrônico** (passiva) — carrega 3 itens de outras épocas; repõe entre missões. | — |
-| 1 | **Gambiarra** — improvisa um item funcional e temporário com material da época. | 2 EP |
-| 2 | **Selo Provisório** — contém uma anomalia ou um fantasma por uma cena. | 3 EP |
-| 5 | **Reconstruir** — conserta qualquer coisa quebrada, inclusive o que você não entende. | 2 EP |
-| 8 | **Bomba de Estabilidade** — reduz a IF em 10% de uma vez. 1×/missão. | 5 EP |
-| 10 | **Oficina Portátil** — cria um item permanente entre missões, sujeito ao mestre. | — |
-| 13 | **Remendo Bruto** — desfaz fisicamente um efeito da anomalia numa área. Feio e temporário. | 8 EP |
-| 16 | **Peça de Outro Tempo** — puxa da Agência qualquer item da tabela, 1×/missão, ignorando Patente. | 5 EP |
-| 19 | **Produção em Série** (passiva) — todos os aliados ganham uma Gambiarra por cena. | — |
-| **20** | **A MÁQUINA ERRADA** — constrói um dispositivo que resolve inteiramente um problema da anomalia. Leva uma cena, e nunca funciona duas vezes do mesmo jeito. | 10 EP |
-
-**Trilhas** — Improvisador · Selador
-
-| Trilha | Camada 1 | Camada 3 |
-|---|---|---|
-| **Improvisador** | Gambiarra custa 0 EP. É só como você pensa. | Gambiarra pode replicar o efeito de um item da Agência por uma cena. |
-| **Selador** | Com uma hora de trabalho, um Selo Provisório vira permanente. | Pode selar um trecho de rua, sala ou prédio inteiro contra alteração temporal. |
-
----
-
-### CAMALEÃO
-*Você é daqui. Sempre foi.* — Presença, Reflexo
-
-| Nv | Habilidade | Custo |
-|---|---|---|
-| 1 | **Poliglota Temporal** (passiva) — fala e escreve a língua e o dialeto certos de qualquer época. | — |
-| 1 | **Nativo** — por uma cena, ninguém questiona que você pertence àquele lugar e época. | 1 EP |
-| 2 | **Nome Falso** — cria identidade com histórico verificável naquela época. | 2 EP |
-| 5 | **Sugestão** — um NPC executa uma ação que não contraria a natureza dele. | 3 EP |
-| 8 | **Rosto Emprestado** — assume a aparência exata de alguém em quem encostou. | 4 EP |
-| 10 | **Eu Estava Aqui** — declara que plantou algo naquele local, no passado daquela época. Está lá. | 6 EP |
-| 13 | **Sempre Fui Eu** — reescreve retroativamente seu papel numa situação. Você era o médico. | 8 EP + 10 IP |
-| 16 | **Multidão** — por uma cena, existe a impressão de que há vinte de você. | 5 EP |
-| 19 | **Ninguém** (passiva) — nativos nunca conseguem descrever você depois. | — |
-| **20** | **FUI EU O TEMPO TODO** — declara que você foi, historicamente, uma figura secundária real daquele evento. O Fluxo aceita. 1× por campanha. | 10 EP |
-
-**Trilhas** — Nativo Perfeito · Manipulador
-
-| Trilha | Camada 1 | Camada 3 |
-|---|---|---|
-| **Nativo Perfeito** | Interagir com nativos nunca sobe sua IP. | Sua presença numa época baixa em 5% a IF por sessão só por você estar lá direito. |
-| **Manipulador** | 1×/sessão redireciona a culpa de um ato do grupo para um NPC plausível. | Pode convencer um Divergente de que a linha original era a dele. |
-
----
-
-### COSTURADOR
-*Você é o único que conversa com eles.* — Vontade, Sintonia
+### ANCORADOR
+*Você é o único que conversa com eles — e o único que segura o resto.* — Vontade, Sintonia
 
 | Nv | Habilidade | Custo |
 |---|---|---|
@@ -554,12 +483,39 @@ Cada classe tem **10 habilidades**: duas no nível 1, depois nos níveis 2, 5, 8
 | 19 | **Fio Duplo** (passiva) — Costura não custa mais IP a você. | — |
 | **20** | **A PORTA DE VOLTA** — 1× por campanha, tira alguém da Zona Fantasma em definitivo. Inclusive um agente que foi perdido. | 10 EP |
 
-**Trilhas** — Médium · Exorcista
+**Trilhas** — Médico Temporal · Estabilizador · Sincronizador
 
 | Trilha | Camada 1 | Camada 3 |
 |---|---|---|
-| **Médium** | Fantasmas podem ser convencidos a agir como aliados temporários. | Você pode perguntar a um fantasma sobre qualquer evento que ele viu — inclusive o futuro dele. |
-| **Exorcista** | Destrói um fantasma em definitivo. Isso apaga a pessoa que ele foi: ninguém no Fluxo lembra dela. | Pode destruir um fantasma sem apagar a pessoa. Você carrega o que sobra. |
+| **Médico Temporal** | Costura remove 10 de IP em vez de 5, e você estabiliza quem está descoagulando sem teste e sem gasto. | 1×/missão, remove de um aliado uma Sequela ou um Trauma adquirido. |
+| **Estabilizador** | Destrói um fantasma em definitivo. Isso apaga a pessoa que ele foi: ninguém no Fluxo lembra dela. | Pode destruir um fantasma sem apagar a pessoa. Você carrega o que sobra. |
+| **Sincronizador** | Fantasmas podem ser convencidos a agir como aliados temporários. | Você pode perguntar a um fantasma sobre qualquer evento que ele viu — inclusive o futuro dele. |
+
+---
+
+### PARADOXISTA
+*Você resolve com o que tem na mesa, e o que não tem você declara que sempre teve.* — Intelecto, Presença
+
+| Nv | Habilidade | Custo |
+|---|---|---|
+| 1 | **Kit Anacrônico** (passiva) — carrega 3 itens de outras épocas; repõe entre missões. | — |
+| 1 | **Memória do Certo** (passiva) — sabe como o evento deveria ter acontecido, sem rolar. Não sabe quem mudou. | — |
+| 2 | **Gambiarra** — improvisa um item funcional e temporário com material da época. | 2 EP |
+| 5 | **Nome Falso** — cria identidade com histórico verificável naquela época. | 2 EP |
+| 8 | **Linha Cortada** — três perguntas sobre a anomalia. O mestre responde com a verdade. | 4 EP |
+| 10 | **Oficina Portátil** — cria um item permanente entre missões, sujeito ao mestre. | — |
+| 13 | **Ver a Viga** — identifica exatamente qual ato precisa ser corrigido. 1×/missão. | 8 EP |
+| 16 | **Peça de Outro Tempo** — puxa da Agência qualquer item da tabela, 1×/missão, ignorando Patente. | 5 EP |
+| 19 | **Ninguém** (passiva) — nativos nunca conseguem descrever você depois. | — |
+| **20** | **FUI EU O TEMPO TODO** — declara que você foi, historicamente, uma figura secundária real daquele evento. O Fluxo aceita. 1× por campanha. | 10 EP |
+
+**Trilhas** — Manipulador · Rupturista · Anômalo
+
+| Trilha | Camada 1 | Camada 3 |
+|---|---|---|
+| **Manipulador** | Fala e escreve a língua e o dialeto certos de qualquer época. 1×/sessão redireciona a culpa de um ato do grupo para um NPC plausível. | Pode convencer um Divergente de que a linha original era a dele. |
+| **Rupturista** | **Bomba de Estabilidade:** reduz a IF em 10% de uma vez, 1×/missão. | **Remendo Bruto:** desfaz fisicamente um efeito da anomalia numa área. Feio e temporário. |
+| **Anômalo** | **Eu Estava Aqui:** declara que plantou algo naquele local, no passado daquela época. Está lá. | **Sempre Fui Eu:** reescreve retroativamente seu papel numa situação. Você era o médico. |
 
 ---
 
@@ -725,7 +681,7 @@ Todo item carrega um **Grau de Anacronismo (0 a 3)** — o quanto ele grita que 
 | 2 | De outra época humana, inexplicável |
 | 3 | Da Agência. Não existe em época nenhuma. |
 
-**Se a soma do Anacronismo que você carrega passar da sua Vontade e você aparecer em público: +5 IP por cena.** É por isso que a mochila do Artífice é um problema político.
+**Se a soma do Anacronismo que você carrega passar da sua Vontade e você aparecer em público: +5 IP por cena.** É por isso que a mochila do Paradoxista é um problema político.
 
 ### 12.3 Armas
 
@@ -783,18 +739,18 @@ Requisitados na Descompressão. Cada um exige Patente e Camada.
 
 | Item | Patente | Camada | An. | Efeito |
 |---|---|---|---|---|
-| **Traje Correspondente** | Recruta | 0 | 0 | Roupa que se ajusta sozinha à época. +2 em Disfarce. |
-| **Marcador de Época** | Recruta | 0 | 1 | Você sempre sabe o ano, o mês e o lugar exatos. |
-| **Selo Portátil** | Recruta | 0 | 2 | Contém uma anomalia Grau 1 por uma cena. Uso único. |
-| **Lanterna de Eco** | Operador | 0 | 2 | Revela fantasmas num cone à sua frente. |
-| **Caderno do Arquivo** | Operador | 1 | 1 | 1×/sessão, consulta e recebe um fato histórico verdadeiro. |
-| **Agulha de Ancoragem** | Operador | 1 | 3 | Cravada no chão, ninguém num raio de 5 m sobe IP por uma cena. |
-| **Pulso Reverso** | Sentinela | 1 | 3 | Desfaz uma rodada inteira de dano sofrido por um alvo. |
-| **Corda de Fluxo** | Sentinela | 2 | 3 | Amarra dois pontos. Você volta ao primeiro quando quiser, 1×. |
-| **Máscara Vazia** | Sentinela | 2 | 3 | Assume um rosto genérico. Ninguém lembra do seu. |
-| **Frasco de Zona** | Curador | 3 | 3 | Prende um fantasma. Um. E ele sabe que você o prendeu. |
-| **Chave de Viga** | Curador | 3 | 3 | Aponta qual ato é a Viga da anomalia. Não diz como consertar. |
-| **Relógio Sem Ponteiros** | Ponto Fixo | 4 | 3 | 1× por campanha, para o tempo por um minuto. Ninguém sabe de onde veio. |
+| **Traje Correspondente** | Novato | 0 | 0 | Roupa que se ajusta sozinha à época. +2 em Disfarce. |
+| **Marcador de Época** | Novato | 0 | 1 | Você sempre sabe o ano, o mês e o lugar exatos. |
+| **Selo Portátil** | Novato | 0 | 2 | Contém uma anomalia Grau 1 por uma cena. Uso único. |
+| **Lanterna de Eco** | Recruta | 0 | 2 | Revela fantasmas num cone à sua frente. |
+| **Caderno do Arquivo** | Recruta | 1 | 1 | 1×/sessão, consulta e recebe um fato histórico verdadeiro. |
+| **Agulha de Ancoragem** | Soldado | 1 | 3 | Cravada no chão, ninguém num raio de 5 m sobe IP por uma cena. |
+| **Pulso Reverso** | Soldado | 1 | 3 | Desfaz uma rodada inteira de dano sofrido por um alvo. |
+| **Corda de Fluxo** | Veterano | 2 | 3 | Amarra dois pontos. Você volta ao primeiro quando quiser, 1×. |
+| **Máscara Vazia** | Veterano | 2 | 3 | Assume um rosto genérico. Ninguém lembra do seu. |
+| **Frasco de Zona** | Elite | 3 | 3 | Prende um fantasma. Um. E ele sabe que você o prendeu. |
+| **Chave de Viga** | Elite | 3 | 3 | Aponta qual ato é a Viga da anomalia. Não diz como consertar. |
+| **Relógio Sem Ponteiros** | Ancião | 4 | 3 | 1× por campanha, para o tempo por um minuto. Ninguém sabe de onde veio. |
 
 ### 12.7 Itens de época
 
@@ -846,7 +802,7 @@ Iniciativa d20 + Reflexo, uma vez por combate. No seu turno: uma ação, um movi
 
 ### 14.3 Cair
 
-A 0 PV você **descoagula** (ver Condições). Estabilizar: Medicina ND 12, ou qualquer habilidade de Costurador. Ao voltar, role **1d4 de Sequela** (2.7).
+A 0 PV você **descoagula** (ver Condições). Estabilizar: Medicina ND 12, ou qualquer habilidade de Ancorador. Ao voltar, role **1d4 de Sequela** (2.7).
 
 **Três descoagulações na mesma missão** e você é Devolvido automaticamente, independente da IP.
 
@@ -938,12 +894,12 @@ Entre missões, cada agente tem **3 Ações de Base**. É aqui que a campanha re
 | Ação | O que faz |
 |---|---|
 | **Requisitar** | Pega um item da tabela conforme Patente e Camada. Para levar algo acima da sua Patente: d20 + Presença + Comando vs. 12. |
-| **Arquivo** | d20 + Intelecto + Investigação vs. 16. Sucesso: uma verdade sobre a anomalia atual ou sobre a Agência. Curador rola com vantagem. |
+| **Arquivo** | d20 + Intelecto + Investigação vs. 16. Sucesso: uma verdade sobre a anomalia atual ou sobre a Agência. Veterano rola com vantagem. |
 | **Treinar** | +1 ponto de perícia, respeitando as travas de grau. Uma vez por Descompressão. |
 | **Reancorar** | −10 de Instabilidade Pessoal, além dos −20 automáticos. |
 | **Relacionar** | Uma cena com um NPC da Agência. Rende um **Favor**. |
 | **Perguntar** | Uma cena com um superior. O mestre precisa responder uma pergunta com a verdade — e a **Suspeita sobe 1**. |
-| **Oficina** | Só Artífice: cria um item permanente (habilidade de nível 10). |
+| **Oficina** | Só Paradoxista: cria um item permanente (habilidade de nível 10). |
 
 ### 16.2 Favores
 
@@ -1122,9 +1078,12 @@ TRAVAS DE CAMADA   nv5 C1 · nv9 C2 · nv13 C3 · nv17 C4 · nv20 C5
                    Expert C2 · Enxerto C2 · poderes conforme tabela
 
 CAMADAS  0 Cego · 1 Desperto · 2 Leitor · 3 Divergente · 4 Âncora · 5 Ponto Fixo
-PATENTE  automática pelo nível · vale 0 a 4 · entra em PV, Defesa,
+PATENTE  automática pelo nível · vale 0 a 5 · entra em PV, Defesa,
          Iniciativa, Salvaguarda, EP e Carga
-         nv1-4 Recruta · 5-8 Operador · 9-12 Sentinela
-         nv13-17 Curador · 18-20 Ponto Fixo
-CLASSES  Executor · Rastreador · Artífice · Camaleão · Costurador
+         nv1-3 Novato · 4-7 Recruta · 8-11 Soldado
+         nv12-15 Veterano · 16-18 Elite · 19-20 Ancião
+CLASSES  Viajante · Ancorador · Paradoxista
+TRILHAS  Viajante:    Vanguarda · Caçador Temporal · Executor
+         Ancorador:   Médico Temporal · Estabilizador · Sincronizador
+         Paradoxista: Manipulador · Rupturista · Anômalo
 ```

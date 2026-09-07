@@ -22,7 +22,14 @@
     ["Leitura de Fluxo", "Sintonia"], ["Ecos", "Sintonia"], ["Ancoragem", "Sintonia"],
   ];
 
-  const PATENTES = ["Recruta", "Operador", "Sentinela", "Curador", "Ponto Fixo"];
+  const PATENTES = ["Novato", "Recruta", "Soldado", "Veterano", "Elite", "Ancião"];
+
+  // Cada classe tem três Trilhas, e a escolha é feita na Camada 1.
+  const TRILHAS = {
+    Viajante: ["Vanguarda", "Caçador Temporal", "Executor"],
+    Ancorador: ["Médico Temporal", "Estabilizador", "Sincronizador"],
+    Paradoxista: ["Manipulador", "Rupturista", "Anômalo"],
+  };
 
   const CAMADAS = [
     ["Cego", "Você acha que a Agência é heroica. Só vê o fantasma depois que ele encostou, e as missões parecem episódios soltos."],
@@ -115,7 +122,7 @@
       "Sintonia começa em 0 e não pode ser comprada. Ela sobe sozinha nas Camadas 1, 3 e 5 — no começo da campanha você é surdo para o tempo.";
 
     const nivel = Math.min(20, Math.max(1, num("f_nivel")));
-    const patente = nivel >= 18 ? 4 : nivel >= 13 ? 3 : nivel >= 9 ? 2 : nivel >= 5 ? 1 : 0;
+    const patente = nivel >= 19 ? 5 : nivel >= 16 ? 4 : nivel >= 12 ? 3 : nivel >= 8 ? 2 : nivel >= 4 ? 1 : 0;
     $("f_patente").value = `${PATENTES[patente]} (+${patente})`;
 
     // as Camadas 1 e 3 dão +2 de EP máx cada (Parte V)
@@ -189,6 +196,15 @@
         : "Nenhuma trava pela frente.";
       $("camadaTrava").classList.remove("alerta");
     }
+
+    // Trilhas: só as da classe escolhida
+    const classe = $("f_classe").value;
+    const trilhas = TRILHAS[classe] || [];
+    const trilhaAtual = $("f_arquetipo").value;
+    $("f_arquetipo").disabled = !classe;
+    $("f_arquetipo").innerHTML =
+      '<option value="">' + (classe ? "—" : "escolha a classe antes") + "</option>" +
+      trilhas.map((t) => `<option${t === trilhaAtual ? " selected" : ""}>${t}</option>`).join("");
 
     // Trauma
     const t = TRAUMAS.find(([, nome]) => nome === $("f_trauma").value);

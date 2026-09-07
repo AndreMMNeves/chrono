@@ -66,7 +66,7 @@ Mordida +12 · 3d6+8 · alvo fica Agarrado
 Tiranossauro, urso-das-cavernas, megatério. Não importa a espécie: importa que ele é enorme, está com fome e está numa rua.
 
 - **TRAÇOS** — *Investida:* se mover 10 m em linha reta antes de atacar, o dano vira 4d6+8. *Cheiro:* não pode ser despistado por Furtividade, só por distância ou por outro cheiro.
-- **RESOLUÇÃO** — Matar funciona, mas mil pessoas viram. **A resolução limpa é devolvê-lo**: atrair até um ponto de inserção e empurrar. Um Artífice com Selo Provisório ou um Camaleão criando pânico direcionado resolvem melhor que qualquer arma.
+- **RESOLUÇÃO** — Matar funciona, mas mil pessoas viram. **A resolução limpa é devolvê-lo**: atrair até um ponto de inserção e empurrar. Um Paradoxista com Gambiarra ou criando pânico direcionado resolve melhor que qualquer arma.
 - **PESO** — 20% da IF. Se morrer em público, o Fluxo cobra: role 1d12 de Paradoxo.
 
 ---
@@ -98,7 +98,7 @@ Arma da guerra deles +9 · 2d6+6
 Uma unidade militar inteira arrancada da sua guerra e largada em outro século. Eles ainda acham que estão em serviço. Do ponto de vista deles, vocês são o inimigo.
 
 - **TRAÇOS** — *Disciplina:* imunes a Intimidação. *Ordem:* se o comandante cair, os outros têm desvantagem em tudo por uma rodada.
-- **RESOLUÇÃO** — Eles se rendem a autoridade. Um Camaleão com patente militar convincente da época *deles* desarma a coisa inteira sem um tiro. É o encontro que ensina a mesa que Presença resolve mais que Pontaria.
+- **RESOLUÇÃO** — Eles se rendem a autoridade. Um Paradoxista com patente militar convincente da época *deles* desarma a coisa inteira sem um tiro. É o encontro que ensina a mesa que Presença resolve mais que Pontaria.
 - **PESO** — 15%.
 
 ---
@@ -272,7 +272,7 @@ Toque · Limiar 8 · +15 IP
 
 Ele sabe seu nome. Ele estava aqui antes de você chegar, e não é a primeira vez que vocês se encontram — só a primeira vez que você lembra.
 
-- **TRAÇOS** — *Conhecido:* imune a Repelir. *Ele conta:* se um Costurador usar Diálogo, ele responde com verdade sobre a morte do agente — inclusive as partes que a Agência omitiu.
+- **TRAÇOS** — *Conhecido:* imune a Repelir. *Ele conta:* se um Ancorador usar Diálogo, ele responde com verdade sobre a morte do agente — inclusive as partes que a Agência omitiu.
 - **RESOLUÇÃO** — Ouvir. Ele quer ser ouvido. Depois disso vai embora sozinho.
 - **PESO** — 10%, e vale **1 ponto de Discernimento** para quem ouviu até o fim.
 
@@ -333,12 +333,12 @@ Arma da Agência +9 · 2d8+6
 ### O ENXERTADO
 
 ```
-Grau 4 · Renegado · nível 16, Camada 2 (queimou três em Enxertos)
+Grau 4 · Renegado · nível 16, Camada 3 (queimou dois em Enxertos)
 Defesa 21 · PV 170 · Iniciativa +12 · Salvaguardas +7
 Dois ataques +12 · 3d6+8
 ```
 
-Trocou todo o Discernimento por ferramenta. Tem habilidade de quatro classes e não entende mais nada do que está fazendo.
+Trocou Discernimento por ferramenta até o limite. Tem habilidade das três classes e não entende mais nada do que está fazendo.
 
 - **TRAÇOS** — *Caixa de ferramentas:* usa uma habilidade de classe diferente por rodada. *Cego:* imune a efeitos de Camada 3+, porque não enxerga que existem.
 - **RESOLUÇÃO** — Ele não sabe o que está acontecendo na cena maior. Mostre a ele. Persuasão ND 20 com informação de Camada 3 o desmonta.
@@ -437,7 +437,7 @@ Kennedy sobreviveu. Os agentes acordam num presente onde os Estados Unidos são 
 
 **Encontros:** O Homem Que Deveria Ter Morrido, Guardas da Linha Nova, O Historiador Converso.
 
-**A virada:** quem impediu o tiro foi um agente da Agência, com autorização assinada. O documento existe. Está no Arquivo, e exige Patente Curador para ser lido.
+**A virada:** quem impediu o tiro foi um agente da Agência, com autorização assinada. O documento existe. Está no Arquivo, e exige Patente Veterano para ser lido.
 
 ---
 

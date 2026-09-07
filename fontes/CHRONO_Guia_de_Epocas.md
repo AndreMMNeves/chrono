@@ -178,7 +178,7 @@ Referência para tarefas comuns, quando o obstáculo é a época e não a dificu
 
 **ANACRONISMO** — *Grau 1:* roupa e corte de cabelo fora do tempo. *Grau 2:* eletrônico pequeno demais para a época. *Grau 3:* qualquer coisa com tela, e conhecimento sobre eventos futuros — porque nesta época tem gente **pagando** por isso.
 
-**DISFARCE** — Funcionário. Repórter. Acadêmico. A época documenta tudo, então documento falso é obrigatório e o Camaleão trabalha dobrado.
+**DISFARCE** — Funcionário. Repórter. Acadêmico. A época documenta tudo, então documento falso é obrigatório e o Paradoxista trabalha dobrado.
 
 **DINHEIRO** — Cartão, cheque, dinheiro. Fácil.
 
@@ -224,7 +224,7 @@ Referência para tarefas comuns, quando o obstáculo é a época e não a dificu
 
 **O QUE NÃO EXISTE** — Gente com quem falar, na maior parte do intervalo. Comida segura. Socorro.
 
-**ANACRONISMO** — **Zero, sempre.** Não tem quem veja. É a única época do guia onde o Artífice pode usar tudo o que quiser sem cobrar IP de ninguém. E é por isso que a Agência esconde que existem inserções possíveis aqui.
+**ANACRONISMO** — **Zero, sempre.** Não tem quem veja. É a única época do guia onde o Paradoxista pode usar tudo o que quiser sem cobrar IP de ninguém. E é por isso que a Agência esconde que existem inserções possíveis aqui.
 
 **DISFARCE** — Irrelevante.
 

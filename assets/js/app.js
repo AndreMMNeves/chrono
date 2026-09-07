@@ -287,9 +287,22 @@
 
   /* ================================================================= offline */
 
+  /* Em localhost o worker não entra: durante o desenvolvimento ele serve a
+     versão guardada e você fica olhando para um CSS que já mudou. Se já houver
+     um registrado da última vez, ele sai de cena e leva o cache junto. */
+  const local = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
+
   if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol)) {
-    addEventListener("load", () => {
-      navigator.serviceWorker.register("sw.js").catch(() => {});
-    });
+    if (local) {
+      navigator.serviceWorker.getRegistrations().then((regs) => {
+        if (!regs.length) return;
+        regs.forEach((r) => r.unregister());
+        if (window.caches) caches.keys().then((ks) => ks.forEach((k) => caches.delete(k)));
+      });
+    } else {
+      addEventListener("load", () => {
+        navigator.serviceWorker.register("sw.js").catch(() => {});
+      });
+    }
   }
 })();

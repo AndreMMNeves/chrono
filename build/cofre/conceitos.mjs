@@ -592,15 +592,8 @@ Anacronismo não é sobre tecnologia: é sobre **o que aquela gente consegue exp
     pasta: "Sistema/Inventário",
     tags: ["inventário", "combate"],
     ancora: "s-12-3",
-    resumo: `O dano não muda com a época — muda o quanto a arma **grita**. Um revólver é a mesma coisa em 1890 e em 1650; a diferença é que em 1650 ele te denuncia.
-
-**Armas de época** — do punho à metralhadora de manivela. Anacronismo 0 onde pertencem.
-
-**Armas modernas** — da pistola à metralhadora de apoio. Anacronismo 2 em qualquer época anterior.
-
-**Armas do futuro** — não vieram de época nenhuma: vieram de uma que ainda não foi construída. Anacronismo 3 sempre, exigem Patente e Camada, e **toda vez que disparam rolam Ressonância**. A Agência libera uma por missão, e por escrito.
-
-Ocupam de 1 a 4 espaços de Carga. Munição não se conta: contar bala num jogo pulp mata o ritmo. Recarga só existe para pólvora antiga.`,
+    extrair: { secao: "12.3" },
+    resumo: `As três tabelas completas, com dano, espaços e Anacronismo — puxadas direto do livro.`,
     relacionados: ["Suportes", "Proteções", "Anacronismo", "Itens da Agência", "Ressonância"],
   },
   {
@@ -608,15 +601,8 @@ Ocupam de 1 a 4 espaços de Carga. Munição não se conta: contar bala num jogo
     pasta: "Sistema/Inventário",
     tags: ["inventário"],
     ancora: "s-12-1",
-    resumo: `Uma arma na mão ou enfiada na mochila ocupa espaço. Uma arma **presa ao corpo** não ocupa: ela está vestida, não carregada.
-
-| Suporte | O que resolve |
-|---|---|
-| **Coldre** | Uma arma de até 1 espaço deixa de ocupar espaço. |
-| **Bandoleira** | Uma arma de até 3 espaços deixa de ocupar espaço — mas fica à vista: **+1 de Anacronismo em público**. |
-| **Arreio da Agência** | Duas armas de qualquer tamanho, invisíveis sob a roupa. Exige Patente Recruta. |
-
-Um suporte por vez. Quem quer andar armado sem carregar peso paga em **visibilidade** ou em **Patente** — o suporte não muda o que a arma é, muda a chance de alguém ver.`,
+    extrair: { secao: "12.1", de: "**Suportes.**" },
+    resumo: `Uma arma na mão ocupa espaço. Uma arma **presa ao corpo** não: ela está vestida, não carregada.`,
     relacionados: ["Arsenal", "Anacronismo", "Patente"],
   },
   {
@@ -624,11 +610,8 @@ Um suporte por vez. Quem quer andar armado sem carregar peso paga em **visibilid
     pasta: "Sistema/Inventário",
     tags: ["inventário", "combate"],
     ancora: "s-12-4",
-    resumo: `Só uma por vez. Escudo dá +1 adicional, ocupa 1 espaço e exige uma mão livre.
-
-Da roupa reforçada (+1) à armadura de placas (+4, e metade do movimento), do colete balístico (+3) ao **Traje de Fase** (+5, Patente Veterano e Camada 3, que ignora um ataque por cena ao custo de uma Ressonância).
-
-Armadura pesada é um problema de época **antes** de ser um problema de peso: uma cota de malha é invisível em 1300 e impossível de explicar em 1930.`,
+    extrair: { secao: "12.4" },
+    resumo: `A tabela completa, com o bônus de Defesa, espaços, Anacronismo e penalidade de cada uma.`,
     relacionados: ["Arsenal", "Anacronismo", "Derivados"],
   },
   {

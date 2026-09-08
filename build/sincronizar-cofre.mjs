@@ -175,6 +175,32 @@ function interligar(texto, proprioNome) {
     .join("");
 }
 
+/* ------------------------------------------------- extrair seção do livro -- */
+
+const MD_REGRAS = ler("fontes/CHRONO_Livro_de_Regras.md");
+
+/**
+ * Devolve o corpo de uma seção do Livro de Regras, sem o título.
+ * `de` corta tudo antes de um marcador — serve para pegar só um pedaço.
+ *
+ * As tabelas vêm inteiras: é assim que o dano das armas e o bônus de Defesa
+ * das proteções chegam ao cofre, em vez de um resumo em prosa.
+ */
+function secaoDoLivro(numero, de) {
+  const i = MD_REGRAS.indexOf(`### ${numero} `);
+  if (i < 0) throw new Error(`seção ${numero} não encontrada no Livro de Regras`);
+  const resto = MD_REGRAS.slice(i);
+  const fim = resto.slice(1).search(/\n(?:###? )/);
+  let corpo = (fim < 0 ? resto : resto.slice(0, fim + 1));
+  corpo = corpo.replace(/^### [^\n]*\n/, "").trim();
+  if (de) {
+    const j = corpo.indexOf(de);
+    if (j < 0) throw new Error(`marcador "${de}" não encontrado em ${numero}`);
+    corpo = corpo.slice(j).trim();
+  }
+  return corpo;
+}
+
 /* ==========================================================================
    1. Conceitos e classes
    ========================================================================== */
@@ -183,7 +209,11 @@ console.log("\nCHRONO — sincronizando o cofre\n");
 console.log("  cofre:", COFRE, "\n");
 
 for (const c of CONCEITOS) {
-  const corpo = interligar(c.resumo, c.nome);
+  // conceito com `extrair` traz as tabelas do livro em vez de um resumo
+  const fonte = c.extrair
+    ? c.resumo + "\n\n" + secaoDoLivro(c.extrair.secao, c.extrair.de)
+    : c.resumo;
+  const corpo = interligar(fonte, c.nome);
   const relacionados = (c.relacionados || []).map((r) => `- [[${r}]]`).join("\n");
   nota(
     `${c.pasta}/${seguro(c.nome)}`,

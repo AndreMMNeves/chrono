@@ -372,7 +372,7 @@ for (const parte of partesInimigos) {
          /Gente da/i.test(familia) ? "[[Épocas]]" : null].filter(Boolean);
 
     nota(
-      ehAnomalia ? `Fichas/Anomalias/${seguro(nome)}` : `Fichas/Inimigos/${seguro(familia)}/${seguro(nome)}`,
+      ehAnomalia ? `Mesa/Anomalias prontas/${seguro(nome)}` : `Bestiário/${seguro(familia)}/${seguro(nome)}`,
       frontmatter({
         tipo: ehAnomalia ? "anomalia" : "inimigo",
         gerado: true,
@@ -488,6 +488,10 @@ const subpastas = (pasta) => {
       const p = join(dir, f);
       if (statSync(p).isDirectory()) { varrer(p); continue; }
       if (!f.endsWith(".md")) continue;
+      /* Só o que esta rodada escreveu. Sem isso, uma reorganização deixa as
+         cópias antigas no disco até a limpeza rodar, e o índice conta em
+         dobro — foi o que aconteceu ao mover as fichas de pasta. */
+      if (!escritasNesteRun.has(p)) continue;
       const txt = readFileSync(p, "utf8");
       const campo = (k) => (txt.match(new RegExp("^" + k + ": (.+)$", "m")) || [])[1];
       if (campo("tipo") === "índice") continue;
@@ -502,7 +506,7 @@ const subpastas = (pasta) => {
         classe: campo("classe"),
       });
     }
-  })(join(BASE, "Fichas"));
+  })(BASE);
 
   const ordenar = (a, b) => a.nome.localeCompare(b.nome, "pt-BR");
 
@@ -528,31 +532,36 @@ const subpastas = (pasta) => {
   const agentes = fichas.filter((f) => f.tipo === "agente").sort(ordenar);
   const semGrau = fichas.filter((f) => !f.grau && f.tipo !== "agente").sort(ordenar);
 
+  const inimigos = fichas.filter((f) => f.tipo === "inimigo");
+  const anomalias = fichas.filter((f) => f.tipo === "anomalia").sort(ordenar);
+  const semGrauLista = inimigos.filter((f) => !f.grau).sort(ordenar);
+
   nota(
-    "Fichas/Fichas",
-    frontmatter({ tipo: "índice", gerado: true, tags: ["chrono", "índice", "ficha"] }) +
-      `# Fichas\n\nTudo que tem bloco de estatística, num lugar só — ${fichas.length} fichas.\n\n` +
-      `> [!tip] Achar rápido\n` +
-      `> Todas carregam a tag **#ficha** nas propriedades: clicar nela lista o conjunto inteiro.\n` +
-      `> Os números estão nas propriedades de cada uma, então dá para filtrar por grau, família, época, Defesa ou PV.\n\n` +
-      `## Agentes prontos\n\n` +
-      agentes.map((f) => `- [[${f.nome}]] — ${f.classe || ""}`).join("\n") +
-      `\n\n## Inimigos e anomalias, por [[Grau]]\n\n${porGrau}\n` +
-      (semGrau.length ? `### Sem Grau fixo\n\n` + semGrau.map((f) => `- [[${f.nome}]]`).join("\n") + "\n\n" : "") +
-      `## Por época\n\n${porEpoca}\n`
+    "Bestiário/Bestiário",
+    frontmatter({ tipo: "índice", gerado: true, tags: ["chrono", "índice"] }) +
+      `# Bestiário\n\n${inimigos.length} oponentes: seis famílias de anomalia, gente de cada século e bichos.\n` +
+      `Comece por [[Grau]] e por [[As seis famílias]].\n\n` +
+      `> [!tip] O campo mais importante de cada ficha é **Resolução**.\n` +
+      `> Metade destes não é para matar. Um grupo que só sabe atacar perde a missão ganhando o combate.\n\n` +
+      `> [!note] Achar rápido\n` +
+      `> Toda ficha carrega a tag **#ficha** e traz grau, família, época, Defesa, PV e dano nas propriedades.\n` +
+      `> Dá para filtrar por qualquer um deles.\n\n` +
+      `## Por família\n\n` +
+      subpastas("Bestiário")
+        .map((f) => `### ${f}\n\n` + listar(`Bestiário/${f}`).map((n) => `- [[${n}]]`).join("\n") + "\n")
+        .join("\n") +
+      `\n## Por [[Grau]]\n\n${porGrau}\n` +
+      (semGrauLista.length
+        ? `### Sem Grau fixo\n\n` + semGrauLista.map((f) => `- [[${f.nome}]]`).join("\n") + "\n\n"
+        : "") +
+      `## Por época\n\n${porEpoca}\n\n` +
+      `## Anomalias prontas\n\n` +
+      anomalias.map((f) => `- [[${f.nome}]]`).join("\n") + "\n\n" +
+      `## Os agentes prontos\n\n` +
+      `Ficam em [[Agentes prontos]], com o resto dos personagens.\n` +
+      agentes.map((f) => `\n- [[${f.nome}]] — ${f.classe || ""}`).join("") + "\n"
   );
 }
-
-nota(
-  "Bestiário/Bestiário",
-  frontmatter({ tipo: "índice", gerado: true, tags: ["chrono", "índice"] }) +
-    `# Bestiário\n\nSeis famílias de anomalia, gente de cada século e bichos. Comece por [[Grau]] e por [[As seis famílias]].\n\n` +
-    `> [!tip] O campo mais importante de cada ficha é **Resolução**.\n> Metade destes não é para matar. Um grupo que só sabe atacar perde a missão ganhando o combate.\n\n` +
-    subpastas("Bestiário")
-      .map((f) => `## ${f}\n\n` + listar(`Bestiário/${f}`).map((n) => `- [[${n}]]`).join("\n") + "\n")
-      .join("\n") +
-    `\n## Anomalias prontas\n\n` + listar("Anomalias").map((n) => `- [[${n}]]`).join("\n") + "\n"
-);
 
 nota(
   "Mundo/Épocas",
@@ -770,7 +779,7 @@ Atenção ao [[Anacronismo]]: se a soma do que ele carrega passar da Vontade (${
 ${a.dica}`;
 
   nota(
-    `Fichas/Agentes/${seguro(a.nome)}`,
+    `Personagens/Agentes Prontos/${seguro(a.nome)}`,
     frontmatter({
       tipo: "agente",
       gerado: true,
@@ -792,7 +801,7 @@ ${a.dica}`;
 }
 
 nota(
-  "Fichas/Agentes/Agentes prontos",
+  "Personagens/Agentes Prontos/Agentes prontos",
   frontmatter({ tipo: "índice", gerado: true, tags: ["chrono", "índice"] }) +
 `# Agentes prontos
 

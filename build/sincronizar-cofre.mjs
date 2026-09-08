@@ -462,6 +462,166 @@ Tudo o que **você** criar — personagens, lugares, sessões, ideias — nunca 
 tocado, mesmo dentro dessas pastas.`
 );
 
+/* ==========================================================================
+   Os cinco agentes prontos — ficha fechada, pronta para jogar
+   ========================================================================== */
+
+const { AGENTES, derivados, conferir } = await import("./agentes/agentes.mjs");
+
+const TRAUMAS = {
+  "Sem Ar": ["Submersão, espaço fechado, sufoco", "Vantagem contra Medo e contra efeitos de pressa."],
+  "A Coisa Quente": ["Fogo descontrolado, queimadura, fumaça", "Vantagem em salvaguardas contra dor e contra a condição Abalado."],
+  "O Chão Vindo": ["Altura, beirada, estrutura cedendo", "Você sempre sabe quanto tempo tem: vantagem em Iniciativa."],
+  "As Costas": ["Ser flanqueado, alguém atrás de você", "Vantagem em Percepção para detectar intenção hostil."],
+  "O Lento": ["Contágio, apodrecimento, hospital, cheiro de doente", "Vantagem em Medicina e contra veneno, doença e contaminação."],
+  "O Súbito": ["Barulho alto e repentino, maquinário pesado", "Por 2 EP, age normalmente mesmo estando Desprevenido."],
+  "O Barulho": ["Combate em massa, explosão, muita gente gritando", "Vantagem em Luta quando enfrenta dois ou mais inimigos ao mesmo tempo."],
+  "Sozinho": ["Ser separado do grupo, ficar isolado", "Enquanto estiver sozinho de verdade, +2 em todos os testes."],
+  "A Mão Conhecida": ["Aliado te ferindo, promessa quebrada", "Vantagem em Enganação e em resistir a Persuasão."],
+  "O Que Não Lembro": ["Alguém perguntar como você morreu", "A primeira salvaguarda contra fantasma em cada cena tem vantagem."],
+};
+
+const ATRIBUTO_DE = {
+  Atletismo: "Corpo", Luta: "Corpo", "Resistência": "Corpo",
+  Furtividade: "Reflexo", Pontaria: "Reflexo", Pilotagem: "Reflexo", Reflexos: "Reflexo",
+  "História": "Intelecto", "Ciência": "Intelecto", Tecnologia: "Intelecto", "Investigação": "Intelecto", Medicina: "Intelecto",
+  "Persuasão": "Presença", "Enganação": "Presença", "Intimidação": "Presença", Disfarce: "Presença",
+  Autocontrole: "Vontade", "Percepção": "Vontade", Comando: "Vontade",
+  "Leitura de Fluxo": "Sintonia", Ecos: "Sintonia", Ancoragem: "Sintonia",
+};
+
+for (const a of AGENTES) {
+  const erros = conferir(a);
+  if (erros.length) throw new Error(`Ficha inválida — ${a.nome}: ${erros.join("; ")}`);
+
+  const d = derivados(a);
+  const at = a.atributos;
+  const [gatilho, compensacao] = TRAUMAS[a.trauma] || ["", ""];
+
+  const tabelaAtributos =
+    "| Corpo | Reflexo | Intelecto | Presença | Vontade | Sintonia |\n|---|---|---|---|---|---|\n" +
+    `| **${at.Corpo}** | **${at.Reflexo}** | **${at.Intelecto}** | **${at["Presença"]}** | **${at.Vontade}** | ${at.Sintonia} |`;
+
+  const tabelaPericias =
+    "| Perícia | Treino | Atributo | Total no d20 |\n|---|---|---|---|\n" +
+    Object.entries(a.pericias)
+      .map(([p, v]) => {
+        const base = at[ATRIBUTO_DE[p]] ?? 0;
+        return `| ${p} | ${v} | ${ATRIBUTO_DE[p]} ${base} | **+${base + v}** |`;
+      })
+      .join("\n");
+
+  const corpo =
+`# ${a.nome}
+
+> *${a.gancho}*
+
+**[[${a.classe}]]** · Trilha pretendida **${a.trilha}** · ${a.papel}
+Nível 1 · [[Patente]] Novato · [[As Camadas|Camada]] 0 · [[Instabilidade Pessoal|IP]] 0
+
+## Como morreu
+
+**${a.epoca}.** ${a.morte}
+
+A época de origem dá vantagem em testes sociais e de [[Perícias|História]] naquele período.
+
+## Atributos
+
+${tabelaAtributos}
+
+Somam 9, como manda a criação. [[Atributos|Sintonia]] começa em 0 e só sobe por [[Discernimento]].
+
+## Derivados
+
+| PV | EP máx | Defesa | Iniciativa | Carga | EP/rodada |
+|---|---|---|---|---|---|
+| **${d.pv}** | **${d.ep}** | **${d.defesa}** | **+${d.iniciativa}** | ${d.carga} | ${d.epRodada} |
+
+## Perícias
+
+${tabelaPericias}
+
+## Habilidades de nível 1
+
+${a.habilidades.map(([n, c, t]) => `**${n}** *(${c})* — ${t}`).join("\n\n")}
+
+## [[Trauma]] — ${a.trauma}
+
+**Gatilho:** ${gatilho}
+**Compensação:** ${compensacao}
+
+Quando o Gatilho aparece em cena: [[Salvaguarda]] de Autocontrole contra 6. Passou, +1 de [[Esforço]]. Falhou, Abalado e +5 de [[Instabilidade Pessoal|IP]].
+
+## As cinco [[Memórias]]
+
+${a.memorias.map((m, i) => `${i + 1}. ${m}`).join("\n")}
+
+Queimar uma devolve todo o [[Esforço]], transforma um teste falhado em sucesso, ou anula um efeito que apagaria o agente. Custa −5 de EP máx, para sempre. **Leia em voz alta antes de riscar.**
+
+## Equipamento
+
+${a.equipamento.map((e) => `- ${e}`).join("\n")}
+
+Atenção ao [[Anacronismo]]: se a soma do que ele carrega passar da Vontade (${at.Vontade}) e ele aparecer em público, são +5 de IP por cena.
+
+## Como jogar
+
+${a.dica}`;
+
+  nota(
+    `Personagens/Agentes Prontos/${seguro(a.nome)}`,
+    frontmatter({
+      tipo: "agente",
+      gerado: true,
+      classe: a.classe,
+      trilha: a.trilha,
+      nivel: 1,
+      patente: "Novato",
+      camada: 0,
+      epoca: a.epoca,
+      trauma: a.trauma,
+      pv: d.pv,
+      ep: d.ep,
+      defesa: d.defesa,
+      tags: ["chrono", "agente", "pronto"],
+    }) + interligar(corpo, a.nome) +
+      `\n\n---\n\n*Ficha fechada. Para jogar, abra a [[O site|ficha interativa]] e use **Agentes prontos**.*\n` +
+      `*Gerado de \`build/agentes/agentes.mjs\`.*`
+  );
+}
+
+nota(
+  "Personagens/Agentes Prontos/Agentes prontos",
+  frontmatter({ tipo: "índice", gerado: true, tags: ["chrono", "índice"] }) +
+`# Agentes prontos
+
+Cinco fichas fechadas, em nível 1, para escolher e jogar hoje. Dois de linha de frente, um de suporte, dois especialistas.
+
+| Agente | Classe | Morreu em | PV | EP | Defesa |
+|---|---|---|---|---|---|
+${AGENTES.map((a) => {
+  const d = derivados(a);
+  return `| [[${a.nome}]] | ${a.classe} · ${a.trilha} | ${a.epoca} | ${d.pv} | ${d.ep} | ${d.defesa} |`;
+}).join("\n")}
+
+## Como usar na mesa
+
+São **cinco para quatro jogadores**. O que sobrar fica com o mestre — e essa é a graça: ele não é um NPC qualquer, é alguém que morreu na mesma época, foi recrutado pela mesma [[A Agência|Agência]] e **treinou com o grupo**.
+
+Use o que sobrou como quiser:
+
+- O agente veterano que dá o briefing e sabe mais do que conta
+- O que foi Devolvido numa missão anterior e volta mudado
+- O primeiro a chegar à [[As Camadas|Camada]] 3, e a descobrir que a própria morte não foi como contaram
+- O que vira [[Renegados|Renegado]] no meio da campanha, com a ficha que o grupo conhece de cor
+
+## Para jogar
+
+Abra a [[O site|ficha interativa]] e clique em **Agentes prontos**. Escolher um cria um personagem novo no elenco — nada do que já existe é apagado.`
+);
+
+console.log(`  ${AGENTES.length} agentes prontos`);
+
 /* ---------------------------------------------- o hub e o espaço de criação */
 
 notaLivre(
@@ -529,6 +689,7 @@ RPG de mesa sobre consertar o tempo depois de morrer. Publicado em ${SITE}/
 
 Estas pastas o sincronizador nunca toca:
 
+- [[Agentes prontos]] — **cinco fichas fechadas, prontas para jogar**
 - [[Agentes]] — os personagens dos jogadores
 - [[NPCs]] — gente da Agência, das épocas e das anomalias
 - [[Lugares]] — ruas, prédios, salas, Zonas Cegas

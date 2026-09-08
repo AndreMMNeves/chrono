@@ -650,7 +650,7 @@ for (const p of PAGINAS) {
     ? frag.split("<!--CORPO-->")
     : ["", frag];
   const scripts = {
-    ficha: '<script src="assets/js/ficha.js" defer></script>\n',
+    ficha: '<script src="assets/js/agentes.js" defer></script>\n<script src="assets/js/ficha.js" defer></script>\n',
     mesa: '<script src="assets/js/mesa.js" defer></script>\n',
   };
   escrever(
@@ -673,13 +673,76 @@ escrever(
   `/* gerado por build/build.mjs — não edite à mão */\nwindow.CHRONO_INDICE=${JSON.stringify(indice)};\n`
 );
 
+/* --------------------------------- os cinco agentes prontos, para a ficha */
+
+const { AGENTES, conferir, derivados } = await import("./agentes/agentes.mjs");
+
+for (const a of AGENTES) {
+  const erros = conferir(a);
+  if (erros.length) throw new Error(`Ficha inválida — ${a.nome}: ${erros.join("; ")}`);
+}
+
+/** Traduz um agente para o formato que a ficha importa. */
+function paraFicha(a) {
+  const d = derivados(a);
+  const habs = a.habilidades
+    .map(([n, c, t]) => `${n.toUpperCase()} (${c}) — ${t}`)
+    .join("\n\n") + `\n\nNa Camada 1, a Trilha pretendida é ${a.trilha}.`;
+
+  return {
+    id: a.id,
+    nome: a.nome,
+    classe: a.classe,
+    trilha: a.trilha,
+    papel: a.papel,
+    epoca: a.epoca,
+    morte: a.morte,
+    gancho: a.gancho,
+    dica: a.dica,
+    resumo: { pv: d.pv, ep: d.ep, defesa: d.defesa, iniciativa: d.iniciativa },
+    ficha: {
+      IP: 0,
+      DIS: 0,
+      campos: {
+        f_nome: a.nome,
+        f_jogador: "",
+        f_classe: a.classe,
+        f_arquetipo: "",
+        f_nivel: "1",
+        f_epoca: a.epoca,
+        f_morte: a.morte,
+        f_pvnow: String(d.pv),
+        epNow: String(d.ep),
+        f_trauma: a.trauma,
+        f_trauma_det: "",
+        f_habs: habs,
+        f_poderes: "",
+        f_armas: a.equipamento.filter((e) => /·/.test(e)).join("\n"),
+        f_kit: a.equipamento.filter((e) => !/·/.test(e)).join("\n"),
+        f_enxertos: "",
+        f_pendencia: "",
+        ...Object.fromEntries(a.memorias.map((m, i) => [`mem${i + 1}`, m])),
+      },
+      queimadas: [false, false, false, false, false],
+      atributos: Object.fromEntries(Object.entries(a.atributos).map(([k, v]) => [k, String(v)])),
+      pericias: Object.fromEntries(Object.entries(a.pericias).map(([k, v]) => [k, String(v)])),
+    },
+  };
+}
+
+escrever(
+  join("assets", "js", "agentes.js"),
+  `/* gerado por build/build.mjs — os cinco agentes prontos */\n` +
+    `window.CHRONO_AGENTES=${JSON.stringify(AGENTES.map(paraFicha))};\n`
+);
+
 /* ---------------------------------------------------- uso offline na mesa */
 
 const ARQUIVOS = [
   "./", ...LIVROS.map((l) => l.arquivo), ...PAGINAS.map((p) => p.arquivo),
   "assets/css/fontes.css", "assets/css/chrono.css", "assets/css/paginas.css",
   "assets/css/formularios.css",
-  "assets/js/indice.js", "assets/js/dados.js", "assets/js/app.js",
+  "assets/js/indice.js", "assets/js/dados.js", "assets/js/app.js", "assets/js/agentes.js",
   "assets/js/ficha.js", "assets/js/mesa.js", "assets/selo.svg",
   "manifest.webmanifest",
   // as fontes vão junto: offline sem elas o site perde a tipografia inteira

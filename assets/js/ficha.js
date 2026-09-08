@@ -494,6 +494,72 @@
 
     $("ficha-imprimir").addEventListener("click", () => window.print());
 
+    /* ------------------------------------------------- os agentes prontos */
+
+    const prontos = $("prontos");
+
+    function abrirProntos(abrir) {
+      if (!prontos) return;
+      prontos.hidden = !abrir;
+      if (abrir && !prontos.dataset.montado) {
+        montarProntos();
+        prontos.dataset.montado = "1";
+      }
+    }
+
+    function montarProntos() {
+      const lista = $("prontos-lista");
+      const agentes = window.CHRONO_AGENTES || [];
+      if (!agentes.length) {
+        lista.innerHTML = `<li class="prontos-vazio">Nenhum agente pronto encontrado.</li>`;
+        return;
+      }
+      lista.innerHTML = agentes
+        .map(
+          (a) => `<li class="pronto">
+            <button type="button" class="pronto-btn" data-agente="${escapar(a.id)}">
+              <span class="pronto-topo">
+                <span class="pronto-nome">${escapar(a.nome)}</span>
+                <span class="pronto-classe">${escapar(a.classe)} · ${escapar(a.trilha)}</span>
+              </span>
+              <span class="pronto-epoca">${escapar(a.epoca)} — ${escapar(a.morte)}</span>
+              <span class="pronto-gancho">${escapar(a.gancho)}</span>
+              <span class="pronto-numeros">
+                <b>${a.resumo.pv}</b> PV · <b>${a.resumo.ep}</b> EP ·
+                Defesa <b>${a.resumo.defesa}</b> · Iniciativa <b>+${a.resumo.iniciativa}</b>
+              </span>
+              <span class="pronto-dica">${escapar(a.dica)}</span>
+            </button>
+          </li>`
+        )
+        .join("");
+    }
+
+    if ($("ficha-prontos")) $("ficha-prontos").addEventListener("click", () => abrirProntos(true));
+
+    document.addEventListener("click", (ev) => {
+      if (ev.target.closest("[data-fechar-prontos]") || ev.target === prontos) {
+        abrirProntos(false);
+        return;
+      }
+      const b = ev.target.closest("[data-agente]");
+      if (!b) return;
+      const a = (window.CHRONO_AGENTES || []).find((x) => x.id === b.dataset.agente);
+      if (!a) return;
+
+      // entra como personagem novo: o que já existe no elenco fica
+      guardarAtual();
+      const id = novoId();
+      elenco.fichas[id] = { nome: a.nome, dados: JSON.parse(JSON.stringify(a.ficha)) };
+      trocarPara(id);
+      abrirProntos(false);
+      sinalizar(`${a.nome} entrou no seu elenco.`);
+    });
+
+    document.addEventListener("keydown", (ev) => {
+      if (ev.key === "Escape" && prontos && !prontos.hidden) abrirProntos(false);
+    });
+
     // qualquer edição recalcula e guarda
     document.addEventListener("input", (e) => {
       if (e.target.closest(".ficha")) { calcular(); guardarAtual(); }

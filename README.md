@@ -103,6 +103,19 @@ quanto o presente cede em cima dela.
 `build/og.render.html` é gerado pelo build. Abra em 1200×630 e capture a tela
 em `assets/og.png` se mudar a capa ou o texto de abertura.
 
+## Os cinco agentes prontos
+
+Cinco fichas fechadas em nível 1 — dois Viajantes, um Ancorador, dois
+Paradoxistas — em . Daí saem tanto o seletor da
+ficha do site quanto as notas do cofre.
+
+O build **falha** se alguma ficha desrespeitar as regras de criação: atributos
+somando 9, nenhum acima de 3, perícias somando 10, nenhuma acima de 2, cinco
+memórias e duas habilidades de nível 1.
+
+São cinco para quatro jogadores de propósito. O que sobra fica com o mestre, e
+já treinou com o grupo.
+
 ## O cofre do Obsidian
 
 O cofre em `Documents\André - TI\Obsidian` é o caderno de trabalho: as regras

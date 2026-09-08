@@ -72,6 +72,7 @@
     <div class="ficha-acoes nao-imprime">
       <label class="oculto-visual" for="elenco">Personagem</label>
       <select id="elenco" class="ficha-elenco"></select>
+      <button type="button" class="btn btn-mini btn-carimbo" id="ficha-prontos">Agentes prontos</button>
       <button type="button" class="btn btn-fantasma btn-mini" id="ficha-nova">Nova</button>
       <button type="button" class="btn btn-fantasma btn-mini" id="ficha-duplicar">Duplicar</button>
       <button type="button" class="btn btn-fantasma btn-mini" id="ficha-apagar">Apagar</button>
@@ -83,6 +84,20 @@
   </header>
 
   <p class="ficha-salvo nao-imprime" id="ficha-salvo" role="status"></p>
+
+  <div class="prontos-fundo nao-imprime" id="prontos" hidden>
+    <div class="prontos" role="dialog" aria-modal="true" aria-labelledby="prontos-h">
+      <div class="prontos-topo">
+        <div>
+          <h2 id="prontos-h" class="prontos-titulo">Escolha um agente</h2>
+          <p class="prontos-linha">Cinco fichas fechadas, prontas para jogar hoje. Escolher uma cria um personagem novo no seu elenco — nada do que você já tem é apagado.</p>
+        </div>
+        <button type="button" class="btn btn-fantasma btn-mini" data-fechar-prontos>Fechar</button>
+      </div>
+      <ul class="prontos-lista" id="prontos-lista"></ul>
+      <p class="prontos-rodape">Numa mesa de quatro jogadores sobra um. Esse fica com o mestre — e ele já conhece o grupo.</p>
+    </div>
+  </div>
 
   <!-- ================================================ identidade -->
   <section class="ficha-bloco ficha-identidade" aria-label="Identidade">
@@ -283,6 +298,7 @@
 <script src="assets/js/indice.js" defer></script>
 <script src="assets/js/dados.js" defer></script>
 <script src="assets/js/app.js" defer></script>
+<script src="assets/js/agentes.js" defer></script>
 <script src="assets/js/ficha.js" defer></script>
 </body>
 </html>

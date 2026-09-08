@@ -103,6 +103,34 @@ quanto o presente cede em cima dela.
 `build/og.render.html` é gerado pelo build. Abra em 1200×630 e capture a tela
 em `assets/og.png` se mudar a capa ou o texto de abertura.
 
+## O cofre do Obsidian
+
+O cofre em `Documents\André - TI\Obsidian` é o caderno de trabalho: as regras
+como notas interligadas, mais o espaço para criar personagem, lugar e sessão.
+
+```sh
+node build/sincronizar-cofre.mjs   # atualiza o cofre a partir de fontes/
+node build/verificar-cofre.mjs     # procura link quebrado e nota órfã
+```
+
+O sincronizador escreve três coisas:
+
+| Pasta | O quê |
+|---|---|
+| `CHRONO/Sistema`, `Mundo`, `Bestiário`, `Anomalias` | ~90 notas atômicas, uma por conceito, inimigo, época e anomalia — cada uma linkando para a seção certa do site |
+| `CHRONO/Livros` | os três livros na íntegra, como backup |
+| `Modelos/` | modelos de agente, NPC, lugar, sessão, inimigo e anomalia |
+
+**Ele nunca apaga o que é seu.** Só sobrescreve notas que carregam
+`gerado: true` nas propriedades — as que ele mesmo criou. Qualquer nota sua
+sobrevive, mesmo dentro de uma pasta gerada. As pastas `Personagens/`, `Mesa/`
+e `Mundo/Lugares/` são inteiramente suas.
+
+Se o cofre mudar de lugar: `COFRE="D:/outro/caminho" node build/sincronizar-cofre.mjs`.
+
+Os textos dos conceitos ficam em `build/cofre/conceitos.mjs` — é lá que se
+edita o resumo de "Instabilidade Pessoal", não na nota do cofre.
+
 ## Publicar no GitHub Pages
 
 1. Suba estes arquivos na raiz de um repositório.

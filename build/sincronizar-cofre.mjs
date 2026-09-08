@@ -132,7 +132,7 @@ const GLOSSARIO = [
   "Regra das Brasas", "A Zona Fantasma", "Zona Fantasma", "Ato de Âncora",
   "Leitura do teste", "Falha crítica", "Escada de Dados", "Zonas Cegas",
   "Itens da Agência", "Descompressão", "Discernimento", "Ressonância",
-  "Anacronismo", "Paradoxista", "Salvaguarda", "Renegados", "Ancorador",
+  "Anacronismo", "Paradoxista", "Corrompidos", "Salvaguarda", "Renegados", "Ancorador",
   "Revelações", "Descoagular", "Fantasmas", "Sacrifício", "Memórias",
   "Suspeita", "Sequela", "Viajante", "Paradoxo", "Esforço", "Patente",
   "Camadas", "Favores", "Trauma", "Deriva", "Janela", "Fluxo", "Grau",
@@ -315,7 +315,7 @@ for (const parte of partesInimigos) {
         tags: ["chrono", ehAnomalia ? "anomalia" : "inimigo"],
       }) +
         `# ${nome}\n\n${texto}\n\n## Ligado a\n\n` +
-        (ehAnomalia ? "- [[Anomalia]]\n- [[A Viga]]\n- [[Instabilidade do Fluxo]]\n" : `- [[As cinco famílias]]\n- [[Grau]]\n`) +
+        (ehAnomalia ? "- [[Anomalia]]\n- [[A Viga]]\n- [[Instabilidade do Fluxo]]\n" : `- [[As seis famílias]]\n- [[Grau]]\n`) +
         rodape("CHRONO_Livro_dos_Inimigos.md", null, "inimigos")
     );
     ehAnomalia ? nAnomalias++ : nInimigos++;
@@ -404,7 +404,7 @@ const subpastas = (pasta) => {
 nota(
   "Bestiário/Bestiário",
   frontmatter({ tipo: "índice", gerado: true, tags: ["chrono", "índice"] }) +
-    `# Bestiário\n\nDezoito fichas em cinco famílias. Comece por [[Grau]] e por [[As cinco famílias]].\n\n` +
+    `# Bestiário\n\nSeis famílias de anomalia, gente de cada século e bichos. Comece por [[Grau]] e por [[As seis famílias]].\n\n` +
     `> [!tip] O campo mais importante de cada ficha é **Resolução**.\n> Metade destes não é para matar. Um grupo que só sabe atacar perde a missão ganhando o combate.\n\n` +
     subpastas("Bestiário")
       .map((f) => `## ${f}\n\n` + listar(`Bestiário/${f}`).map((n) => `- [[${n}]]`).join("\n") + "\n")
@@ -740,7 +740,7 @@ RPG de mesa sobre consertar o tempo depois de morrer. Publicado em ${SITE}/
 ## Rodar
 
 - [[Estrutura de missão]] · [[As alavancas do mestre]] · [[Segurando o tom]]
-- [[Bestiário]] — 18 fichas em [[As cinco famílias|cinco famílias]]
+- [[Bestiário]] — 18 fichas em [[As seis famílias|seis famílias]]
 - [[Épocas]] — onze séculos jogáveis
 - [[Anomalia|Anomalias prontas]]: [[A Peste Errada]] · [[O Bicho em São Paulo]] · [[O Presidente que Viveu]] · [[A Máquina de Princeton]]
 

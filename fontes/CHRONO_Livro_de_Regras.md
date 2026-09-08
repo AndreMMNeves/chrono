@@ -1124,7 +1124,7 @@ Um vírus é Grau 5 e não tem um único ponto de vida.
 
 **Selo:** *Contido* (existe mas não se espalha) · *Ativo* (se espalhando agora) · *Terminal* (já reescreveu o presente — o grupo está operando dentro do erro).
 
-### 17.2 As cinco famílias
+### 17.2 As seis famílias
 
 **Deslocados** — coisa ou criatura fora da própria época. Sem intenção, e difíceis de esconder.
 
@@ -1135,6 +1135,8 @@ Um vírus é Grau 5 e não tem um único ponto de vida.
 **Fantasmas** — a população da Zona. Ver 14.4.
 
 **Renegados** — ex-agentes que chegaram à Camada 5 e decidiram que o Fluxo atual não valia a pena. Têm classes, trilhas, Instabilidade — e mais Discernimento que você.
+
+**Corrompidos** — agentes que a Agência perdeu, e não para o outro lado. O Renegado escolheu sair; o Corrompido foi dissolvido pelo próprio trabalho. É a ficha dos jogadores com o botão apertado até o fim, e a única família que a mesa olha e reconhece.
 
 > Bestiário completo, estatísticas e quatro anomalias prontas vêm no próximo volume.
 

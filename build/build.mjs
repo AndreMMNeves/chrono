@@ -52,7 +52,7 @@ const LIVROS = [
     nav: "Inimigos",
     titulo: "Livro dos Inimigos",
     resumo:
-      "A régua de Grau, dezoito fichas em cinco famílias e quatro anomalias prontas para rodar hoje à noite.",
+      "A régua de Grau, mais de cinquenta fichas em seis famílias, gente de cada século, bichos e quatro anomalias prontas.",
     ref: "VOL. II",
   },
   {

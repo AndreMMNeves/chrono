@@ -80,7 +80,7 @@ Ao montar uma anomalia, se você não consegue escrever a viga em uma frase, ain
 Alguém levou covid-19 para a Idade Média. Alguém trouxe um dinossauro para São Paulo. Alguém salvou Kennedy e o mundo virou ditadura. Alguém levou uma IA para a época de Einstein.
 
 Cada anomalia tem Grau (dano ao Fluxo), Selo (contido, ativo ou terminal), Peso (quanto da Instabilidade do Fluxo ela segura), Época e Viga.`,
-    relacionados: ["A Viga", "Grau", "Instabilidade do Fluxo", "As cinco famílias"],
+    relacionados: ["A Viga", "Grau", "Instabilidade do Fluxo", "As seis famílias"],
   },
 
   /* ----------------------------------------------------------------- motor */
@@ -724,7 +724,7 @@ O relógio de Suspeita e a escada de Discernimento sobem juntos de propósito: *
     livro: "inimigos",
     extrair: { secao: "1.4", livro: "inimigos" },
     resumo: `O antagonista do meio da campanha: aquele que o grupo encontra três vezes, perde duas, e que sobe de Grau junto com eles.`,
-    relacionados: ["Grau", "As cinco famílias", "Renegados"],
+    relacionados: ["Grau", "As seis famílias", "Renegados"],
   },
   {
     nome: "Estrutura de missão",
@@ -786,10 +786,10 @@ Não use Grau para escolher encontro. Use para saber **quanto da Instabilidade d
 | 5 | 24 | 300 | +15 | 4d6+10 | +9 | 18–20 |
 
 **Grau 3+** Presença Pesada · **Grau 4+** Resiliência e Duas Ações · **Grau 5** Não Se Mata Assim.`,
-    relacionados: ["As cinco famílias", "Instabilidade do Fluxo", "Anomalia"],
+    relacionados: ["As seis famílias", "Instabilidade do Fluxo", "Anomalia"],
   },
   {
-    nome: "As cinco famílias",
+    nome: "As seis famílias",
     pasta: "Bestiário",
     tags: ["inimigos", "índice"],
     ancora: "parte-02",
@@ -802,7 +802,9 @@ Não use Grau para escolher encontro. Use para saber **quanto da Instabilidade d
 
 **Fantasmas** — a população da Zona.
 
-**Renegados** — ex-agentes que chegaram à Camada 5 e decidiram que o Fluxo atual não valia a pena. Têm mais Discernimento que você.`,
+**Renegados** — ex-agentes que chegaram à Camada 5 e decidiram que o Fluxo atual não valia a pena. Têm mais Discernimento que você.
+
+**Corrompidos** — agentes que a Agência perdeu, e não para o outro lado. O Renegado escolheu sair; o Corrompido foi dissolvido pelo próprio trabalho.`,
     relacionados: ["Grau", "Fantasmas", "Renegados", "Anomalia"],
   },
   {
@@ -817,7 +819,17 @@ Toque de fantasma: salvaguarda de Autocontrole contra o limiar indicado. Falhou,
 Você **não pode matá-los**. Pode afastar, selar, conversar, correr, negociar. Um combate contra fantasmas não é sobre reduzir números — é sobre sair da sala antes de virar um.
 
 Isso os torna aterrorizantes sem estatísticas grandes: a solução para um fantasma é sempre esperta, nunca bruta.`,
-    relacionados: ["A Zona Fantasma", "Instabilidade Pessoal", "Ancorador", "As cinco famílias"],
+    relacionados: ["A Zona Fantasma", "Instabilidade Pessoal", "Ancorador", "As seis famílias"],
+  },
+  {
+    nome: "Corrompidos",
+    pasta: "Bestiário",
+    tags: ["inimigos", "instabilidade"],
+    ancora: "parte-07",
+    livro: "inimigos",
+    extrair: { secao: "7.1", livro: "inimigos" },
+    resumo: `A sexta família, e a única que a mesa olha e reconhece: é a ficha dos jogadores com o botão apertado até o fim.`,
+    relacionados: ["Instabilidade Pessoal", "Renegados", "As seis famílias", "A Zona Fantasma", "Memórias", "Reancoragem"],
   },
   {
     nome: "Renegados",
@@ -830,7 +842,7 @@ Isso os torna aterrorizantes sem estatísticas grandes: a solução para um fant
 Têm classe, trilha, Instabilidade — e **mais Discernimento que você**. Montam-se com as regras dos jogadores.
 
 Um Renegado capturado é a melhor fonte de informação do jogo. Deixar um ir sobe a Suspeita em 2.`,
-    relacionados: ["As cinco famílias", "As Camadas", "Suspeita", "A Agência"],
+    relacionados: ["As seis famílias", "As Camadas", "Suspeita", "A Agência"],
   },
   {
     nome: "Descoagular",

@@ -669,8 +669,22 @@ Máximo **dois Enxertos** por personagem.
 | Leve (pistola, livro, ferramenta) | 1 |
 | Pesado (rifle, mochila, mala) | 2 |
 | Enorme (caixote, corpo, equipamento grande) | 3 |
+| Descomunal (metralhadora de apoio, armadura de placas) | 4 |
 
 Acima do limite: desvantagem em Reflexo e Corpo, e velocidade reduzida à metade.
+
+**Suportes.** Uma arma na mão ou enfiada na mochila ocupa espaço. Uma arma
+**presa ao corpo** não ocupa: ela está vestida, não carregada.
+
+| Suporte | O que resolve | Custo |
+|---|---|---|
+| **Coldre** | Uma arma de até 1 espaço deixa de ocupar espaço. | vestido · Anacronismo 0 |
+| **Bandoleira** | Uma arma de até 3 espaços deixa de ocupar espaço — mas fica à vista. **+1 no Anacronismo dela em público.** | vestida · Anacronismo 0 |
+| **Arreio da Agência** | Duas armas de qualquer tamanho deixam de ocupar espaço, e não aparecem sob a roupa. Exige Patente Recruta. | vestido · Anacronismo 3 |
+
+Um suporte por vez. O suporte não muda o que a arma é — muda a chance de
+alguém ver, e a bandoleira piora essa chance de propósito. Quem quer andar
+armado sem carregar peso paga em visibilidade ou em Patente.
 
 ### 12.2 Anacronismo
 
@@ -687,24 +701,70 @@ Todo item carrega um **Grau de Anacronismo (0 a 3)** — o quanto ele grita que 
 
 ### 12.3 Armas
 
-O dano não muda com a época — o que muda é o quanto a arma **grita**. Um revólver é a mesma coisa em 1890 e em 1650; a diferença é que em 1650 ele te denuncia.
+O dano não muda com a época — o que muda é o quanto a arma **grita**. Um
+revólver é a mesma coisa em 1890 e em 1650; a diferença é que em 1650 ele te
+denuncia.
 
-| Arma | Dano | Esp. | Anacr. na época certa | Nota |
+**Recarga** só existe para arma de pólvora antiga. Fora isso, CHRONO não conta
+munição: contar bala num jogo pulp mata o ritmo.
+
+#### Armas de época
+
+Anacronismo 0 na época a que pertencem, e o Grau indicado em qualquer época anterior.
+
+| Arma | Dano | Esp. | Anacr. | Nota |
 |---|---|---|---|---|
 | Punho, cassetete, pedra | 1d4 + Corpo | — | 0 | Sempre disponível |
 | Faca, adaga, machadinha | 1d6 + Corpo | 1 | 0 | Pode ser escondida |
-| Espada, machado, porrete | 1d6 + Corpo | 2 | 0 | Visível; chama atenção em época errada |
-| Lança, alabarda | 1d8 + Corpo | 3 | 0 | Alcance; desvantagem em espaço fechado |
-| Arco, besta | 1d8 | 2 | 0 | Silencioso |
+| Espada curta, gládio, cutelo | 1d6 + Corpo | 1 | 0 | — |
+| Espada longa, machado, porrete | 1d6 + Corpo | 2 | 0 | Visível; chama atenção em época errada |
+| Maça, martelo de guerra | 1d8 + Corpo | 3 | 0 | Ignora 1 ponto da Defesa dada por armadura |
+| Lança, alabarda, tridente | 1d8 + Corpo | 3 | 0 | Alcance; desvantagem em espaço fechado |
+| Funda | 1d4 | 1 | 0 | Silenciosa, e a munição está no chão |
+| Arco | 1d8 | 2 | 0 | Silencioso |
+| Besta | 1d8 | 2 | 0 | Silenciosa; **recarga: 1 rodada** |
 | Mosquete, arcabuz | 1d8 | 3 | 1 | **Recarga: 1 rodada inteira** |
 | Revólver, pistola de ferrolho | 1d10 | 1 | 1 | Recarga a cada 6 disparos |
 | Rifle de ferrolho | 1d10 | 2 | 1 | Vantagem à distância longa |
+| Metralhadora de manivela | 2d6 | 4 | 1 | Precisa de apoio e das duas mãos |
 | Explosivo improvisado | 1d12 | 2 | 2 | Área. Uso único, e o barulho é o problema |
-| Pistola moderna | 2d6 | 1 | 2 | — |
-| Fuzil moderno | 2d6 | 3 | 2 | Automático: pode dividir os ataques |
-| **Arma da Agência** | 2d8 | 1 | 3 | Não faz barulho e não deixa marca |
 
-**Recarga** só existe para arma de pólvora antiga. Fora isso, CHRONO não conta munição — contar bala num jogo pulp mata o ritmo.
+#### Armas modernas
+
+Anacronismo 2 em qualquer época anterior à sua. No presente, 0.
+
+| Arma | Dano | Esp. | Anacr. | Nota |
+|---|---|---|---|---|
+| Pistola | 2d6 | 1 | 2 | — |
+| Submetralhadora | 2d6 | 2 | 2 | Automática: pode dividir os ataques |
+| Espingarda de combate | 2d8 | 3 | 2 | Só a curta distância; desvantagem longe |
+| Fuzil de assalto | 2d6 | 3 | 2 | Automático: pode dividir os ataques |
+| Fuzil de precisão | 2d8 | 4 | 2 | Exige uma rodada inteira mirando |
+| Metralhadora de apoio | 3d6 | 4 | 2 | Precisa de apoio; não dá para mover e atirar |
+| Granada | 2d8 | 1 | 2 | Área. Uso único |
+| Explosivo plástico | 3d6 | 1 | 2 | Área. Uso único, e exige uma cena de preparo |
+
+#### Armas do futuro
+
+Não vieram de época nenhuma: vieram de uma que **ainda não foi construída**.
+Anacronismo 3 sempre, inclusive no presente, e cada uma exige Patente e Camada
+como os demais Itens da Agência (12.6).
+
+> **Eco de Futuro.** Toda vez que uma destas dispara, role **Ressonância** (2.5).
+> O objeto está puxando de um tempo que ainda não aconteceu, e o Fluxo sente a
+> corda esticar. Não é punição: é o preço de usar o que não existe.
+
+| Arma | Dano | Esp. | Patente | Camada | O que ela faz |
+|---|---|---|---|---|---|
+| **Estilete Fora de Fase** | 2d6 | 1 | Recruta | 1 | O golpe acontece meio segundo antes de você dar. Ignora proteção. |
+| **Marcador de Ausência** | 1d8 | 1 | Recruta | 2 | Marca o alvo. O próximo ataque de qualquer aliado contra ele acerta sem rolar. |
+| **Repetidor** | 2d8 | 2 | Soldado | 2 | O disparo acontece duas vezes no mesmo instante: um alvo, dois danos. |
+| **Âncora de Impacto** | 2d8 | 2 | Veterano | 3 | O alvo não pode se mover nem ser movido até o fim da cena. Prende inclusive quem estava fugindo por poder. |
+| **Ceifa Curta** | 3d6 | 3 | Veterano | 3 | Área. Todos que forem atingidos agem por último na próxima rodada. |
+| **A Última Palavra** | 3d8 | 4 | Ancião | 5 | **1× por campanha.** O alvo não morre: deixa de ter estado ali. Role Paradoxo com desvantagem, e aceite o que vier. |
+
+Armas do futuro não podem ser requisitadas para uma missão qualquer. A Agência
+libera uma por missão, e por escrito. Perder uma custa a Patente.
 
 ### 12.4 Proteções
 
@@ -712,11 +772,18 @@ O dano não muda com a época — o que muda é o quanto a arma **grita**. Um re
 |---|---|---|---|---|
 | Roupa reforçada, gibão, sobretudo grosso | +1 | 1 | 0 | — |
 | Couro batido, peitoral leve | +2 | 2 | 0 | — |
-| Cota de malha, armadura de placas | +3 | 3 | 0 | Desvantagem em Furtividade e Atletismo |
+| Cota de malha | +3 | 3 | 0 | Desvantagem em Furtividade |
+| Armadura de placas | +4 | 4 | 0 | Desvantagem em Furtividade e Atletismo; metade do movimento |
 | Colete balístico | +3 | 2 | 2 | — |
+| Colete tático com placas | +4 | 3 | 2 | Desvantagem em Furtividade |
 | **Traje da Agência** | +4 | 1 | 3 | Funciona também como Traje Correspondente |
+| **Traje de Fase** | +5 | 1 | 3 | Patente Veterano e Camada 3. 1×/cena ignora um ataque por completo — e role Ressonância |
 
-Só uma proteção por vez. Escudo dá **+1** adicional e ocupa 1 espaço, mas exige uma mão livre.
+Só uma proteção por vez. **Escudo** dá +1 adicional e ocupa 1 espaço, mas exige
+uma mão livre.
+
+Armadura pesada é um problema de época antes de ser um problema de peso: uma
+cota de malha é invisível em 1300 e impossível de explicar em 1930.
 
 ### 12.5 Equipamento
 

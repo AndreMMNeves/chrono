@@ -13,7 +13,7 @@
  * tocada, mesmo que esteja numa dessas pastas.
  */
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, statSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, statSync, rmSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { CONCEITOS, CLASSES } from "./cofre/conceitos.mjs";
@@ -36,6 +36,7 @@ if (!existsSync(COFRE)) {
    ========================================================================== */
 
 let escritas = 0, preservadas = 0;
+const escritasNesteRun = new Set();
 
 const ehGerado = (caminho) => {
   if (!existsSync(caminho)) return true; // não existe, pode criar
@@ -52,7 +53,31 @@ function nota(caminhoRelativo, conteudo) {
   }
   mkdirSync(dirname(alvo), { recursive: true });
   writeFileSync(alvo, conteudo, "utf8");
+  escritasNesteRun.add(alvo);
   escritas++;
+}
+
+/**
+ * Nota gerada que este run não escreveu virou lixo: veio de um inimigo, época
+ * ou agente que não existe mais. Some com ela — e só com ela, porque nota sua
+ * não tem `gerado: true` e nunca entra nesta conta.
+ */
+function limparObsoletas() {
+  if (!existsSync(BASE)) return [];
+  const removidas = [];
+  (function varrer(dir) {
+    for (const f of readdirSync(dir)) {
+      const p = join(dir, f);
+      if (statSync(p).isDirectory()) { varrer(p); continue; }
+      if (!f.endsWith(".md")) continue;
+      if (escritasNesteRun.has(p)) continue;
+      const txt = readFileSync(p, "utf8");
+      if (!/^---\n(?:.*\n)*?gerado: true\n/m.test(txt)) continue; // é sua, fica
+      rmSync(p);
+      removidas.push(p.slice(BASE.length + 1));
+    }
+  })(BASE);
+  return removidas;
 }
 
 function notaLivre(caminhoAbsoluto, conteudo) {
@@ -859,6 +884,12 @@ for (const [pasta, titulo, texto] of [
     frontmatter({ tipo: "índice", tags: ["chrono", "índice"] }) +
       `# ${titulo}\n\n${texto}\n\n> [!note] Esta pasta é sua\n> O sincronizador nunca escreve aqui.\n`
   );
+}
+
+const obsoletas = limparObsoletas();
+if (obsoletas.length) {
+  console.log(`\n  ${obsoletas.length} nota(s) gerada(s) que deixaram de existir, removidas:`);
+  obsoletas.forEach((o) => console.log("    ·", o));
 }
 
 console.log(`\n  ${escritas} notas escritas` + (preservadas ? `, ${preservadas} preservadas (suas)` : ""));

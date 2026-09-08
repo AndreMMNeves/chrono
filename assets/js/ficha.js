@@ -71,6 +71,7 @@
     "f_pvnow", "f_trauma", "f_trauma_det", "f_pendencia", "f_habs", "f_enxertos",
     "f_kit", "f_armas", "f_poderes", "epNow",
     "mem1", "mem2", "mem3", "mem4", "mem5",
+    "vinc1", "vinc2",
   ];
 
   /* ============================================================== montagem */
@@ -106,6 +107,13 @@
       `<div class="memoria">
         <input type="checkbox" id="q${i}" aria-label="Queimar a memória ${i}">
         <input type="text" id="mem${i}" placeholder="memória ${i}" autocomplete="off">
+      </div>`
+    ).join("");
+
+    $("vinculos").innerHTML = [1, 2].map((i) =>
+      `<div class="memoria">
+        <input type="checkbox" id="vq${i}" aria-label="Queimar o vínculo ${i}">
+        <input type="text" id="vinc${i}" placeholder="vínculo ${i} — para quem, e o quê" autocomplete="off">
       </div>`
     ).join("");
 
@@ -239,6 +247,16 @@
     [1, 2, 3, 4, 5].forEach((i) => {
       $("mem" + i).classList.toggle("queimada", $("q" + i).checked);
     });
+
+    // Vínculos: queimar não custa EP máx, custa o vínculo
+    const vQueimados = [1, 2].filter((i) => $("vq" + i).checked).length;
+    [1, 2].forEach((i) => $("vinc" + i).classList.toggle("queimada", $("vq" + i).checked));
+    $("vinculoAviso").textContent = vQueimados === 0
+      ? "Chamar traz o aliado à cena e empresta uma perícia dele, até a Descompressão. Queimar anula um efeito que mataria, apagaria ou Devolveria aquele aliado — e o vínculo sai da ficha para sempre."
+      : vQueimados >= 2
+      ? "Os dois queimados. Na Descompressão dá para escrever vínculos novos, apontando para quem você quiser."
+      : "1 de 2 queimado. Escreva um novo na Descompressão, se quiser.";
+    $("vinculoAviso").classList.toggle("alerta", vQueimados >= 2);
   }
 
   /* ================================================================ guardar */
@@ -251,6 +269,7 @@
     const d = { IP, DIS, campos: {}, atributos: {}, pericias: {} };
     CAMPOS.forEach((c) => { if ($(c)) d.campos[c] = $(c).value; });
     d.queimadas = [1, 2, 3, 4, 5].map((i) => $("q" + i).checked);
+    d.vinculosQueimados = [1, 2].map((i) => $("vq" + i).checked);
     ATRIBUTOS.forEach((a) => { d.atributos[a] = $("at_" + a).value; });
     PERICIAS.forEach(([p]) => { d.pericias[p] = $("sk_" + p).value; });
     return d;
@@ -263,11 +282,13 @@
     ATRIBUTOS.forEach((a) => { $("at_" + a).value = a === "Sintonia" ? 0 : 1; });
     PERICIAS.forEach(([p]) => { $("sk_" + p).value = 0; });
     [1, 2, 3, 4, 5].forEach((i) => { $("q" + i).checked = false; });
+    [1, 2].forEach((i) => { $("vq" + i).checked = false; });
 
     Object.entries(d.campos || {}).forEach(([k, v]) => { if ($(k)) $(k).value = v; });
     Object.entries(d.atributos || {}).forEach(([k, v]) => { if ($("at_" + k)) $("at_" + k).value = v; });
     Object.entries(d.pericias || {}).forEach(([k, v]) => { if ($("sk_" + k)) $("sk_" + k).value = v; });
     (d.queimadas || []).forEach((v, i) => { if ($("q" + (i + 1))) $("q" + (i + 1)).checked = !!v; });
+    (d.vinculosQueimados || []).forEach((v, i) => { if ($("vq" + (i + 1))) $("vq" + (i + 1)).checked = !!v; });
     if (!$("f_nivel").value) $("f_nivel").value = 1;
     calcular();
   }

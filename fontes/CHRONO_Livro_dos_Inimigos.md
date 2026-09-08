@@ -47,6 +47,20 @@ PESO        quanto de IF ele segura
 
 **Resolução é o campo mais importante.** Metade dos inimigos deste livro não são para matar. Se o grupo só souber atacar, ele perde a missão ganhando o combate.
 
+### 1.4 A Nêmesis
+
+Este livro tem inimigo de missão, e tem A Primeira, que é o fim de campanha. Falta o do meio: alguém que o grupo encontra três vezes.
+
+Uma **Nêmesis** é qualquer ficha deste livro com três mudanças.
+
+1. **Ela escapa.** Na primeira aparição não pode ser resolvida. Some na metade dos PV, ou quando a cena vira.
+2. **Ela sobe de Grau junto com o grupo.** Um Grau a cada encontro, pela régua de 1.2. Vocês crescem, ela cresce, e a distância nunca fecha sozinha.
+3. **Ela aprende.** No segundo encontro é imune ao que resolveu o primeiro. Se convenceram, agora ela não conversa. Se queimaram, agora ela não queima.
+
+**No terceiro encontro ela pode ser resolvida** — e a resolução tem que ser uma coisa que o grupo só descobriu por ter perdido duas vezes.
+
+> Sem Nêmesis, uma campanha de CHRONO é uma sequência de anomalias sem memória: corrige, esquece, corrige outra. A Nêmesis é o fio que faz a sessão 12 doer por causa da sessão 3.
+
 ---
 
 ## PARTE II — DESLOCADOS

@@ -239,6 +239,28 @@ O **limite de Esforço por rodada** existe para impedir que o jogador despeje a 
 7. **Cinco Memórias.** Escreva cinco lembranças da sua vida, uma linha cada. Elas são combustível (Parte IX). Escreva coisas que você não vai querer perder.
 8. **Comece em:** Nível 1, Patente Novato, Camada 0, IP 0.
 
+### 3.5 Vínculos
+
+As cinco Memórias ligam o agente à vida que ele perdeu. Os **Vínculos** ligam ele ao que sobrou: os outros.
+
+Na primeira sessão, cada agente escreve **dois Vínculos**, cada um apontando para outro agente da mesa.
+
+- **O que ele viu em mim.** Uma coisa que aquele agente sabe sobre você e que a Agência não tem no arquivo.
+- **O que eu devo a ele.** Uma coisa que ele fez por você e que você não retribuiu.
+
+Cada Vínculo é um recurso, e vale duas coisas:
+
+| Gastar | O quê |
+|---|---|
+| **Chamar** | O aliado citado entra na cena, se puder chegar. Você usa uma perícia dele no lugar da sua, uma vez, no valor dele. O Vínculo fica gasto até a Descompressão. |
+| **Queimar** | Anula um efeito que mataria, apagaria ou Devolveria **aquele aliado**. O Vínculo sai da ficha para sempre, e você lê em voz alta o que ele era. |
+
+Um Vínculo queimado não volta. Mas na Descompressão um agente pode **escrever um Vínculo novo**, apontando para quem quiser — inclusive para quem entrou no grupo depois.
+
+> Memória é o que você foi; Vínculo é o que você é agora. O sistema deixa queimar os dois, e a diferença importa: a Memória salva você, o Vínculo salva outra pessoa.
+
+**Mesa de dois jogadores:** cada um escreve os dois Vínculos apontando para o mesmo aliado. Fica mais denso, o que é apropriado.
+
 ---
 
 ## PARTE IV — ESFORÇO E INSTABILIDADE
@@ -540,7 +562,13 @@ Ganhos nos níveis 4, 7, 11, 14 e 17. Qualquer classe pode pegar qualquer um, de
 | **Duas Vezes** | 3 | 5 EP | Repete integralmente a sua última ação, com o mesmo resultado. |
 | **Ponto de Retorno** | 4 | 8 EP | Marca um instante. 1×/missão, o grupo inteiro volta a ele. Ressonância. |
 | **Testemunha** | 4 | 6 EP | O mestre responde com a verdade sobre o que vai acontecer nos próximos minutos. |
+| **Linha Paralela** | 3 | 5 EP | Uma ação já resolvida passa a ter o resultado que teria tido se você tivesse decidido o contrário. Ressonância. |
+| **Costura Curta** | 3 | 4 EP | Dois eventos da mesma cena trocam de ordem. O que aconteceu depois passa a ter acontecido antes. Ressonância. |
+| **Testemunha de Si** | 4 | 7 EP | Você de dez minutos no futuro aparece, age por uma rodada e some. Você lembra de ter feito aquilo. Ressonância com desvantagem. |
+| **Adiar** | 4 | 6 EP | Um efeito que aconteceria agora acontece no fim da cena. Inclusive dano. Inclusive uma morte. |
+| **Ponto Cego** | 5 | 8 EP | Por uma cena o Fluxo não registra você: nada que você fizer sobe IP ou IF, nem gera Ressonância ou Paradoxo. Você não está acontecendo. |
 | **Reescrever** | 5 | 10 EP + 1 Memória | Muda um fato pequeno do passado da cena. Ele sempre foi assim. |
+| **A Outra Terça** | 5 | 12 EP + 1 Memória | Abre uma Janela num instante já queimado pela Regra das Brasas. **1× por campanha.** Paradoxo com desvantagem, e aceite o que vier. |
 
 ---
 
@@ -952,6 +980,23 @@ Nada volta do passado além dos agentes e da anomalia. É a primeira regra da Ag
 
 Trazer qualquer coisa do passado sem autorização sobe a **Suspeita** do grupo em 1 e, se for descoberto, custa a Patente.
 
+### 15.8 Dentro da Zona
+
+Entrar é raro: exige **Abrir a Zona** (Ancorador, nível 10), um Frasco de Zona quebrado, ou um Rasgo que ninguém fechou. Sair é o assunto desta seção.
+
+**O que muda lá dentro**
+
+- **A Instabilidade sobe por cena, não por ato.** +5 a cada cena, faça você o que fizer. Ficar parado não ajuda.
+- **Não há tempo.** Uma hora lá pode ser um minuto aqui, ou um mês. O mestre decide quando, e não avisa antes.
+- **Ninguém morre.** Chegar a 0 PV não descoagula: você fica. Vira parte do lugar, e o grupo continua vendo você — respondendo cada vez mais devagar.
+- **Fantasmas falam sem serem convencidos.** Não precisa de Diálogo. Todos falam, o tempo todo, e a maioria está falando com outra pessoa.
+
+**O que se acha lá.** Gente que se perdeu: agentes de campanhas passadas, quem morreu num evento que foi apagado, quem queimou as cinco Memórias. E coisas — objetos que caíram do Fluxo quando alguém mexeu numa viga, e que não existem em época nenhuma.
+
+**Sair.** É preciso uma **âncora do lado de fora**: alguém segurando a porta, um Ato de Âncora feito nas últimas 24 horas, ou um objeto seu que ficou. Sem âncora, salvaguarda de Autocontrole contra 10 por cena, e a falha custa +15 IP.
+
+> A Zona não é masmorra. É depósito, e o que assusta é que está organizado. Não conduza como combate: conduza como visita à casa de alguém que morreu e cujas coisas ninguém teve coragem de mexer.
+
 ---
 
 ## PARTE XVI — A AGÊNCIA
@@ -1024,6 +1069,43 @@ A Agência não é vilã. Mas ela é velha, e agente que enxerga demais já deu 
 
 O relógio de Suspeita e a escada de Discernimento sobem juntos de propósito. Ficar mais capaz e ficar mais vigiado é a mesma curva.
 
+### 16.5 Reancoragem
+
+Um agente Devolvido não sai da mesa.
+
+Quando a Instabilidade Pessoal bate em 100, ou depois da terceira descoagulação, o agente é cuspido de volta ao presente e acorda na Agência. A missão continua sem ele — mas o **jogador** não fica olhando.
+
+Ele passa a jogar **cenas de Reancoragem**: cenas curtas, na Agência, que o mestre intercala a cada duas ou três cenas de campo.
+
+| Ação | O que faz |
+|---|---|
+| **Insistir** | Salvaguarda de Autocontrole contra 8. Passou: −20 de IP, e você entra na próxima Janela. |
+| **Escutar** | Você ouve o que a Agência diz sobre a missão achando que o time não está ouvindo. O mestre responde uma pergunta com a verdade. |
+| **Empurrar** | Gasta um Favor e a Agência manda algo para o campo: um item, um aviso, uma extração. |
+| **Vasculhar** | d20 + Intelecto + Investigação contra 16. Sucesso: acha no Arquivo algo que o grupo precisa agora, e consegue fazer chegar. |
+
+**Voltar ao campo** custa uma Janela nova, e a Regra das Brasas continua valendo: o instante em que você saiu queimou. Você volta em outro ponto, e a distância é problema seu.
+
+> A regra existe por motivo de mesa, não de ficção. Um jogador sem personagem por duas horas para de jogar e começa a mexer no celular. Ser Devolvido não é castigo: é troca de cena.
+
+---
+
+### 16.6 Gente da Agência
+
+A Agência mente, e mentira precisa de boca. Estes cinco existem para que a Suspeita tenha rosto — e para que "a Agência disse" seja sempre **alguém** que disse.
+
+**IRMÃ VÉSPERA** · *Reancoragem.* Médica. Foi ela que segurou cada agente da mesa no instante da morte, e lembra de todos pelo nome. Nunca comenta de quantos não conseguiu segurar.
+
+**O ARQUIVISTA SEM NOME** · *Arquivo.* Ninguém sabe o nome dele e ele não corrige. Entrega exatamente o que você pediu, e nunca o que você precisava ter pedido.
+
+**CURADOR ODRAN** · *Operações.* Dá os briefings. Simpático, competente, e omite por hábito e não por ordem. Se o grupo o pegar mentindo, ele fica aliviado.
+
+**A CONTADORA** · *Derivas.* Anota toda Deriva que toda equipe já deixou, desde sempre. É a única pessoa da Agência que sabe o tamanho real do estrago acumulado, e não parece incomodada com isso.
+
+**RECRUTA HOLLIS** · *Nada em particular.* Está lá há trinta anos e continua Recruta. A Patente dele está congelada desde antes de o relógio do saguão parar, e ninguém sabe dizer por quê — inclusive ele.
+
+**Usando.** Todo Favor é gasto **com alguém**. Perguntar direto a um superior (16.1) é perguntar a um destes, e a Suspeita sobe porque foi ele quem anotou.
+
 ---
 
 ## PARTE XVII — ANOMALIAS
@@ -1055,6 +1137,36 @@ Um vírus é Grau 5 e não tem um único ponto de vida.
 **Renegados** — ex-agentes que chegaram à Camada 5 e decidiram que o Fluxo atual não valia a pena. Têm classes, trilhas, Instabilidade — e mais Discernimento que você.
 
 > Bestiário completo, estatísticas e quatro anomalias prontas vêm no próximo volume.
+
+### 17.3 A Leitura
+
+Descobrir qual é a Viga é a fase mais importante da missão, e a que mais trava mesa quando não tem procedimento. Este é o procedimento.
+
+**Toda anomalia esconde três Pistas.** O mestre escreve as três antes da sessão, e elas respondem nesta ordem:
+
+1. **O quê** — o que está errado neste lugar.
+2. **Quem** — quem mexeu, ou o que foi deslocado.
+3. **Onde e quando** — o ato exato. Essa é a Viga.
+
+**Cada cena de investigação rende uma Pista** com um teste bem-sucedido: d20 + atributo + perícia contra o ND do Selo da anomalia.
+
+| Selo | ND |
+|---|---|
+| Contido | 12 |
+| Ativo | 16 |
+| Terminal | 20 |
+
+Qualquer perícia serve, desde que o jogador descreva **como**. História lê o que deveria ter sido. Investigação acha o rastro. Persuasão faz um nativo contar. Leitura de Fluxo sente a costura. Medicina abre o corpo. Tecnologia desmonta o objeto. A perícia não decide se você acha — decide **o que você vê**, e duas perícias diferentes na mesma Pista dão duas cenas diferentes.
+
+**A falha não trava: cobra.** Falhou, a Pista continua lá e a cena passou — **a IF sobe 5%**. Falha crítica sobe 10% e chama alguém. Não existe Pista perdida; existe missão que ficou mais cara.
+
+**Sucesso com custo** (ND −1 ou −2) entrega a Pista e o preço junto, como em qualquer teste.
+
+Com as três Pistas na mão, a Viga está identificada e a fase de Correção começa.
+
+**As habilidades que encurtam isso.** *Memória do Certo* (Paradoxista, nível 1) entrega a primeira Pista de graça, no começo de toda missão, sem rolar — é por isso que ela é passiva de nível 1 e não parece grande coisa até você jogar sem. *Linha Cortada* (nível 8) compra uma Pista por 4 EP. *Ver a Viga* (nível 13) pula direto para a terceira.
+
+> Repare no desenho: **investigar mal é a única forma de a IF subir sem ninguém errar em combate.** É de propósito. Um grupo que lê rápido chega à Correção com folga; um que lê devagar chega numa missão pior. Isso troca "role Investigação de novo" por uma decisão de ritmo.
 
 ---
 

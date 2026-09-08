@@ -177,7 +177,10 @@ function interligar(texto, proprioNome) {
 
 /* ------------------------------------------------- extrair seção do livro -- */
 
-const MD_REGRAS = ler("fontes/CHRONO_Livro_de_Regras.md");
+const LIVROS_MD = {
+  regras: ler("fontes/CHRONO_Livro_de_Regras.md"),
+  inimigos: ler("fontes/CHRONO_Livro_dos_Inimigos.md"),
+};
 
 /**
  * Devolve o corpo de uma seção do Livro de Regras, sem o título.
@@ -186,10 +189,11 @@ const MD_REGRAS = ler("fontes/CHRONO_Livro_de_Regras.md");
  * As tabelas vêm inteiras: é assim que o dano das armas e o bônus de Defesa
  * das proteções chegam ao cofre, em vez de um resumo em prosa.
  */
-function secaoDoLivro(numero, de) {
-  const i = MD_REGRAS.indexOf(`### ${numero} `);
-  if (i < 0) throw new Error(`seção ${numero} não encontrada no Livro de Regras`);
-  const resto = MD_REGRAS.slice(i);
+function secaoDoLivro(numero, de, livro = "regras") {
+  const md = LIVROS_MD[livro];
+  const i = md.indexOf(`### ${numero} `);
+  if (i < 0) throw new Error(`seção ${numero} não encontrada em ${livro}`);
+  const resto = md.slice(i);
   const fim = resto.slice(1).search(/\n(?:###? )/);
   let corpo = (fim < 0 ? resto : resto.slice(0, fim + 1));
   corpo = corpo.replace(/^### [^\n]*\n/, "").trim();
@@ -211,7 +215,7 @@ console.log("  cofre:", COFRE, "\n");
 for (const c of CONCEITOS) {
   // conceito com `extrair` traz as tabelas do livro em vez de um resumo
   const fonte = c.extrair
-    ? c.resumo + "\n\n" + secaoDoLivro(c.extrair.secao, c.extrair.de)
+    ? c.resumo + "\n\n" + secaoDoLivro(c.extrair.secao, c.extrair.de, c.extrair.livro)
     : c.resumo;
   const corpo = interligar(fonte, c.nome);
   const relacionados = (c.relacionados || []).map((r) => `- [[${r}]]`).join("\n");

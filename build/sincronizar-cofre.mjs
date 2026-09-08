@@ -291,16 +291,66 @@ for (const parte of partesInimigos) {
     // o separador --- que fecha a seção no livro não faz sentido dentro da nota
     const corpo = item.linhas.join("\n").trim().replace(/\n*-{3,}\s*$/, "");
 
+    // seção de regras da família (7.1 O que é um Corrompido) não é criatura
+    const regraDeFamilia = /^\d+\.\d+\s/.test(item.titulo);
+    if (regraDeFamilia) {
+      const limpo = item.titulo.replace(/^\d+\.\d+\s+/, "");
+      nota(
+        `Bestiário/${seguro(familia)}/${seguro(limpo)}`,
+        frontmatter({ tipo: "regra", gerado: true, familia, tags: ["chrono", "inimigo", "regra"] }) +
+          `# ${limpo}\n\n${interligar(corpo, limpo)}\n\n## Ligado a\n\n- [[As seis famílias]]\n- [[Grau]]\n` +
+          rodape("CHRONO_Livro_dos_Inimigos.md", null, "inimigos")
+      );
+      continue;
+    }
+
     // o primeiro bloco ``` é a ficha
     const ficha = (corpo.match(/```\n([\s\S]*?)```/) || [, ""])[1].trim();
-    const grau = (ficha.match(/GRAU\s+(\d)|Grau (\d)/i) || []).slice(1).find(Boolean);
-    const selo = (ficha.match(/SELO\s+(\w+)/i) || [])[1] ||
-      (ficha.match(/Grau \d · [^·]+ · ([^\n]+)/) || [])[1];
-    const epoca = (ficha.match(/ÉPOCA\s+([^\n]+)/i) || [])[1];
-    const viga = (ficha.match(/VIGA\s+([^\n]+)/i) || [])[1];
-    const peso = (corpo.match(/\*\*PESO\*\*\s*—\s*([^\n.]+)/) || [])[1];
+    const [l1 = "", l2 = "", l3 = ""] = ficha.split("\n");
 
+    const grau = (ficha.match(/GRAU\s+(\d)|Grau (\d)/i) || []).slice(1).find(Boolean);
+    const peso = (corpo.match(/\*\*PESO\*\*\s*—\s*([^\n.]+)/) || [])[1];
+    /* Âncora no começo da linha: sem isso, "Gente da época" no nome da família
+       casava com o campo ÉPOCA das anomalias e trazia lixo junto. */
+    let epoca = (ficha.match(/^ÉPOCA\s+(.+)$/im) || [])[1];
+
+    /* A primeira linha é "Grau X · Família · Selo · nível N, Patente, Camada C".
+       Sem separar, o campo selo engolia a carreira inteira do sujeito. */
+    const campos = l1.split("·").map((p) => p.trim());
+    const selo = (ficha.match(/SELO\s+(\w+)/i) || [])[1] ||
+      campos.slice(2).find((p) => /^(Contido|Ativo|Terminal)/i.test(p))?.split(/\s|,/)[0];
+    const nivel = (l1.match(/n[íi]vel (\d+)/i) || [])[1];
+    const patente = (l1.match(/n[íi]vel \d+,\s*([^,·]+)/i) || [])[1];
+    const camada = (l1.match(/Camada (\d)/i) || [])[1];
+    const quantos = campos.find((p) => /aparece em grupo|\d+ a \d+/i.test(p));
+
+    // gente de época e bicho trazem a época na própria linha da ficha
+    if (!epoca && /Gente da|Bichos/i.test(familia)) {
+      epoca = campos.slice(2).find(
+        (p) => !/^(Contido|Ativo|Terminal)/i.test(p) && !/\d+ a \d+|aparece em grupo|é um lugar|vem com/i.test(p)
+      );
+    }
+
+    // "Defesa 15 · PV 45 · Iniciativa +5 · Salvaguardas +3"
+    const n = (re) => { const m = l2.match(re); return m ? m[1] : undefined; };
+    const defesa = n(/Defesa\s+(\d+)/i);
+    const pv = n(/PV\s+(\d+)/i);
+    const iniciativa = n(/Iniciativa\s+([+-]?\d+)/i);
+    const salvaguardas = n(/Salvaguardas\s+([+-]?\d+)/i);
+    const dano = (l3.match(/·\s*(\d+d\d+(?:\s*[+-]\s*\d+)?)/) || [])[1];
+
+    const equipamento = (corpo.match(/\*\*EQUIPAMENTO\*\*\s*—\s*([^\n]+)/) || [])[1];
     const texto = interligar(corpo, nome);
+
+    // links úteis: a família, e a época quando ela existe
+    const ligados = ehAnomalia
+      ? ["[[Anomalia]]", "[[A Viga]]", "[[Instabilidade do Fluxo]]", "[[A Leitura]]"]
+      : ["[[As seis famílias]]", "[[Grau]]",
+         /Corrompid/i.test(familia) ? "[[Corrompidos]]" : null,
+         /Fantasma/i.test(familia) ? "[[Fantasmas]]" : null,
+         /Renegad/i.test(familia) ? "[[Renegados]]" : null,
+         equipamento ? "[[Arsenal]]" : null,
+         /Gente da/i.test(familia) ? "[[Épocas]]" : null].filter(Boolean);
 
     nota(
       ehAnomalia ? `Anomalias/${seguro(nome)}` : `Bestiário/${seguro(familia)}/${seguro(nome)}`,
@@ -309,13 +359,21 @@ for (const parte of partesInimigos) {
         gerado: true,
         grau: grau ? Number(grau) : undefined,
         familia: ehAnomalia ? undefined : familia,
-        selo: selo ? selo.trim() : undefined,
+        selo: selo || undefined,
+        defesa: defesa ? Number(defesa) : undefined,
+        pv: pv ? Number(pv) : undefined,
+        iniciativa,
+        salvaguardas,
+        dano,
+        nivel: nivel ? Number(nivel) : undefined,
+        patente: patente ? patente.trim() : undefined,
+        camada: camada ? Number(camada) : undefined,
+        quantos,
         epoca: epoca ? epoca.trim() : undefined,
         peso: peso ? peso.trim() : undefined,
         tags: ["chrono", ehAnomalia ? "anomalia" : "inimigo"],
       }) +
-        `# ${nome}\n\n${texto}\n\n## Ligado a\n\n` +
-        (ehAnomalia ? "- [[Anomalia]]\n- [[A Viga]]\n- [[Instabilidade do Fluxo]]\n" : `- [[As seis famílias]]\n- [[Grau]]\n`) +
+        `# ${nome}\n\n${texto}\n\n## Ligado a\n\n${ligados.map((l) => `- ${l}`).join("\n")}\n` +
         rodape("CHRONO_Livro_dos_Inimigos.md", null, "inimigos")
     );
     ehAnomalia ? nAnomalias++ : nInimigos++;

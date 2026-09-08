@@ -106,8 +106,8 @@ em `assets/og.png` se mudar a capa ou o texto de abertura.
 ## Os cinco agentes prontos
 
 Cinco fichas fechadas em nível 1 — dois Viajantes, um Ancorador, dois
-Paradoxistas — em . Daí saem tanto o seletor da
-ficha do site quanto as notas do cofre.
+Paradoxistas — em `build/agentes/agentes.mjs`. Daí saem tanto o seletor da
+ficha do site quanto as notas do cofre em `Personagens/Agentes Prontos/`.
 
 O build **falha** se alguma ficha desrespeitar as regras de criação: atributos
 somando 9, nenhum acima de 3, perícias somando 10, nenhuma acima de 2, cinco

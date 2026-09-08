@@ -13,7 +13,7 @@
  * tocada, mesmo que esteja numa dessas pastas.
  */
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, statSync, rmSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, statSync, rmSync, rmdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { CONCEITOS, CLASSES } from "./cofre/conceitos.mjs";
@@ -77,6 +77,25 @@ function limparObsoletas() {
       removidas.push(p.slice(BASE.length + 1));
     }
   })(BASE);
+
+  /* Pasta que ficou vazia depois da limpeza é resto de uma organização antiga.
+     Some com ela — mas só se estiver de fato vazia, nunca com nota dentro. */
+  let mexeu = true;
+  while (mexeu) {
+    mexeu = false;
+    (function varrer(dir) {
+      for (const f of readdirSync(dir)) {
+        const p = join(dir, f);
+        if (!statSync(p).isDirectory()) continue;
+        varrer(p);
+        if (!readdirSync(p).length) {
+          rmdirSync(p); // recusa se não estiver vazia — a garantia é do Node
+          removidas.push(p.slice(BASE.length + 1) + "  (pasta vazia)");
+          mexeu = true;
+        }
+      }
+    })(BASE);
+  }
   return removidas;
 }
 
@@ -296,7 +315,7 @@ for (const parte of partesInimigos) {
     if (regraDeFamilia) {
       const limpo = item.titulo.replace(/^\d+\.\d+\s+/, "");
       nota(
-        `Bestiário/${seguro(familia)}/${seguro(limpo)}`,
+        `Bestiário/${seguro(limpo)}`,
         frontmatter({ tipo: "regra", gerado: true, familia, tags: ["chrono", "inimigo", "regra"] }) +
           `# ${limpo}\n\n${interligar(corpo, limpo)}\n\n## Ligado a\n\n- [[As seis famílias]]\n- [[Grau]]\n` +
           rodape("CHRONO_Livro_dos_Inimigos.md", null, "inimigos")
@@ -353,7 +372,7 @@ for (const parte of partesInimigos) {
          /Gente da/i.test(familia) ? "[[Épocas]]" : null].filter(Boolean);
 
     nota(
-      ehAnomalia ? `Anomalias/${seguro(nome)}` : `Bestiário/${seguro(familia)}/${seguro(nome)}`,
+      ehAnomalia ? `Fichas/Anomalias/${seguro(nome)}` : `Fichas/Inimigos/${seguro(familia)}/${seguro(nome)}`,
       frontmatter({
         tipo: ehAnomalia ? "anomalia" : "inimigo",
         gerado: true,
@@ -371,7 +390,7 @@ for (const parte of partesInimigos) {
         quantos,
         epoca: epoca ? epoca.trim() : undefined,
         peso: peso ? peso.trim() : undefined,
-        tags: ["chrono", ehAnomalia ? "anomalia" : "inimigo"],
+        tags: ["chrono", "ficha", ehAnomalia ? "anomalia" : "inimigo"],
       }) +
         `# ${nome}\n\n${texto}\n\n## Ligado a\n\n${ligados.map((l) => `- ${l}`).join("\n")}\n` +
         rodape("CHRONO_Livro_dos_Inimigos.md", null, "inimigos")
@@ -458,6 +477,71 @@ const subpastas = (pasta) => {
   if (!existsSync(dir)) return [];
   return readdirSync(dir).filter((f) => statSync(join(dir, f)).isDirectory()).sort();
 };
+
+/* ------------------------------------ o índice da aba de Fichas ---------- */
+
+{
+  const fichas = [];
+  (function varrer(dir) {
+    if (!existsSync(dir)) return;
+    for (const f of readdirSync(dir)) {
+      const p = join(dir, f);
+      if (statSync(p).isDirectory()) { varrer(p); continue; }
+      if (!f.endsWith(".md")) continue;
+      const txt = readFileSync(p, "utf8");
+      const campo = (k) => (txt.match(new RegExp("^" + k + ": (.+)$", "m")) || [])[1];
+      if (campo("tipo") === "índice") continue;
+      fichas.push({
+        nome: f.replace(/\.md$/, ""),
+        tipo: campo("tipo"),
+        grau: campo("grau"),
+        familia: campo("familia"),
+        epoca: campo("epoca"),
+        pv: campo("pv"),
+        defesa: campo("defesa"),
+        classe: campo("classe"),
+      });
+    }
+  })(join(BASE, "Fichas"));
+
+  const ordenar = (a, b) => a.nome.localeCompare(b.nome, "pt-BR");
+
+  const porGrau = [1, 2, 3, 4, 5]
+    .map((g) => {
+      const lista = fichas.filter((f) => f.grau === String(g)).sort(ordenar);
+      if (!lista.length) return "";
+      return (
+        `### Grau ${g}\n\n| Ficha | Família | Defesa | PV |\n|---|---|---|---|\n` +
+        lista.map((f) => `| [[${f.nome}]] | ${f.familia || "—"} | ${f.defesa || "—"} | ${f.pv || "—"} |`).join("\n") +
+        "\n"
+      );
+    })
+    .filter(Boolean)
+    .join("\n");
+
+  const comEpoca = fichas.filter((f) => f.epoca);
+  const porEpoca = [...new Set(comEpoca.map((f) => f.epoca))]
+    .sort((a, b) => a.localeCompare(b, "pt-BR"))
+    .map((e) => `**${e}** — ` + comEpoca.filter((f) => f.epoca === e).sort(ordenar).map((f) => `[[${f.nome}]]`).join(" · "))
+    .join("\n\n");
+
+  const agentes = fichas.filter((f) => f.tipo === "agente").sort(ordenar);
+  const semGrau = fichas.filter((f) => !f.grau && f.tipo !== "agente").sort(ordenar);
+
+  nota(
+    "Fichas/Fichas",
+    frontmatter({ tipo: "índice", gerado: true, tags: ["chrono", "índice", "ficha"] }) +
+      `# Fichas\n\nTudo que tem bloco de estatística, num lugar só — ${fichas.length} fichas.\n\n` +
+      `> [!tip] Achar rápido\n` +
+      `> Todas carregam a tag **#ficha** nas propriedades: clicar nela lista o conjunto inteiro.\n` +
+      `> Os números estão nas propriedades de cada uma, então dá para filtrar por grau, família, época, Defesa ou PV.\n\n` +
+      `## Agentes prontos\n\n` +
+      agentes.map((f) => `- [[${f.nome}]] — ${f.classe || ""}`).join("\n") +
+      `\n\n## Inimigos e anomalias, por [[Grau]]\n\n${porGrau}\n` +
+      (semGrau.length ? `### Sem Grau fixo\n\n` + semGrau.map((f) => `- [[${f.nome}]]`).join("\n") + "\n\n" : "") +
+      `## Por época\n\n${porEpoca}\n`
+  );
+}
 
 nota(
   "Bestiário/Bestiário",
@@ -686,7 +770,7 @@ Atenção ao [[Anacronismo]]: se a soma do que ele carrega passar da Vontade (${
 ${a.dica}`;
 
   nota(
-    `Personagens/Agentes Prontos/${seguro(a.nome)}`,
+    `Fichas/Agentes/${seguro(a.nome)}`,
     frontmatter({
       tipo: "agente",
       gerado: true,
@@ -700,7 +784,7 @@ ${a.dica}`;
       pv: d.pv,
       ep: d.ep,
       defesa: d.defesa,
-      tags: ["chrono", "agente", "pronto"],
+      tags: ["chrono", "ficha", "agente", "pronto"],
     }) + interligar(corpo, a.nome) +
       `\n\n---\n\n*Ficha fechada. Para jogar, abra a [[O site|ficha interativa]] e use **Agentes prontos**.*\n` +
       `*Gerado de \`build/agentes/agentes.mjs\`.*`
@@ -708,7 +792,7 @@ ${a.dica}`;
 }
 
 nota(
-  "Personagens/Agentes Prontos/Agentes prontos",
+  "Fichas/Agentes/Agentes prontos",
   frontmatter({ tipo: "índice", gerado: true, tags: ["chrono", "índice"] }) +
 `# Agentes prontos
 
